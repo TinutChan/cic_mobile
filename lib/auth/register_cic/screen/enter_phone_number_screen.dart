@@ -61,7 +61,7 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
                               .phoneNumberController.value,
                           obscureText: false,
                           prefixIcon:
-                              Image.asset('assets/icons/phone_bold.png')),
+                              Image.asset('assets/icons/phone_bold.png'),),
                     ),
                   ],
                 ),

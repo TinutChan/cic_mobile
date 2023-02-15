@@ -18,6 +18,33 @@ class CreatePasswordScreen extends StatefulWidget {
 }
 
 class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
+  bool isVisible = false;
+  bool isPasswordEightCharacters = false;
+  bool hasPasswordOneNumber = false;
+  bool isUpperCaseAndLowercase = false;
+
+  onPasswordChanged(String password) {
+    final numericRegex = RegExp(r'[0-9]');
+    final caseRegex = RegExp(r'[a-zA-Z]{2}');
+
+    setState(() {
+      isPasswordEightCharacters = false;
+      if (password.length <= 8) {
+        isPasswordEightCharacters = true;
+      }
+
+      hasPasswordOneNumber = false;
+      if (caseRegex.hasMatch(password)) {
+        isUpperCaseAndLowercase = true;
+      }
+
+      hasPasswordOneNumber = false;
+      if (numericRegex.hasMatch(password)) {
+        hasPasswordOneNumber = ?;
+      }
+    });
+  }
+
   final passwordController = Get.put(EnterPhoneNumberController());
 
   @override
@@ -61,14 +88,24 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                     padding:
                         const EdgeInsets.only(left: 20, right: 20.0, top: 24),
                     child: CustomTextField(
+                      onChanged: (password) {
+                        onPasswordChanged(password);
+                      },
                       prefixIcon:
                           Image.asset('assets/icons/Password.png', scale: 1.5),
-                      hintText: 'labelText',
-                      suffixIcon: Icon(
-                        Icons.visibility,
-                        color: AppColor.blackColor,
+                      hintText: 'password',
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isVisible = !isVisible;
+                          });
+                        },
+                        child: Icon(
+                          Icons.visibility,
+                          color: AppColor.blackColor,
+                        ),
                       ),
-                      obscureText: true,
+                      obscureText: !isVisible,
                     ),
                   ),
                   Padding(
@@ -82,32 +119,66 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                           style: AppFont.text12black,
                         ),
                         const SizedBox(height: 6),
-                        Row(
-                          children: [
-                            SvgPicture.asset('assets/icons/circle.svg'),
-                            const SizedBox(width: 8),
-                            Text('8 or more characters',
-                                style: AppFont.text12black),
-                          ],
-                        ),
+                        isPasswordEightCharacters
+                            ? Row(
+                                children: [
+                                  SvgPicture.asset('assets/icons/circle.svg'),
+                                  const SizedBox(width: 8),
+                                  Text('8 or more characters',
+                                      style: AppFont.text12black),
+                                ],
+                              )
+                            : Row(
+                                children: [
+                                  SvgPicture.asset(
+                                      'assets/icons/circle-checked-selected.svg'),
+                                  const SizedBox(width: 8),
+                                  Text('8 or more characters',
+                                      style: AppFont.text12green),
+                                ],
+                              ),
                         const SizedBox(height: 6),
-                        Row(
-                          children: [
-                            SvgPicture.asset('assets/icons/circle.svg'),
-                            const SizedBox(width: 8),
-                            Text('upper & lowercase letter',
-                                style: AppFont.text12black),
-                          ],
-                        ),
+                        isUpperCaseAndLowercase
+                            ? Row(
+                                children: [
+                                  SvgPicture.asset('assets/icons/circle.svg'),
+                                  const SizedBox(width: 8),
+                                  Text('upper & lowercase letter',
+                                      style: AppFont.text12black),
+                                ],
+                              )
+                            : Row(
+                                children: [
+                                  SvgPicture.asset(
+                                      'assets/icons/circle-checked-selected.svg'),
+                                  const SizedBox(width: 8),
+                                  Text('upper & lowercase letter',
+                                      style: AppFont.text12green),
+                                ],
+                              ),
                         const SizedBox(height: 6),
-                        Row(
-                          children: [
-                            SvgPicture.asset('assets/icons/circle.svg'),
-                            const SizedBox(width: 8),
-                            Text('at least one number',
-                                style: AppFont.text12black),
-                          ],
-                        ),
+                        hasPasswordOneNumber
+                            ? Row(
+                                children: [
+                                  SvgPicture.asset('assets/icons/circle.svg'),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'at least one number',
+                                    style: AppFont.text12black,
+                                  ),
+                                ],
+                              )
+                            : Row(
+                                children: [
+                                  SvgPicture.asset(
+                                      'assets/icons/circle-checked-selected.svg'),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'at least one number',
+                                    style: AppFont.text12green,
+                                  ),
+                                ],
+                              ),
                       ],
                     ),
                   ),
