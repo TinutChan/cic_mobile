@@ -19,6 +19,7 @@ class CreatePasswordScreen extends StatefulWidget {
 
 class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
   bool isVisible = false;
+
   bool isPasswordEightCharacters = false;
   bool hasPasswordOneNumber = false;
   bool isUpperCaseAndLowercase = false;
@@ -33,14 +34,14 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
         isPasswordEightCharacters = true;
       }
 
-      hasPasswordOneNumber = false;
+      hasPasswordOneNumber = true;
       if (caseRegex.hasMatch(password)) {
-        isUpperCaseAndLowercase = true;
+        isUpperCaseAndLowercase = false;
       }
 
-      hasPasswordOneNumber = false;
+      hasPasswordOneNumber = true;
       if (numericRegex.hasMatch(password)) {
-        hasPasswordOneNumber = ?;
+        hasPasswordOneNumber = false;
       }
     });
   }
@@ -191,8 +192,14 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             left: 20,
             right: 20,
             child: CustomButtonElevatedButton(
-              isDisbale: false,
-              onPressed: () {},
+              isDisbale: isPasswordEightCharacters ||
+                      hasPasswordOneNumber ||
+                      isUpperCaseAndLowercase
+                  ? false
+                  : true,
+              onPressed: () {
+                
+              },
               label: 'Continue',
             ),
           ),
