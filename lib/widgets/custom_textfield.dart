@@ -3,29 +3,55 @@ import 'package:flutter/material.dart';
 import '../constants/color_app/color_app.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    super.key,
-    this.enableBorder,
-    this.focusedBorder,
-    this.edgeInsetsGeometry,
-    this.child,
-    this.hintText,
-    this.controller,
+  CustomTextField({
+    Key? key,
+    this.labelText,
+    required this.hintText,
+    this.focusNode,
+    required this.obscureText,
+    this.textEditingController,
+    this.onEditingComplete,
     this.onChanged,
-  });
+    this.scrollPadding,
+    this.suffixIcon,
+    this.borderColor,
+    this.readOnly,
+    this.onTap,
+    this.validator,
+    this.initialText,
+    this.prefixIcon,
+  }) : super(key: key);
 
-  final InputBorder? enableBorder;
-  final InputBorder? focusedBorder;
-  final EdgeInsetsGeometry? edgeInsetsGeometry;
-  final Widget? child;
+  Color focusBorderColor = Colors.black45;
+  Color labelColor = const Color(0xff0A0B09);
+  Color textColor = Colors.black;
+  int maxLines = 1;
+  bool isRequired = false;
+  TextInputType textInputType = TextInputType.text;
+  final String? labelText;
   final String? hintText;
-  final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final bool obscureText;
+  final TextEditingController? textEditingController;
+  final VoidCallback? onEditingComplete;
   final ValueChanged<String>? onChanged;
+  final EdgeInsets? scrollPadding;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final Color? borderColor;
+  final bool? readOnly;
+  final VoidCallback? onTap;
+  final FormFieldValidator<String>? validator;
+  int? maxLength = 40;
+  final String? initialText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
+      controller: textEditingController,
+      onTap: onTap,
+      onChanged: onChanged,
+      obscureText: obscureText,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -34,11 +60,11 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: AppColor.mainColor),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
-        hintText: 'Phone Number',
-        prefix: const Icon(Icons.vpn_key_sharp),
+        contentPadding: const EdgeInsets.all(15.0),
+        suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
+        hintText: hintText,
       ),
-      onChanged: onChanged,
     );
   }
 }

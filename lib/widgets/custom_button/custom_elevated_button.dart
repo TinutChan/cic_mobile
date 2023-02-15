@@ -6,7 +6,7 @@ class CustomButtonElevatedButton extends StatelessWidget {
   const CustomButtonElevatedButton({
     super.key,
     required this.onPressed,
-    this.isDisbale = true,
+    this.isDisbale = false,
     required this.label,
   });
 
@@ -25,7 +25,7 @@ class CustomButtonElevatedButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        backgroundColor: isDisbale == true
+        backgroundColor: isDisbale == false
             ? AppColor.greyColor.withOpacity(0.4)
             : AppColor.mainColor,
       ),

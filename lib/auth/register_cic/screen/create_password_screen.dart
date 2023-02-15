@@ -18,7 +18,6 @@ class CreatePasswordScreen extends StatefulWidget {
 }
 
 class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
-
   final passwordController = Get.put(EnterPhoneNumberController());
 
   @override
@@ -53,14 +52,23 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                     ),
                   ),
                   Center(
-                      child: Text('Please create a strong password',
-                          style: AppFont.text14darkColor)),
+                    child: Text(
+                      'Please create a strong password',
+                      style: AppFont.text14darkColor,
+                    ),
+                  ),
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 20, right: 20.0, top: 24),
                     child: CustomTextField(
-                      controller:
-                          passwordController.passwordController.value,
+                      prefixIcon:
+                          Image.asset('assets/icons/Password.png', scale: 1.5),
+                      hintText: 'labelText',
+                      suffixIcon: Icon(
+                        Icons.visibility,
+                        color: AppColor.blackColor,
+                      ),
+                      obscureText: true,
                     ),
                   ),
                   Padding(
@@ -112,7 +120,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             left: 20,
             right: 20,
             child: CustomButtonElevatedButton(
-              isDisbale: true,
+              isDisbale: false,
               onPressed: () {},
               label: 'Continue',
             ),

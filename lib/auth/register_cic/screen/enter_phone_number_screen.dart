@@ -56,23 +56,12 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
                       padding:
                           const EdgeInsets.only(left: 20, right: 20.0, top: 24),
                       child: CustomTextField(
-                        controller: enterPhoneNumberController
-                            .phoneNumberController.value,
-                        enableBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: AppColor.mainColor),
-                        ),
-                        edgeInsetsGeometry:
-                            const EdgeInsets.symmetric(horizontal: 20.0),
-                        hintText: 'Phone Number',
-                        child: Icon(
-                          Icons.phone,
-                          color: AppColor.mainColor,
-                        ),
-                      ),
+                          hintText: 'Phone Number',
+                          textEditingController: enterPhoneNumberController
+                              .phoneNumberController.value,
+                          obscureText: false,
+                          prefixIcon:
+                              Image.asset('assets/icons/phone_bold.png')),
                     ),
                   ],
                 ),
@@ -83,6 +72,7 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
               left: 20,
               right: 20,
               child: CustomButtonElevatedButton(
+                isDisbale: true,
                 onPressed: () {
                   enterPhoneNumberController.getEnterNumberController();
                 },

@@ -6,12 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../routers/app_router.dart';
-import '../../../utils/helper/shared_preference.dart';
 
 class EnterPhoneNumberController extends GetxController {
   final passwordController = TextEditingController().obs;
   final phoneNumberController = TextEditingController().obs;
-  final sharedPreferences = LocalStorage();
   final baseUrl = ApiBaseHelper();
 
   Future<void> getEnterNumberController() async {
