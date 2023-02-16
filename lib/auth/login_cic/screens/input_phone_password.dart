@@ -77,6 +77,8 @@ class InputPhoneNumberPasswordScreen extends StatelessWidget {
                             loginController.pass.value = value;
                             debugPrint('Pass: ${loginController.pass.value}');
                           },
+                          textEditingController:
+                              loginController.passwordController.value,
                           hintText: 'Password',
                           obscureText: false,
                           prefixIcon: Image.asset('assets/icons/Password.png',
@@ -102,8 +104,8 @@ class InputPhoneNumberPasswordScreen extends StatelessWidget {
                             loginController.pass.value != ''
                         ? false
                         : true,
-                    onPressed: () {
-                      loginController.getLoginControler();
+                    onPressed: () async {
+                      await loginController.getLoginControler();
                     },
                     label: 'Login',
                   ),
