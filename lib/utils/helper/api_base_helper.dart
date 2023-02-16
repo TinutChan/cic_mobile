@@ -27,6 +27,7 @@ class ApiBaseHelper extends GetConnect {
     Map<String, String> defaultHeader = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+    
     };
     try {
       switch (methode) {

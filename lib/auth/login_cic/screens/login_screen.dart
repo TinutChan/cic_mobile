@@ -70,8 +70,13 @@ class LoginScreen extends StatelessWidget {
             TextContent(
               firsttextLabel: 'Login With Face ID',
               textStyle1: AppFont.text12white,
-              sectextLabel: 'Don\'t have an account? Register',
+              sectextLabel: 'Don\'t have an account?',
               textStyle2: AppFont.text12white,
+              text: 'Register',
+              textStyle3: AppFont.text12white,
+              onPressed: () {
+                approuter.go('/registerscreen');
+              },
             ),
           ],
         ),

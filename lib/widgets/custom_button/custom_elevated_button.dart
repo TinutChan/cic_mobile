@@ -17,7 +17,7 @@ class CustomButtonElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: isDisbale == false ? null : onPressed,
+      onPressed: isDisbale == false ? onPressed : null,
       style: ElevatedButton.styleFrom(
         elevation: 0,
         shadowColor: Colors.white.withOpacity(0),
@@ -26,8 +26,8 @@ class CustomButtonElevatedButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         backgroundColor: isDisbale == false
-            ? AppColor.greyColor.withOpacity(0.4)
-            : AppColor.mainColor,
+            ? AppColor.mainColor
+            : AppColor.greyColor.withOpacity(0.4),
       ),
       child: Text('$label', style: AppFont.text16white),
     );
