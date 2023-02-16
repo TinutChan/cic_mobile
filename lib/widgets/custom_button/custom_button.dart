@@ -2,9 +2,11 @@ import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonWidget extends StatelessWidget {
-  const CustomButtonWidget({super.key, this.onTab});
+  const CustomButtonWidget({super.key, this.onTab, this.images, this.title});
 
   final VoidCallback? onTab;
+  final String? images;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +25,11 @@ class CustomButtonWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
-              child: Image.asset('assets/icons/phone.png'),
+              child: Image.asset('$images'),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text('Phone Number'),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text('$title'),
             )
           ],
         ),

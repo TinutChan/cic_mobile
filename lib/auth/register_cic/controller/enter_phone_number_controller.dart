@@ -22,6 +22,7 @@ class EnterPhoneNumberController extends GetxController {
             "+855${phoneNumberController.value.text.replaceFirst("0", "")}",
       },
     ).then((response) {
+      debugPrint('Response $response');
       var successOtp = response['success'];
       var psw = response['password'];
 
@@ -58,15 +59,13 @@ class EnterPhoneNumberController extends GetxController {
   }
 
   Future<void> getSetPasswordController() async {
-    String? pin;
     await baseUrl.onNetworkRequesting(
         url: 'user/set-password?a',
         methode: METHODE.post,
         isAuthorize: true,
         body: {
-          'phone': phoneNumberController.value.text,
-          'verify_code': getOptController(pin: pin),
-          'type': 'set_password',
+          "password": "Tinut12345@?",
+          "password_confirmation": "Tinut12345@?"
         }).then((response) {
       debugPrint('===Response$response');
     }).onError((ErrorModel error, stackTrace) {

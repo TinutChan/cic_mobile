@@ -13,21 +13,27 @@ class TextContent extends StatelessWidget {
   final TextStyle? textStyle1;
   final TextStyle? textStyle2;
 
+  final bool isChecked = true;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            '$firsttextLabel',
-            style: textStyle1,
-          ),
-        ),
-        Text(
-          '$sectextLabel',
-          style: textStyle2,
-        ),
+        isChecked
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '$firsttextLabel',
+                  style: textStyle1,
+                ),
+              )
+            : Container(),
+        isChecked
+            ? Text(
+                '$sectextLabel',
+                style: textStyle2,
+              )
+            : Container(),
       ],
     );
   }

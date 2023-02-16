@@ -18,6 +18,7 @@ class CreatePasswordScreen extends StatefulWidget {
 }
 
 class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
+  final createPasswordController = Get.put(EnterPhoneNumberController());
   bool isVisible = false;
 
   bool isPasswordEightCharacters = false;
@@ -26,21 +27,24 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
 
   onPasswordChanged(String password) {
     final numericRegex = RegExp(r'[0-9]');
-    final caseRegex = RegExp(r'[a-zA-Z]{2}');
+    final RegExp caseRegex = RegExp(r"(?=.*[a-z])(?=.*[A-Z])\w+");
 
     setState(() {
-      isPasswordEightCharacters = false;
-      if (password.length <= 8) {
+      if (password.length < 8) {
+        isPasswordEightCharacters = false;
+      } else {
         isPasswordEightCharacters = true;
       }
 
-      hasPasswordOneNumber = true;
       if (caseRegex.hasMatch(password)) {
+        isUpperCaseAndLowercase = true;
+      } else {
         isUpperCaseAndLowercase = false;
       }
 
-      hasPasswordOneNumber = true;
       if (numericRegex.hasMatch(password)) {
+        hasPasswordOneNumber = true;
+      } else {
         hasPasswordOneNumber = false;
       }
     });
@@ -120,7 +124,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                           style: AppFont.text12black,
                         ),
                         const SizedBox(height: 6),
-                        isPasswordEightCharacters
+                        isPasswordEightCharacters == false
                             ? Row(
                                 children: [
                                   SvgPicture.asset('assets/icons/circle.svg'),
@@ -139,7 +143,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                                 ],
                               ),
                         const SizedBox(height: 6),
-                        isUpperCaseAndLowercase
+                        isUpperCaseAndLowercase == false
                             ? Row(
                                 children: [
                                   SvgPicture.asset('assets/icons/circle.svg'),
@@ -158,7 +162,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                                 ],
                               ),
                         const SizedBox(height: 6),
-                        hasPasswordOneNumber
+                        hasPasswordOneNumber == false
                             ? Row(
                                 children: [
                                   SvgPicture.asset('assets/icons/circle.svg'),
@@ -192,13 +196,13 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             left: 20,
             right: 20,
             child: CustomButtonElevatedButton(
-              isDisbale: isPasswordEightCharacters ||
-                      hasPasswordOneNumber ||
+              isDisbale: isPasswordEightCharacters &&
+                      hasPasswordOneNumber &&
                       isUpperCaseAndLowercase
-                  ? false
-                  : true,
+                  ? true
+                  : false,
               onPressed: () {
-                
+                createPasswordController.getSetPasswordController();
               },
               label: 'Continue',
             ),

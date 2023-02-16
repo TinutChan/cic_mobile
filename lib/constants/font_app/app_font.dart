@@ -23,6 +23,13 @@ class AppFont {
     color: AppColor.greenColor,
   );
 
+  static TextStyle text12darkGreyColor = TextStyle(
+    fontFamily: 'DMSans',
+    fontWeight: FontWeight.w700,
+    fontSize: 12,
+    color: AppColor.darkGrey,
+  );
+
   static TextStyle text14darkColor = TextStyle(
     fontFamily: 'DMSans',
     fontWeight: FontWeight.w400,
@@ -44,7 +51,7 @@ class AppFont {
     color: AppColor.blackColor,
   );
 
-   static TextStyle text16mainColor = TextStyle(
+  static TextStyle text16mainColor = TextStyle(
     fontFamily: 'DMSans',
     fontWeight: FontWeight.w700,
     fontSize: 16,
