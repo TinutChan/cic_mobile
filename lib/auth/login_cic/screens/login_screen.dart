@@ -1,5 +1,4 @@
 import 'package:cic_mobile/auth/register_cic/components/text_content.dart';
-import 'package:cic_mobile/utils/helper/shared_preference.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/color_app/color_app.dart';
@@ -8,7 +7,7 @@ import '../../../routers/app_router.dart';
 import '../../../widgets/custom_button/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

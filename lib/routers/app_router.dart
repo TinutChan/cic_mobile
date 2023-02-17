@@ -3,7 +3,7 @@ import 'package:cic_mobile/auth/login_cic/screens/input_phone_password.dart';
 import 'package:cic_mobile/auth/register_cic/screen/create_password_screen.dart';
 import 'package:cic_mobile/auth/register_cic/screen/enter_phone_number_screen.dart';
 import 'package:cic_mobile/auth/register_cic/screen/set_pin_code_screen.dart';
-import 'package:cic_mobile/modules/home/home_screen.dart';
+import 'package:cic_mobile/modules/home/screens/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,7 +18,7 @@ final GoRouter approuter = GoRouter(
     GoRoute(
         path: '/',
         builder: (context, state) {
-          return LoginScreen();
+          return const LoginScreen();
         },
         redirect: (context, state) {
           if (loginController.token.value != '') {

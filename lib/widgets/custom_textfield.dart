@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../constants/color_app/color_app.dart';
 
+// ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
-  CustomTextField({
+ CustomTextField({
     Key? key,
     this.labelText,
     required this.hintText,

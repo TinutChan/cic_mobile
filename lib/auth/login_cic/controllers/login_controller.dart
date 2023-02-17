@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../routers/app_router.dart';
 import '../../../utils/helper/shared_preference.dart';
-import '../../../utils/helper/shared_preferences_token.dart';
+import '../../../utils/helper/local_storage.dart';
 
 class LoginController extends GetxController {
   final localStorae = LocalStorage();
