@@ -91,4 +91,11 @@ class AppFont {
     fontSize: 18,
     color: AppColor.blackColor,
   );
+
+  static TextStyle text20white = TextStyle(
+    fontFamily: 'DMSans', 
+    fontWeight: FontWeight.w700, 
+    fontSize: 20, 
+    color: AppColor.whiteColor,
+  );
 }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../routers/app_router.dart';
 import '../../../utils/helper/shared_preference.dart';
+import '../../../utils/helper/shared_preferences_token.dart';
 
 class LoginController extends GetxController {
   final localStorae = LocalStorage();
@@ -15,7 +16,7 @@ class LoginController extends GetxController {
   final isLoading = false.obs;
 
   Future<void> getLoginControler() async {
-    isLoading (true);
+    isLoading(true);
 
     await baseUrl.onNetworkRequesting(
         url: 'login',
@@ -25,12 +26,20 @@ class LoginController extends GetxController {
           'phone':
               '+855${phoneNumberController.value.text.replaceFirst("0", "")}',
           'password': passwordController.value.text,
-        }).then((response) {
-      debugPrint('Response: $response');
+        }).then((response) async {
+      // debugPrint('Response: $response');
       approuter.push('/homescreen');
+      LocalDataStorage.storeCurrentUser(response['access_token'].toString());
+      final token = await LocalDataStorage.getCurrentUser();
+      debugPrint('----------------------$token');
     }).onError((ErrorModel error, statusCode) {
       debugPrint('===OnError: ${error.bodyString} ${error.statusCode}');
-      isLoading (false);
+      isLoading(false);
     });
+  }
+
+  final token = ''.obs;
+  functionFetchToken() async {
+    token.value = await LocalDataStorage.getCurrentUser();
   }
 }
