@@ -42,6 +42,7 @@ class RegisterScreen extends StatelessWidget {
               textStyle1: AppFont.text18white,
               sectextLabel: 'CiC Mobile App',
               textStyle2: AppFont.text18whiteBold,
+              // text: 'nnnnn',
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),

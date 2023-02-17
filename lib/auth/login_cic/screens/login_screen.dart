@@ -1,4 +1,5 @@
 import 'package:cic_mobile/auth/register_cic/components/text_content.dart';
+import 'package:cic_mobile/utils/helper/shared_preference.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/color_app/color_app.dart';
@@ -6,8 +7,25 @@ import '../../../constants/font_app/app_font.dart';
 import '../../../routers/app_router.dart';
 import '../../../widgets/custom_button/custom_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  // void store() async {
+  //    LocalStorage.storeData(key: 'current_user', value: '9977');
+  //   String hh = await LocalStorage.getStringValue(key: 'data');
+  //   debugPrint("hhhh $hh");
+  // }
+
+  // @override
+  // void initState() {
+  //   store();
+  //   super.initState();
+  // }
 
   final List<Color> colors = [
     AppColor.blueColor0.withOpacity(0),

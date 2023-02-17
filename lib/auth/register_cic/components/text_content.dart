@@ -37,18 +37,21 @@ class TextContent extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               sectextLabel ?? '',
               style: textStyle2,
             ),
-            TextButton(
-              onPressed: onPressed,
-              child: Text(
-                '$text',
-                style: textStyle3,
-              ),
-            ),
+            text == null
+                ? const SizedBox()
+                : TextButton(
+                    onPressed: onPressed,
+                    child: Text(
+                      "$text",
+                      style: textStyle3,
+                    ),
+                  ),
           ],
         ),
       ],

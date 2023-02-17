@@ -1,4 +1,5 @@
 import 'package:cic_mobile/auth/login_cic/controllers/login_controller.dart';
+import 'package:cic_mobile/utils/helper/shared_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   await dotenv.load();
+  await LocalStorage.init();
   runApp(const MyApp());
 }
 
