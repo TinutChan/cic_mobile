@@ -56,12 +56,15 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
                       padding:
                           const EdgeInsets.only(left: 20, right: 20.0, top: 24),
                       child: CustomTextField(
-                          hintText: 'Phone Number',
-                          textEditingController: enterPhoneNumberController
-                              .phoneNumberController.value,
-                          obscureText: false,
-                          prefixIcon:
-                              Image.asset('assets/icons/phone_bold.png'),),
+                        onChanged: (value) {
+                          enterPhoneNumberController.phone.value = value;
+                        },
+                        hintText: 'Phone Number',
+                        textEditingController: enterPhoneNumberController
+                            .phoneNumberController.value,
+                        obscureText: false,
+                        prefixIcon: Image.asset('assets/icons/phone_bold.png'),
+                      ),
                     ),
                   ],
                 ),
@@ -72,7 +75,8 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
               left: 20,
               right: 20,
               child: CustomButtonElevatedButton(
-                isDisbale: true,
+                isDisbale:
+                    enterPhoneNumberController.phone.value != '' ? false : true,
                 onPressed: () {
                   enterPhoneNumberController.getEnterNumberController();
                 },

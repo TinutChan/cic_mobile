@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
               text: 'Register',
               textStyle3: AppFont.text12white,
               onPressed: () {
-                approuter.go('/registerscreen');
+                approuter.push('/registerscreen');
               },
             ),
           ],

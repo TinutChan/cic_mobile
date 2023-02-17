@@ -12,8 +12,11 @@ class LoginController extends GetxController {
   final phone = ''.obs;
   final pass = ''.obs;
   final baseUrl = ApiBaseHelper();
+  final isLoading = false.obs;
 
   Future<void> getLoginControler() async {
+    isLoading (true);
+
     await baseUrl.onNetworkRequesting(
         url: 'login',
         methode: METHODE.post,
@@ -27,6 +30,7 @@ class LoginController extends GetxController {
       approuter.push('/homescreen');
     }).onError((ErrorModel error, statusCode) {
       debugPrint('===OnError: ${error.bodyString} ${error.statusCode}');
+      isLoading (false);
     });
   }
 }

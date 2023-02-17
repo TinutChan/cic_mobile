@@ -55,7 +55,7 @@ final GoRouter approuter = GoRouter(
     GoRoute(
       path: '/homescreen',
       builder: (context, state) {
-        return const HomeScreen();
+        return HomeScreen();
       },
     ),
   ],

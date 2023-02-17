@@ -11,6 +11,7 @@ class EnterPhoneNumberController extends GetxController {
   final passwordController = TextEditingController().obs;
   final phoneNumberController = TextEditingController().obs;
   final baseUrl = ApiBaseHelper();
+  final phone = ''.obs;
 
   Future<void> getEnterNumberController() async {
     await baseUrl.onNetworkRequesting(
@@ -27,7 +28,7 @@ class EnterPhoneNumberController extends GetxController {
       var psw = response['password'];
 
       if (successOtp == true && psw == false) {
-        approuter.go('/otpscreen');
+        approuter.push('/otpscreen');
       } else if (successOtp == true && successOtp == true) {
       } else {}
     }).onError((ErrorModel error, _) {
@@ -47,7 +48,7 @@ class EnterPhoneNumberController extends GetxController {
       },
     ).then((response) {
       if (pin != Message(code: pin)) {
-        approuter.go('/setpassword');
+        approuter.push('/setpassword');
       } else if (pin == Message(code: pin)) {
         debugPrint('Error: ===');
       } else {

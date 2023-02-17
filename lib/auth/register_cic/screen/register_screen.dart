@@ -46,6 +46,9 @@ class RegisterScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: CustomButtonWidget(
+                images: 'assets/icons/phone.png',
+                title: 'Phone Number',
+                style: AppFont.text14white,
                 onTab: () {
                   approuter.push('/enterphonenuberscreen');
                 },

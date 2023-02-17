@@ -2,11 +2,18 @@ import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonWidget extends StatelessWidget {
-  const CustomButtonWidget({super.key, this.onTab, this.images, this.title});
+  const CustomButtonWidget({
+    super.key,
+    this.onTab,
+    this.images,
+    this.title,
+    this.style,
+  });
 
   final VoidCallback? onTab;
   final String? images;
   final String? title;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,10 @@ class CustomButtonWidget extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text('$title'),
+              child: Text(
+                '$title',
+                style: style,
+              ),
             )
           ],
         ),
