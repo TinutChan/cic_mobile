@@ -1,9 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/app_font.dart';
-import 'package:cic_mobile/modules/account/screens/account_screen.dart';
 import 'package:cic_mobile/modules/home/controller/home_controller.dart';
-import 'package:cic_mobile/modules/qr_scan/screens/qr_scan_screen.dart';
 import 'package:cic_mobile/routers/app_router.dart';
 import 'package:cic_mobile/utils/helper/local_storage.dart';
 import 'package:cic_mobile/widgets/custom_home_category.dart';
@@ -47,6 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -134,10 +134,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Expanded(
+            flex: 13,
             child: Container(
               clipBehavior: Clip.antiAlias,
-              margin: const EdgeInsets.only(
-                  top: 20.0, left: 20.0, right: 20.0, bottom: 30),
+              margin: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
               width: double.infinity,
               decoration: BoxDecoration(
                 boxShadow: [
@@ -155,14 +155,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: GridView.builder(
+                shrinkWrap: true,
                 primary: false,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: listImage.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 1,
-                  crossAxisSpacing: 1,
-                  mainAxisExtent: MediaQuery.of(context).size.height * 0.15,
-                ),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 1,
+                    crossAxisSpacing: 1,
+                    childAspectRatio: width / (height / 2.9)),
                 itemBuilder: (context, index) {
                   return CustomCategoies(
                     imgaes: listImage[index]['imgaes'],
@@ -173,25 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: homeController.currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/home_inactive.svg'),
-            label: 'Home',
-            activeIcon: SvgPicture.asset('assets/icons/home_active.svg'),
-          ),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/qr_scan_inactive.svg'),
-              label: 'QR Scan'),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/account_inactive.svg'),
-            label: 'Account',
-            activeIcon: SvgPicture.asset('assets/icons/account_active.svg'),
-          ),
+          Expanded(child: Container())
         ],
       ),
     );

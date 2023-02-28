@@ -28,7 +28,7 @@ class LoginController extends GetxController {
           'password': passwordController.value.text,
         }).then((response) async {
       // debugPrint('Response: $response');
-      context.go('/homescreen');
+      context.go('/');
       LocalDataStorage.storeCurrentUser(response['access_token'].toString());
       final token = await LocalDataStorage.getCurrentUser();
       debugPrint('----------------------$token');
