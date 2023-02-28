@@ -6,10 +6,13 @@ import 'package:cic_mobile/modules/home/controller/home_controller.dart';
 import 'package:cic_mobile/modules/qr_scan/screens/qr_scan_screen.dart';
 import 'package:cic_mobile/routers/app_router.dart';
 import 'package:cic_mobile/utils/helper/local_storage.dart';
+import 'package:cic_mobile/widgets/custom_home_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../models/home_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,12 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/images/slide_show/slideshow2.png',
     'assets/images/slide_show/slideshow1.png',
     'assets/images/slide_show/slideshow2.png',
-  ];
-
-  final List _screen = [
-    const HomeScreen(),
-    const QRScanScreen(),
-    const AccountScreen(),
   ];
 
   // final List<Widget> _iconsInactive = [
@@ -129,8 +126,8 @@ class _HomeScreenState extends State<HomeScreen> {
             effect: ExpandingDotsEffect(
               activeDotColor: AppColor.mainColor,
               dotColor: AppColor.grey4Color,
-              dotHeight: 10,
-              dotWidth: 10,
+              dotHeight: 8.0,
+              dotWidth: 8.0,
               expansionFactor: 3,
               radius: 5,
               spacing: 6.0,
@@ -139,10 +136,18 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: Container(
               clipBehavior: Clip.antiAlias,
-              margin: const EdgeInsets.all(20.0),
+              margin: const EdgeInsets.only(
+                  top: 20.0, left: 20.0, right: 20.0, bottom: 30),
               width: double.infinity,
               decoration: BoxDecoration(
-                // color: AppColor.mainColor,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 1,
+                    blurStyle: BlurStyle.normal,
+                    offset: const Offset(0.3, 0.5),
+                    color: AppColor.greyColor,
+                  ),
+                ],
                 borderRadius: BorderRadius.circular(10.0),
                 gradient: RadialGradient(
                   colors: [AppColor.mainColor, AppColor.whiteColor],
@@ -150,22 +155,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: GridView.builder(
-                // shrinkWrap: true,
                 primary: false,
-                itemCount: 6,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                itemCount: listImage.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 1,
                   crossAxisSpacing: 1,
-                  mainAxisExtent: 120,
+                  mainAxisExtent: MediaQuery.of(context).size.height * 0.15,
                 ),
                 itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {},
-                    child: Container(
-                      color: AppColor.whiteColor,
-                      child: Image.asset('assets/icons/investment.png'),
-                    ),
+                  return CustomCategoies(
+                    imgaes: listImage[index]['imgaes'],
+                    label: listImage[index]['label'],
+                    onTapped: listImage[index]['onTapped'],
                   );
                 },
               ),
@@ -174,12 +176,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (value) {
-          setState(() {
-            homeController.currentIndex = value;
-            debugPrint(' = = = = = $value');
-          });
-        },
         type: BottomNavigationBarType.fixed,
         currentIndex: homeController.currentIndex,
         items: [
@@ -200,58 +196,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  // _bottonNavigationBar() {
-  //   return Container(
-  //     padding: const EdgeInsets.only(left: 20, right: 20),
-  //     height: 66,
-  //     width: double.infinity,
-  //     decoration: BoxDecoration(
-  //       borderRadius: const BorderRadius.only(
-  //         topRight: Radius.circular(10.0),
-  //         topLeft: Radius.circular(10.0),
-  //       ),
-  //       color: AppColor.whiteColor,
-  //       boxShadow: [
-  //         BoxShadow(
-  //           offset: const Offset(0.3, 0.5),
-  //           color: AppColor.greyColor,
-  //           blurStyle: BlurStyle.outer,
-  //         ),
-  //       ],
-  //     ),
-  //     child: ListView.builder(
-  //       itemBuilder: (context, index) {
-  //         return GestureDetector(
-  //           onTap: () {},
-  //           child: Padding(
-  //             padding: const EdgeInsets.all(5.0),
-  //             child: AnimatedContainer(
-  //               duration: const Duration(seconds: 1),
-  //               curve: Curves.fastLinearToSlowEaseIn,
-  //               // width: index == currentIndex,
-  //               // ? displayWidth * .15
-  //               // : displayWidth * .15,
-  //               alignment: Alignment.center,
-  //               child: Stack(
-  //                 children: [
-  //                   Row(
-  //                     children: [
-  //                       AnimatedContainer(
-  //                         duration: const Duration(seconds: 1),
-  //                         curve: Curves.fastLinearToSlowEaseIn,
-  //                         width: 10,
-  //                       ),
-  //                       SvgPicture.asset('assets/icons/home_inactive.svg')
-  //                     ],
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //           ),
-  //         );
-  //       },
-  //     ),
-  //   );
-  // }
 }

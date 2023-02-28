@@ -4,9 +4,15 @@ import 'package:cic_mobile/auth/register_cic/screen/create_password_screen.dart'
 import 'package:cic_mobile/auth/register_cic/screen/enter_phone_number_screen.dart';
 import 'package:cic_mobile/auth/register_cic/screen/set_pin_code_screen.dart';
 import 'package:cic_mobile/modules/account/screens/account_screen.dart';
+import 'package:cic_mobile/modules/bunos/screens/bunos_screen.dart';
+import 'package:cic_mobile/modules/directory/screens/directory_screen.dart';
+import 'package:cic_mobile/modules/get_funding/screens/get_funding_screen.dart';
 import 'package:cic_mobile/modules/home/screens/home_screen.dart';
+import 'package:cic_mobile/modules/investment/screens/investment_screen.dart';
 import 'package:cic_mobile/modules/qr_scan/screens/qr_scan_screen.dart';
+import 'package:cic_mobile/modules/report/screens/report_screen.dart';
 import 'package:cic_mobile/modules/splash_screen/splash_screen.dart';
+import 'package:cic_mobile/modules/ut_trading/screens/ut_trading_screen.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -92,6 +98,42 @@ final GoRouter approuter = GoRouter(
       path: '/homescreen',
       builder: (context, state) {
         return const HomeScreen();
+      },
+    ),
+    GoRoute(
+      path: '/investment',
+      builder: (context, state) {
+        return const InvestmentScreen();
+      },
+    ),
+    GoRoute(
+      path: '/bunos',
+      builder: (context, state) {
+        return const BunosScreen();
+      },
+    ),
+    GoRoute(
+      path: '/get_funding',
+      builder: (context, state) {
+        return const GetFundingScreen();
+      },
+    ),
+    GoRoute(
+      path: '/ut_trading',
+      builder: (context, state) {
+        return const UTTradingScreen();
+      },
+    ),
+    GoRoute(
+      path: '/directory',
+      builder: (context, state) {
+        return const DirectoryScreen();
+      },
+    ),
+    GoRoute(
+      path: '/report',
+      builder: (context, state) {
+        return const ReportScreen();
       },
     ),
   ],
