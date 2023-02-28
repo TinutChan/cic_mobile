@@ -1,8 +1,8 @@
 import 'package:cic_mobile/utils/helper/api_base_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../routers/app_router.dart';
 import '../../../utils/helper/shared_preference.dart';
 import '../../../utils/helper/local_storage.dart';
 
@@ -15,7 +15,7 @@ class LoginController extends GetxController {
   final baseUrl = ApiBaseHelper();
   final isLoading = false.obs;
 
-  Future<void> getLoginControler() async {
+  Future<void> getLoginControler(BuildContext context) async {
     isLoading(true);
 
     await baseUrl.onNetworkRequesting(
@@ -28,7 +28,7 @@ class LoginController extends GetxController {
           'password': passwordController.value.text,
         }).then((response) async {
       // debugPrint('Response: $response');
-      approuter.push('/homescreen');
+      context.go('/homescreen');
       LocalDataStorage.storeCurrentUser(response['access_token'].toString());
       final token = await LocalDataStorage.getCurrentUser();
       debugPrint('----------------------$token');

@@ -13,7 +13,9 @@ class OptScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomOptScreen(
-        topContent: const Text('Verify Phone Number'),
+        topContent: const Text(
+          'Verify Phone Number',
+        ),
         midContent: Text(
             'Code is send to +855${enterOtpController.phoneNumberController.value.text}'),
         bottContent:

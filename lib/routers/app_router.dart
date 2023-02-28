@@ -3,7 +3,10 @@ import 'package:cic_mobile/auth/login_cic/screens/input_phone_password.dart';
 import 'package:cic_mobile/auth/register_cic/screen/create_password_screen.dart';
 import 'package:cic_mobile/auth/register_cic/screen/enter_phone_number_screen.dart';
 import 'package:cic_mobile/auth/register_cic/screen/set_pin_code_screen.dart';
+import 'package:cic_mobile/modules/account/screens/account_screen.dart';
 import 'package:cic_mobile/modules/home/screens/home_screen.dart';
+import 'package:cic_mobile/modules/qr_scan/screens/qr_scan_screen.dart';
+import 'package:cic_mobile/modules/splash_screen/splash_screen.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,18 +17,41 @@ import '../auth/register_cic/screen/register_screen.dart';
 final loginController = Get.put(LoginController());
 
 final GoRouter approuter = GoRouter(
+  initialLocation: "/splash_screen",
   routes: <RouteBase>[
+    ShellRoute(
+      routes: [
+        GoRoute(
+          path: '/qr_scan',
+          builder: (context, state) {
+            return const QRScanScreen();
+          },
+        ),
+        GoRoute(
+          path: '/account',
+          builder: (context, state) {
+            return const AccountScreen();
+          },
+        ),
+      ],
+    ),
     GoRoute(
-        path: '/',
+        path: '/splash_screen',
         builder: (context, state) {
-          return const LoginScreen();
-        },
-        redirect: (context, state) {
-          if (loginController.token.value != '') {
-            return '/';
-          }
-          return null;
+          return const SplashScreen();
         }),
+    GoRoute(
+      path: '/login',
+      builder: (context, state) {
+        return const LoginScreen();
+      },
+      // redirect: (context, state) {
+      //   if (loginController.token.value != '') {
+      //     return '/';
+      //   }
+      //   return null;
+      // }
+    ),
     GoRoute(
       path: '/registerscreen',
       builder: (context, state) {
@@ -65,7 +91,7 @@ final GoRouter approuter = GoRouter(
     GoRoute(
       path: '/homescreen',
       builder: (context, state) {
-        return HomeScreen();
+        return const HomeScreen();
       },
     ),
   ],

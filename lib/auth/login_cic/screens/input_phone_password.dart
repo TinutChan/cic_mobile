@@ -80,7 +80,7 @@ class InputPhoneNumberPasswordScreen extends StatelessWidget {
                           textEditingController:
                               loginController.passwordController.value,
                           hintText: 'Password',
-                          obscureText: true,
+                          obscureText: false,
                           prefixIcon: Image.asset('assets/icons/Password.png',
                               scale: 1.5),
                           suffixIcon: TextButton(
@@ -105,7 +105,7 @@ class InputPhoneNumberPasswordScreen extends StatelessWidget {
                         ? false
                         : true,
                     onPressed: () async {
-                      await loginController.getLoginControler();
+                      await loginController.getLoginControler(context);
                     },
                     label: 'Login',
                   ),
