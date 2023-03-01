@@ -31,15 +31,11 @@ class _BottonNavBarState extends State<BottonNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(homeController.currentIndex),
-      ),
+      body: _widgetOptions.elementAt(homeController.currentIndex),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: homeController.currentIndex,
-        selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        // currentIndex: homeController.currentIndex,
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/icons/home_inactive.svg'),

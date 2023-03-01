@@ -87,42 +87,49 @@ final GoRouter approuter = GoRouter(
       routes: [
         GoRoute(
           path: 'homescreen',
+          name: 'Home',
           builder: (context, state) {
             return const HomeScreen();
           },
           routes: [
             GoRoute(
               path: 'investment',
+              name: 'Investment',
               builder: (context, state) {
                 return const InvestmentScreen();
               },
             ),
             GoRoute(
-              path: 'homescreen/bunos',
+              path: 'bunos',
+              name: 'Bunos',
               builder: (context, state) {
                 return const BunosScreen();
               },
             ),
             GoRoute(
-              path: 'homescreen/get_funding',
+              path: 'get_funding',
+              name: 'Get_Funding',
               builder: (context, state) {
                 return const GetFundingScreen();
               },
             ),
             GoRoute(
-              path: 'homescreen/ut_trading',
+              path: 'ut_trading',
+              name: 'UT_Trading',
               builder: (context, state) {
                 return const UTTradingScreen();
               },
             ),
             GoRoute(
-              path: 'homescreen/directory',
+              path: 'directory',
+              name: 'Directory',
               builder: (context, state) {
                 return const DirectoryScreen();
               },
             ),
             GoRoute(
-              path: 'homescreen/report',
+              path: 'report',
+              name: 'Report',
               builder: (context, state) {
                 return const ReportScreen();
               },
@@ -131,12 +138,14 @@ final GoRouter approuter = GoRouter(
         ),
         GoRoute(
           path: 'qr_scan',
+          name: 'QR_Scan',
           builder: (context, state) {
             return const QRScanScreen();
           },
         ),
         GoRoute(
           path: 'account',
+          name: 'Account',
           builder: (context, state) {
             return const AccountScreen();
           },
