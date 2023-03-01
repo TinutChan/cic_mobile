@@ -2,8 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/app_font.dart';
 import 'package:cic_mobile/modules/home/controller/home_controller.dart';
-import 'package:cic_mobile/routers/app_router.dart';
-import 'package:cic_mobile/utils/helper/local_storage.dart';
 import 'package:cic_mobile/widgets/custom_home_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -62,12 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(width: 20.0),
           SvgPicture.asset('assets/icons/question.svg'),
           const SizedBox(width: 20.0),
-          IconButton(
-              onPressed: () async {
-                await LocalDataStorage.removeCurrentUser();
-                approuter.go('/splash_screen');
-              },
-              icon: const Icon(Icons.remove_circle))
         ],
       ),
       body: Column(

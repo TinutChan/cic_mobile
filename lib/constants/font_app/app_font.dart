@@ -58,6 +58,13 @@ class AppFont {
     color: AppColor.mainColor,
   );
 
+  static TextStyle text16blackColor = TextStyle(
+    fontFamily: 'DMSans',
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+    color: AppColor.blackColor,
+  );
+
   static TextStyle text16white = TextStyle(
     fontFamily: 'DMSans',
     fontWeight: FontWeight.w700,
@@ -93,9 +100,9 @@ class AppFont {
   );
 
   static TextStyle text20white = TextStyle(
-    fontFamily: 'DMSans', 
-    fontWeight: FontWeight.w700, 
-    fontSize: 20, 
+    fontFamily: 'DMSans',
+    fontWeight: FontWeight.w700,
+    fontSize: 20,
     color: AppColor.whiteColor,
   );
 }
