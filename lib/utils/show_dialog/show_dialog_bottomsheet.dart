@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:get/get.dart';
 
 import '../../constants/color_app/color_app.dart';
+import '../../modules/account/controller/technical_support_controller.dart';
 
-// final techSupportController = Get.put(TechicalSupportController());
+final techSupportController = Get.put(TechicalSupportController());
 
 showDialogBottom(context) {
   return showModalBottomSheet(
@@ -22,7 +23,8 @@ showDialogBottom(context) {
           ListTile(
               title: const Center(child: Text('Chat Telegram')),
               onTap: () async {
-                _launchInBrowser(Uri.parse('https://t.me/NutxT'));
+                techSupportController
+                    .launchInBrowser(Uri.parse('https://t.me/NutxT'));
               }),
           ListTile(
             leading: const Icon(Icons.photo),
@@ -35,10 +37,4 @@ showDialogBottom(context) {
       );
     },
   );
-}
-
-Future<void> _launchInBrowser(Uri url) async {
-  if (!await canLaunchUrl(url)) {
-    throw Exception('Could not launch $url');
-  }
 }
