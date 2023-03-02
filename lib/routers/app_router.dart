@@ -17,6 +17,7 @@ import '../modules/directory/screens/directory_screen.dart';
 import '../modules/get_funding/screens/get_funding_screen.dart';
 import '../modules/home/screens/home_screen.dart';
 import '../modules/investment/screens/investment_screen.dart';
+import '../modules/profile/screens/profile_screen.dart';
 import '../modules/qr_scan/screens/qr_scan_screen.dart';
 import '../modules/report/screens/report_screen.dart';
 import '../modules/ut_trading/screens/ut_trading_screen.dart';
@@ -96,7 +97,7 @@ final GoRouter approuter = GoRouter(
               path: 'investment',
               name: 'Investment',
               builder: (context, state) {
-                return const InvestmentScreen();
+                return InvestmentScreen();
               },
             ),
             GoRoute(
@@ -152,5 +153,11 @@ final GoRouter approuter = GoRouter(
         )
       ],
     ),
+    GoRoute(
+      path: '/profile',
+      builder: (context, state) {
+        return const ProfileScreen();
+      },
+    )
   ],
 );

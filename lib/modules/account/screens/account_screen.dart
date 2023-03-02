@@ -46,7 +46,19 @@ class _AccountScreenState extends State<AccountScreen> {
         physics: const BouncingScrollPhysics(),
         brightness: Brightness.light,
         applicationType: ApplicationType.material,
-        sections: [ 
+        sections: [
+          SettingsSection(
+            title: const Text('App System'),
+            tiles: [
+              SettingsTile.navigation(
+                leading: const Icon(Icons.person_3_rounded),
+                title: Text('Profile', style: AppFont.text16blackColor),
+                onPressed: (context) {
+                  approuter.push('/profile');
+                },
+              ),
+            ],
+          ),
           SettingsSection(
             title: const Text('App System'),
             tiles: [
