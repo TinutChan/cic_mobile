@@ -32,8 +32,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   pinned: true,
                   leading: const SizedBox(),
                   expandedHeight: 350.0,
+                  stretch: true,
                   forceElevated: innerBoxIsScrolled,
-                  flexibleSpace: const FlexibleSpaceBar(
+                  flexibleSpace: FlexibleSpaceBar( stretchModes: [],
                     collapseMode: CollapseMode.none,
                     centerTitle: true,
                     background: CustomProfileDetail(),
