@@ -1,7 +1,11 @@
+import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../constants/color_app/color_app.dart';
-import '../../../widgets/custom_profile_detail.dart';
+import '../../../utils/show_dialog/show_phone_call_dialog.dart';
+import '../../account/controller/technical_support_controller.dart';
+import '../components/custom_profile_detail.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -10,12 +14,15 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
+final contactMoreController = Get.put(TechicalSupportController());
+final profileController = Get.put(ProfileController());
+
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final List<String> tabs = <String>['Personal Profile', 'Company Profile '];
-    final height = MediaQuery.of(context).size.width;
-    final width = MediaQuery.of(context).size.width;
+    // final height = MediaQuery.of(context).size.width;
+    // final width = MediaQuery.of(context).size.width;
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
@@ -34,10 +41,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   expandedHeight: 350.0,
                   stretch: true,
                   forceElevated: innerBoxIsScrolled,
-                  flexibleSpace: FlexibleSpaceBar( stretchModes: [],
+                  actions: [
+                    IconButton(
+                        onPressed: () {
+                          profileController.profileController();
+                        },
+                        icon: const Icon(Icons.add))
+                  ],
+                  flexibleSpace: FlexibleSpaceBar(
+                    stretchModes: const [],
                     collapseMode: CollapseMode.none,
                     centerTitle: true,
-                    background: CustomProfileDetail(),
+                    background: CustomProfileDetail(
+                      onCallTapped: () {
+                        showPhoneCallDialogBottom(context);
+                      },
+                      onEmailTapped: () {
+                        contactMoreController.launchEmail(
+                          Uri.parse('tinutchan@gmail.com'),
+                        );
+                      },
+                      onTelegramTapped: () {
+                        contactMoreController.launchInBrowser(
+                          Uri.parse('https://t.me/NutxT'),
+                        );
+                      },
+                      onWebsiteTapped: () {},
+                    ),
                   ),
                 ),
               ),

@@ -1,15 +1,26 @@
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../constants/color_app/color_app.dart';
+import '../../../constants/color_app/color_app.dart';
+import '../../account/controller/technical_support_controller.dart';
+import 'custom_contact_more.dart';
 
 class CustomProfileDetail extends StatelessWidget {
-  CustomProfileDetail({super.key});
+  CustomProfileDetail(
+      {super.key,
+      required this.onCallTapped,
+      required this.onTelegramTapped,
+      required this.onEmailTapped,
+      required this.onWebsiteTapped});
 
   final controller = Get.put(ProfileController());
+  final techSupportController = Get.put(TechicalSupportController());
+  final VoidCallback? onCallTapped;
+  final VoidCallback? onTelegramTapped;
+  final VoidCallback? onEmailTapped;
+  final VoidCallback? onWebsiteTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +33,6 @@ class CustomProfileDetail extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
-              // tileMode: TileMode.repeated,
               end: Alignment.center,
               stops: const [0.75, 1],
               colors: [
@@ -80,14 +90,34 @@ class CustomProfileDetail extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SvgPicture.asset(
-                      'assets/icons/profile_icons/call.svg',
+                    GestureDetector(
+                      onTap: onCallTapped,
+                      child: const ContactMore(
+                        icons: 'assets/icons/profile_icons/call.svg',
+                        title: 'Call',
+                      ),
                     ),
-                    SvgPicture.asset(
-                      'assets/icons/profile_icons/email.svg',
+                    GestureDetector(
+                      onTap: onEmailTapped,
+                      child: const ContactMore(
+                        icons: 'assets/icons/profile_icons/email.svg',
+                        title: 'Email',
+                      ),
                     ),
-                    SvgPicture.asset('assets/icons/profile_icons/telegram.svg'),
-                    SvgPicture.asset('assets/icons/profile_icons/website.svg'),
+                    GestureDetector(
+                      onTap: onTelegramTapped,
+                      child: const ContactMore(
+                        icons: 'assets/icons/profile_icons/telegram.svg',
+                        title: 'Telegram',
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: onWebsiteTapped,
+                      child: const ContactMore(
+                        icons: 'assets/icons/profile_icons/website.svg',
+                        title: 'Website',
+                      ),
+                    ),
                   ],
                 )
               ],
