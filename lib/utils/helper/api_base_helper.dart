@@ -1,5 +1,5 @@
 import 'dart:convert';
-// import 'package:cicgreenloan/src/utils/helper/storge_data_local.dart';
+import 'package:cic_mobile/utils/helper/local_storage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_connect.dart';
 
@@ -18,19 +18,28 @@ enum METHODE {
 
 class ApiBaseHelper extends GetConnect {
   final String? baseurl = dotenv.get('MAIN_API_URL');
+
   Future<dynamic> onNetworkRequesting(
       {required String url,
       Map<String, String>? header,
       Map<String, dynamic>? body,
       required METHODE? methode,
+      String token = "",
       required bool isAuthorize}) async {
-    // final token = await StorageDataLocal.getData('current_user') ?? "";
+    if (token.isEmpty) {
+      token = await LocalDataStorage.getCurrentUser();
+    }
     final fullUrl = baseurl! + url;
-    Map<String, String> header = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'isAuthorize',
-    };
+    Map<String, String> header = isAuthorize
+        ? {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer $token',
+          }
+        : {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          };
     try {
       switch (methode) {
         case METHODE.get:

@@ -14,6 +14,7 @@ class LoginController extends GetxController {
   final pass = ''.obs;
   final baseUrl = ApiBaseHelper();
   final isLoading = false.obs;
+  final token = ''.obs;
 
   Future<void> getLoginControler(BuildContext context) async {
     isLoading(true);
@@ -27,8 +28,8 @@ class LoginController extends GetxController {
               '+855${phoneNumberController.value.text.replaceFirst("0", "")}',
           'password': passwordController.value.text,
         }).then((response) async {
-      // debugPrint('Response: $response');
       context.go('/');
+
       LocalDataStorage.storeCurrentUser(response['access_token'].toString());
       final token = await LocalDataStorage.getCurrentUser();
       debugPrint('----------------------$token');
@@ -38,7 +39,7 @@ class LoginController extends GetxController {
     });
   }
 
-  final token = ''.obs;
+  
   functionFetchToken() async {
     token.value = await LocalDataStorage.getCurrentUser();
   }

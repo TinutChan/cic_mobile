@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../constants/color_app/color_app.dart';
 import '../../../utils/show_dialog/show_phone_call_dialog.dart';
 import '../../account/controller/technical_support_controller.dart';
+import '../../home/controller/home_controller.dart';
 import '../components/custom_profile_detail.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -18,6 +19,14 @@ final contactMoreController = Get.put(TechicalSupportController());
 final profileController = Get.put(ProfileController());
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final homeController = Get.put(HomeController());
+  @override
+  void initState() {
+    profileController
+        .profileController(homeController.userModel.value.customerId);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<String> tabs = <String>['Personal Profile', 'Company Profile '];
@@ -43,13 +52,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   forceElevated: innerBoxIsScrolled,
                   actions: [
                     IconButton(
-                        onPressed: () {
-                          profileController.profileController();
-                        },
-                        icon: const Icon(Icons.add))
+                      onPressed: () {
+                        profileController.profileController(
+                            homeController.userModel.value.customerId);
+                      },
+                      icon: const Icon(Icons.add),
+                    ),
                   ],
                   flexibleSpace: FlexibleSpaceBar(
-                    stretchModes: const [],
                     collapseMode: CollapseMode.none,
                     centerTitle: true,
                     background: CustomProfileDetail(
@@ -106,7 +116,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     builder: (BuildContext context) {
                       return CustomScrollView(
                         key: PageStorageKey<String>(name),
-                        slivers: const [],
+                        slivers: [
+                          Container(color: Colors.amber),
+                          Container(color: Colors.blue)
+                        ],
                       );
                     },
                   );

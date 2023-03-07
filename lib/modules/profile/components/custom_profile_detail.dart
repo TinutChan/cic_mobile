@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../../constants/color_app/color_app.dart';
 import '../../account/controller/technical_support_controller.dart';
 import 'custom_contact_more.dart';
+import 'shimmer_profile_screen.dart';
 
 class CustomProfileDetail extends StatelessWidget {
   CustomProfileDetail(
@@ -22,149 +23,230 @@ class CustomProfileDetail extends StatelessWidget {
   final VoidCallback? onEmailTapped;
   final VoidCallback? onWebsiteTapped;
 
+  final profileController = Get.put(ProfileController());
+
   @override
   Widget build(BuildContext context) {
+    final value = profileController.profileModel.value;
     final height = MediaQuery.of(context).size.width;
     final width = MediaQuery.of(context).size.width;
 
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.center,
-              stops: const [0.75, 1],
-              colors: [
-                const Color(0xff0F50A4).withOpacity(1),
-                const Color(0xffffffff),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          top: 130,
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.3),
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(25),
-                topLeft: Radius.circular(25),
-              ),
-            ),
-            child: Column(
+    return profileController.isLoading.value == true
+        ? const ShimmerProfileScreen()
+        : Obx(
+            () => Stack(
               children: [
-                SizedBox(height: height / 6),
-                Text(
-                  'Name: Tinut',
-                  style: theme()
-                      .textTheme
-                      .displayLarge!
-                      .copyWith(color: AppColor.blackColor),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.verified_user_outlined, size: 18),
-                    Text(
-                      'Marketing Manager',
-                      style: theme()
-                          .textTheme
-                          .displaySmall!
-                          .copyWith(color: AppColor.blackColor),
+                Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.4, 0.62],
+                      colors: [
+                        Color(0xff0F50A4),
+                        Color(0xffffffff),
+                      ],
                     ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Cambodia Investors Corporation',
-                  style: theme()
-                      .textTheme
-                      .displaySmall!
-                      .copyWith(color: AppColor.mainColor),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: onCallTapped,
-                      child: const ContactMore(
-                        icons: 'assets/icons/profile_icons/call.svg',
-                        title: 'Call',
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: onEmailTapped,
-                      child: const ContactMore(
-                        icons: 'assets/icons/profile_icons/email.svg',
-                        title: 'Email',
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: onTelegramTapped,
-                      child: const ContactMore(
-                        icons: 'assets/icons/profile_icons/telegram.svg',
-                        title: 'Telegram',
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: onWebsiteTapped,
-                      child: const ContactMore(
-                        icons: 'assets/icons/profile_icons/website.svg',
-                        title: 'Website',
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          left: 117,
-          right: 117,
-          top: 80,
-          child: Container(
-            height: height / 4,
-            width: width,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                width: 3,
-                color: Colors.white,
-              ),
-            ),
-            child: Container(
-              clipBehavior: Clip.antiAlias,
-              width: width,
-              height: height,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  width: 3,
-                  color: AppColor.mainColor,
-                ),
-              ),
-              child: Container(
-                clipBehavior: Clip.antiAlias,
-                width: width,
-                height: height,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    width: 3,
-                    color: AppColor.mainColor,
                   ),
                 ),
-              ),
+                Positioned(
+                  top: 130,
+                  child: Container(
+                    height: height,
+                    width: width,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.35),
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(25),
+                        topLeft: Radius.circular(25),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(height: height / 6),
+                        Text(
+                          '${value.data?.name}',
+                          style: theme()
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(color: AppColor.blackColor),
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.verified_user_outlined, size: 18),
+                            Text(
+                              '${value.data?.position}',
+                              style: theme()
+                                  .textTheme
+                                  .displaySmall!
+                                  .copyWith(color: AppColor.blackColor),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          // ignore: unnecessary_null_comparison
+                          '${value.data?.companyName}' == null
+                              ? '${value.data?.companyName}'
+                              : "Company Name",
+                          style: theme()
+                              .textTheme
+                              .displaySmall!
+                              .copyWith(color: AppColor.mainColor),
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            value.data?.phone != null
+                                ? GestureDetector(
+                                    onTap: onCallTapped,
+                                    child: const ContactMore(
+                                      icons:
+                                          'assets/icons/profile_icons/call.svg',
+                                      title: 'Call',
+                                    ),
+                                  )
+                                : GestureDetector(
+                                    onTap: onCallTapped == null
+                                        ? onCallTapped
+                                        : null,
+                                    child: const ContactMore(
+                                      icons:
+                                          'assets/icons/profile_icons/call.svg',
+                                      title: 'Call',
+                                      colors: ColorFilter.mode(
+                                          Colors.grey, BlendMode.srcIn),
+                                    ),
+                                  ),
+                            value.data?.email != null
+                                ? GestureDetector(
+                                    onTap: onEmailTapped == null
+                                        ? onCallTapped
+                                        : null,
+                                    child: const ContactMore(
+                                      icons:
+                                          'assets/icons/profile_icons/email.svg',
+                                      title: 'Email',
+                                    ),
+                                  )
+                                : GestureDetector(
+                                    onTap: onEmailTapped == null
+                                        ? onCallTapped
+                                        : null,
+                                    child: const ContactMore(
+                                      icons:
+                                          'assets/icons/profile_icons/email.svg',
+                                      title: 'Email',
+                                      colors: ColorFilter.mode(
+                                          Colors.grey, BlendMode.srcIn),
+                                    ),
+                                  ),
+                            profileController
+                                        .profileModel.value.data?.telegram !=
+                                    null
+                                ? GestureDetector(
+                                    onTap: onTelegramTapped,
+                                    child: const ContactMore(
+                                      icons:
+                                          'assets/icons/profile_icons/telegram.svg',
+                                      title: 'Telegram',
+                                    ),
+                                  )
+                                : GestureDetector(
+                                    onTap: onTelegramTapped == null
+                                        ? onCallTapped
+                                        : null,
+                                    child: const ContactMore(
+                                      icons:
+                                          'assets/icons/profile_icons/telegram.svg',
+                                      title: 'Telegram',
+                                      colors: ColorFilter.mode(
+                                          Colors.grey, BlendMode.srcIn),
+                                    ),
+                                  ),
+                            value.data?.name != null
+                                ? GestureDetector(
+                                    onTap: onWebsiteTapped,
+                                    child: const ContactMore(
+                                      icons:
+                                          'assets/icons/profile_icons/website.svg',
+                                      title: 'Website',
+                                    ),
+                                  )
+                                : GestureDetector(
+                                    onTap: onWebsiteTapped == null
+                                        ? onCallTapped
+                                        : null,
+                                    child: const ContactMore(
+                                      icons:
+                                          'assets/icons/profile_icons/website.svg',
+                                      title: 'Website',
+                                      colors: ColorFilter.mode(
+                                        Colors.grey,
+                                        BlendMode.srcIn,
+                                      ),
+                                    ),
+                                  ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 117,
+                  right: 117,
+                  top: 80,
+                  child: Container(
+                    height: height / 4,
+                    width: width,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        width: 3,
+                        color: Colors.white,
+                      ),
+                    ),
+                    child: Container(
+                      clipBehavior: Clip.antiAlias,
+                      width: width,
+                      height: height,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 3,
+                          color: AppColor.mainColor,
+                        ),
+                      ),
+                      child: value.data?.defaultPhoto == null
+                          ? Container(
+                              clipBehavior: Clip.antiAlias,
+                              width: width,
+                              height: height,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  width: 3,
+                                  color: AppColor.mainColor,
+                                ),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                      '${value.data?.defaultPhoto}'),
+                                ),
+                              ),
+                            )
+                          : const CircleAvatar(
+                              backgroundColor: Colors.amber,
+                              child: Text('CT'),
+                            ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ),
-      ],
-    );
+          );
   }
 }

@@ -2,23 +2,30 @@ import 'package:cic_mobile/utils/helper/api_base_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../utils/helper/local_storage.dart';
+import '../../../auth/login_cic/controllers/login_controller.dart';
+import '../models/user_profile_model.dart';
 
 class ProfileController extends GetxController {
   var apibaseHelper = ApiBaseHelper();
-  final getCurrentUser = LocalDataStorage.getCurrentUser();
+  final loginController = Get.put(LoginController());
 
-  Future<void> profileController() async {
-    await apibaseHelper.onNetworkRequesting(
-        url: 'member',
-        methode: METHODE.get,
-        isAuthorize: true,
-        body: {
-          'Authorization': 'Bearer $getCurrentUser',
-        }).then((response) {
-      debugPrint('= = = = =Get Response: $response');
+  var list = <UserProfileModel>[].obs;
+  var profileModel = UserProfileModel().obs;
+  var isLoading = false.obs;
+
+  Future profileController(int? id) async {
+    isLoading(true);
+    await apibaseHelper
+        .onNetworkRequesting(
+            url: 'member/$id', methode: METHODE.get, isAuthorize: true)
+        .then((responseData) {
+      profileModel.value = UserProfileModel.fromJson(responseData);
+      debugPrint('= = = = Data: $profileModel');
+      isLoading(false);
     }).onError((ErrorModel error, stackTrace) {
       debugPrint('= = = = = Error: ${error.bodyString}');
+      isLoading(false);
     });
+    return profileModel.value;
   }
 }

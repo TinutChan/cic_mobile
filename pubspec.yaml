@@ -48,6 +48,7 @@ dependencies:
   smooth_page_indicator: ^1.0.1
   settings_ui: ^2.0.2
   url_launcher: ^6.1.10
+  shimmer: ^2.0.0
 
 
 dev_dependencies:

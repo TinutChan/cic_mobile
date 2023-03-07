@@ -25,29 +25,46 @@ mixin _$Data {
   String? get display => throw _privateConstructorUsedError;
   String? get position => throw _privateConstructorUsedError;
   String? get profile => throw _privateConstructorUsedError;
+  @JsonKey(name: "default_photo")
   String? get defaultPhoto => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   Gender? get gender => throw _privateConstructorUsedError;
+  @JsonKey(name: "date_of_birth")
   String? get dateOfBirth => throw _privateConstructorUsedError;
   Gender? get nationality => throw _privateConstructorUsedError;
   String? get recommended => throw _privateConstructorUsedError;
+  @JsonKey(name: "number_share")
   int? get numberShare => throw _privateConstructorUsedError;
   String? get expertise => throw _privateConstructorUsedError;
+  @JsonKey(name: "member_type")
   List<String>? get memberType => throw _privateConstructorUsedError;
+  @JsonKey(name: "year_joined")
   String? get yearJoined => throw _privateConstructorUsedError;
+  @JsonKey(name: "profile_biography")
   String? get profileBiography => throw _privateConstructorUsedError;
   String? get about => throw _privateConstructorUsedError;
   String? get other => throw _privateConstructorUsedError;
+  @JsonKey(name: "identity_type")
   Gender? get identityType => throw _privateConstructorUsedError;
+  @JsonKey(name: "identity_number")
   String? get identityNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: "identity_date")
   String? get identityDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "identity_expired_date")
   String? get identityExpiredDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "company_name")
   String? get companyName => throw _privateConstructorUsedError;
+  @JsonKey(name: "current_address")
   CurrentAddress? get currentAddress => throw _privateConstructorUsedError;
+  @JsonKey(name: "street_no")
   String? get streetNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "house_no")
   String? get houseNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "permanent_address")
   CurrentAddress? get permanentAddress => throw _privateConstructorUsedError;
+  @JsonKey(name: "permanent_street_no")
   String? get permanentStreetNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "permanent_house_no")
   String? get permanentHouseNo => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
@@ -76,30 +93,30 @@ abstract class $DataCopyWith<$Res> {
       String? display,
       String? position,
       String? profile,
-      String? defaultPhoto,
+      @JsonKey(name: "default_photo") String? defaultPhoto,
       String? name,
       Gender? gender,
-      String? dateOfBirth,
+      @JsonKey(name: "date_of_birth") String? dateOfBirth,
       Gender? nationality,
       String? recommended,
-      int? numberShare,
+      @JsonKey(name: "number_share") int? numberShare,
       String? expertise,
-      List<String>? memberType,
-      String? yearJoined,
-      String? profileBiography,
+      @JsonKey(name: "member_type") List<String>? memberType,
+      @JsonKey(name: "year_joined") String? yearJoined,
+      @JsonKey(name: "profile_biography") String? profileBiography,
       String? about,
       String? other,
-      Gender? identityType,
-      String? identityNumber,
-      String? identityDate,
-      String? identityExpiredDate,
-      String? companyName,
-      CurrentAddress? currentAddress,
-      String? streetNo,
-      String? houseNo,
-      CurrentAddress? permanentAddress,
-      String? permanentStreetNo,
-      String? permanentHouseNo,
+      @JsonKey(name: "identity_type") Gender? identityType,
+      @JsonKey(name: "identity_number") String? identityNumber,
+      @JsonKey(name: "identity_date") String? identityDate,
+      @JsonKey(name: "identity_expired_date") String? identityExpiredDate,
+      @JsonKey(name: "company_name") String? companyName,
+      @JsonKey(name: "current_address") CurrentAddress? currentAddress,
+      @JsonKey(name: "street_no") String? streetNo,
+      @JsonKey(name: "house_no") String? houseNo,
+      @JsonKey(name: "permanent_address") CurrentAddress? permanentAddress,
+      @JsonKey(name: "permanent_street_no") String? permanentStreetNo,
+      @JsonKey(name: "permanent_house_no") String? permanentHouseNo,
       String? phone,
       String? email,
       String? whatapp,
@@ -404,30 +421,30 @@ abstract class _$$_DataCopyWith<$Res> implements $DataCopyWith<$Res> {
       String? display,
       String? position,
       String? profile,
-      String? defaultPhoto,
+      @JsonKey(name: "default_photo") String? defaultPhoto,
       String? name,
       Gender? gender,
-      String? dateOfBirth,
+      @JsonKey(name: "date_of_birth") String? dateOfBirth,
       Gender? nationality,
       String? recommended,
-      int? numberShare,
+      @JsonKey(name: "number_share") int? numberShare,
       String? expertise,
-      List<String>? memberType,
-      String? yearJoined,
-      String? profileBiography,
+      @JsonKey(name: "member_type") List<String>? memberType,
+      @JsonKey(name: "year_joined") String? yearJoined,
+      @JsonKey(name: "profile_biography") String? profileBiography,
       String? about,
       String? other,
-      Gender? identityType,
-      String? identityNumber,
-      String? identityDate,
-      String? identityExpiredDate,
-      String? companyName,
-      CurrentAddress? currentAddress,
-      String? streetNo,
-      String? houseNo,
-      CurrentAddress? permanentAddress,
-      String? permanentStreetNo,
-      String? permanentHouseNo,
+      @JsonKey(name: "identity_type") Gender? identityType,
+      @JsonKey(name: "identity_number") String? identityNumber,
+      @JsonKey(name: "identity_date") String? identityDate,
+      @JsonKey(name: "identity_expired_date") String? identityExpiredDate,
+      @JsonKey(name: "company_name") String? companyName,
+      @JsonKey(name: "current_address") CurrentAddress? currentAddress,
+      @JsonKey(name: "street_no") String? streetNo,
+      @JsonKey(name: "house_no") String? houseNo,
+      @JsonKey(name: "permanent_address") CurrentAddress? permanentAddress,
+      @JsonKey(name: "permanent_street_no") String? permanentStreetNo,
+      @JsonKey(name: "permanent_house_no") String? permanentHouseNo,
       String? phone,
       String? email,
       String? whatapp,
@@ -670,30 +687,30 @@ class _$_Data implements _Data {
       this.display,
       this.position,
       this.profile,
-      this.defaultPhoto,
+      @JsonKey(name: "default_photo") this.defaultPhoto,
       this.name,
       this.gender,
-      this.dateOfBirth,
+      @JsonKey(name: "date_of_birth") this.dateOfBirth,
       this.nationality,
       this.recommended,
-      this.numberShare,
+      @JsonKey(name: "number_share") this.numberShare,
       this.expertise,
-      final List<String>? memberType,
-      this.yearJoined,
-      this.profileBiography,
+      @JsonKey(name: "member_type") final List<String>? memberType,
+      @JsonKey(name: "year_joined") this.yearJoined,
+      @JsonKey(name: "profile_biography") this.profileBiography,
       this.about,
       this.other,
-      this.identityType,
-      this.identityNumber,
-      this.identityDate,
-      this.identityExpiredDate,
-      this.companyName,
-      this.currentAddress,
-      this.streetNo,
-      this.houseNo,
-      this.permanentAddress,
-      this.permanentStreetNo,
-      this.permanentHouseNo,
+      @JsonKey(name: "identity_type") this.identityType,
+      @JsonKey(name: "identity_number") this.identityNumber,
+      @JsonKey(name: "identity_date") this.identityDate,
+      @JsonKey(name: "identity_expired_date") this.identityExpiredDate,
+      @JsonKey(name: "company_name") this.companyName,
+      @JsonKey(name: "current_address") this.currentAddress,
+      @JsonKey(name: "street_no") this.streetNo,
+      @JsonKey(name: "house_no") this.houseNo,
+      @JsonKey(name: "permanent_address") this.permanentAddress,
+      @JsonKey(name: "permanent_street_no") this.permanentStreetNo,
+      @JsonKey(name: "permanent_house_no") this.permanentHouseNo,
       this.phone,
       this.email,
       this.whatapp,
@@ -719,23 +736,27 @@ class _$_Data implements _Data {
   @override
   final String? profile;
   @override
+  @JsonKey(name: "default_photo")
   final String? defaultPhoto;
   @override
   final String? name;
   @override
   final Gender? gender;
   @override
+  @JsonKey(name: "date_of_birth")
   final String? dateOfBirth;
   @override
   final Gender? nationality;
   @override
   final String? recommended;
   @override
+  @JsonKey(name: "number_share")
   final int? numberShare;
   @override
   final String? expertise;
   final List<String>? _memberType;
   @override
+  @JsonKey(name: "member_type")
   List<String>? get memberType {
     final value = _memberType;
     if (value == null) return null;
@@ -745,34 +766,47 @@ class _$_Data implements _Data {
   }
 
   @override
+  @JsonKey(name: "year_joined")
   final String? yearJoined;
   @override
+  @JsonKey(name: "profile_biography")
   final String? profileBiography;
   @override
   final String? about;
   @override
   final String? other;
   @override
+  @JsonKey(name: "identity_type")
   final Gender? identityType;
   @override
+  @JsonKey(name: "identity_number")
   final String? identityNumber;
   @override
+  @JsonKey(name: "identity_date")
   final String? identityDate;
   @override
+  @JsonKey(name: "identity_expired_date")
   final String? identityExpiredDate;
   @override
+  @JsonKey(name: "company_name")
   final String? companyName;
   @override
+  @JsonKey(name: "current_address")
   final CurrentAddress? currentAddress;
   @override
+  @JsonKey(name: "street_no")
   final String? streetNo;
   @override
+  @JsonKey(name: "house_no")
   final String? houseNo;
   @override
+  @JsonKey(name: "permanent_address")
   final CurrentAddress? permanentAddress;
   @override
+  @JsonKey(name: "permanent_street_no")
   final String? permanentStreetNo;
   @override
+  @JsonKey(name: "permanent_house_no")
   final String? permanentHouseNo;
   @override
   final String? phone;
@@ -936,30 +970,47 @@ abstract class _Data implements Data {
       final String? display,
       final String? position,
       final String? profile,
-      final String? defaultPhoto,
+      @JsonKey(name: "default_photo")
+          final String? defaultPhoto,
       final String? name,
       final Gender? gender,
-      final String? dateOfBirth,
+      @JsonKey(name: "date_of_birth")
+          final String? dateOfBirth,
       final Gender? nationality,
       final String? recommended,
-      final int? numberShare,
+      @JsonKey(name: "number_share")
+          final int? numberShare,
       final String? expertise,
-      final List<String>? memberType,
-      final String? yearJoined,
-      final String? profileBiography,
+      @JsonKey(name: "member_type")
+          final List<String>? memberType,
+      @JsonKey(name: "year_joined")
+          final String? yearJoined,
+      @JsonKey(name: "profile_biography")
+          final String? profileBiography,
       final String? about,
       final String? other,
-      final Gender? identityType,
-      final String? identityNumber,
-      final String? identityDate,
-      final String? identityExpiredDate,
-      final String? companyName,
-      final CurrentAddress? currentAddress,
-      final String? streetNo,
-      final String? houseNo,
-      final CurrentAddress? permanentAddress,
-      final String? permanentStreetNo,
-      final String? permanentHouseNo,
+      @JsonKey(name: "identity_type")
+          final Gender? identityType,
+      @JsonKey(name: "identity_number")
+          final String? identityNumber,
+      @JsonKey(name: "identity_date")
+          final String? identityDate,
+      @JsonKey(name: "identity_expired_date")
+          final String? identityExpiredDate,
+      @JsonKey(name: "company_name")
+          final String? companyName,
+      @JsonKey(name: "current_address")
+          final CurrentAddress? currentAddress,
+      @JsonKey(name: "street_no")
+          final String? streetNo,
+      @JsonKey(name: "house_no")
+          final String? houseNo,
+      @JsonKey(name: "permanent_address")
+          final CurrentAddress? permanentAddress,
+      @JsonKey(name: "permanent_street_no")
+          final String? permanentStreetNo,
+      @JsonKey(name: "permanent_house_no")
+          final String? permanentHouseNo,
       final String? phone,
       final String? email,
       final String? whatapp,
@@ -984,52 +1035,69 @@ abstract class _Data implements Data {
   @override
   String? get profile;
   @override
+  @JsonKey(name: "default_photo")
   String? get defaultPhoto;
   @override
   String? get name;
   @override
   Gender? get gender;
   @override
+  @JsonKey(name: "date_of_birth")
   String? get dateOfBirth;
   @override
   Gender? get nationality;
   @override
   String? get recommended;
   @override
+  @JsonKey(name: "number_share")
   int? get numberShare;
   @override
   String? get expertise;
   @override
+  @JsonKey(name: "member_type")
   List<String>? get memberType;
   @override
+  @JsonKey(name: "year_joined")
   String? get yearJoined;
   @override
+  @JsonKey(name: "profile_biography")
   String? get profileBiography;
   @override
   String? get about;
   @override
   String? get other;
   @override
+  @JsonKey(name: "identity_type")
   Gender? get identityType;
   @override
+  @JsonKey(name: "identity_number")
   String? get identityNumber;
   @override
+  @JsonKey(name: "identity_date")
   String? get identityDate;
   @override
+  @JsonKey(name: "identity_expired_date")
   String? get identityExpiredDate;
   @override
+  @JsonKey(name: "company_name")
   String? get companyName;
   @override
+  @JsonKey(name: "current_address")
   CurrentAddress? get currentAddress;
   @override
+  @JsonKey(name: "street_no")
   String? get streetNo;
   @override
+  @JsonKey(name: "house_no")
   String? get houseNo;
   @override
+  @JsonKey(name: "permanent_address")
   CurrentAddress? get permanentAddress;
   @override
+  @JsonKey(name: "permanent_street_no")
   String? get permanentStreetNo;
   @override
+  @JsonKey(name: "permanent_house_no")
   String? get permanentHouseNo;
   @override
   String? get phone;

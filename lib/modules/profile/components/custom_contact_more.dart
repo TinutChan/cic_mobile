@@ -20,7 +20,6 @@ class ContactMore extends StatelessWidget {
         SvgPicture.asset(
           '$icons',
           colorFilter: colors,
-          //  ColorFilter.mode(AppColor.mainColor, BlendMode.srcIn),
         ),
         Text('$title'),
       ],
