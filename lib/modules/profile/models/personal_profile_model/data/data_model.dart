@@ -2,7 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../home/models/user_model/current_address/currnet_address_model.dart';
+import '../../../../home/models/user_model/current_address/currnet_address_model.dart';
 import '../gender/user_gender_model.dart';
 
 part 'data_model.freezed.dart';

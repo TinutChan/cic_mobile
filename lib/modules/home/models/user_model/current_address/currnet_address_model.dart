@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../profile/models/city/user_city_address.dart';
+import '../../../../profile/models/personal_profile_model/city/user_city_address.dart';
+
 
 part 'currnet_address_model.freezed.dart';
 part 'currnet_address_model.g.dart';

@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/app_font.dart';
 import 'package:cic_mobile/modules/home/controller/home_controller.dart';
@@ -6,8 +5,8 @@ import 'package:cic_mobile/widgets/custom_home_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../widgets/custom_slider.dart';
 import '../models/home_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,15 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  CarouselController con = CarouselController();
-
-  List<String> img = [
-    'assets/images/slide_show/slideshow1.png',
-    'assets/images/slide_show/slideshow2.png',
-    'assets/images/slide_show/slideshow1.png',
-    'assets/images/slide_show/slideshow2.png',
-  ];
-
   final homeController = Get.put(HomeController());
   @override
   void initState() {
@@ -58,65 +48,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.zero,
-          height: width / height / 1,
+          height: height * 0.9,
           child: Column(
             children: [
-              CarouselSlider.builder(
-                carouselController: con,
-                itemCount: img.length,
-                itemBuilder:
-                    (BuildContext context, int itemIndex, int pageViewIndex) =>
-                        Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(
-                      left: 20, right: 20, top: 10, bottom: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage(
-                        img[itemIndex],
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                options: CarouselOptions(
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      homeController.activeIndex = index;
-                    });
-                  },
-                  autoPlayCurve: Curves.decelerate,
-                  autoPlay: true,
-                  viewportFraction: 1,
-                  pageSnapping: true,
-                  aspectRatio: 1.0,
-                  initialPage: 0,
-                  height: 175,
-                  autoPlayInterval: const Duration(seconds: 3),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                ),
-              ),
-              AnimatedSmoothIndicator(
-                onDotClicked: (index) {
-                  debugPrint('0------$index');
-                  setState(() {
-                    con.animateToPage(index);
-                    homeController.activeIndex = index;
-                  });
-                },
-                activeIndex: homeController.activeIndex,
-                count: img.length,
-                effect: ExpandingDotsEffect(
-                  activeDotColor: AppColor.mainColor,
-                  dotColor: AppColor.grey4Color,
-                  dotHeight: 8.0,
-                  dotWidth: 8.0,
-                  expansionFactor: 3,
-                  radius: 5,
-                  spacing: 6.0,
-                ),
+              const CustomSlider(
+                margin:
+                    EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                padEnds: true,
+                viewportFraction: 1.0,
               ),
               Container(
                 clipBehavior: Clip.antiAlias,

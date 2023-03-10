@@ -8,22 +8,34 @@ import '../../account/controller/technical_support_controller.dart';
 import 'custom_contact_more.dart';
 import 'shimmer_profile_screen.dart';
 
-class CustomProfileDetail extends StatelessWidget {
-  CustomProfileDetail(
+class CustomProfileDetail extends StatefulWidget {
+  const CustomProfileDetail(
       {super.key,
-      required this.onCallTapped,
-      required this.onTelegramTapped,
-      required this.onEmailTapped,
-      required this.onWebsiteTapped});
+      this.onCallTapped,
+      this.onTelegramTapped,
+      this.onEmailTapped,
+      this.onWebsiteTapped});
 
-  final controller = Get.put(ProfileController());
-  final techSupportController = Get.put(TechicalSupportController());
   final VoidCallback? onCallTapped;
   final VoidCallback? onTelegramTapped;
   final VoidCallback? onEmailTapped;
   final VoidCallback? onWebsiteTapped;
 
+  @override
+  State<CustomProfileDetail> createState() => _CustomProfileDetailState();
+}
+
+class _CustomProfileDetailState extends State<CustomProfileDetail> {
+  final controller = Get.put(ProfileController());
+
+  final techSupportController = Get.put(TechicalSupportController());
   final profileController = Get.put(ProfileController());
+  @override
+  void initState() {
+    profileController.isLoading.value;
+    profileController.profileController;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +43,10 @@ class CustomProfileDetail extends StatelessWidget {
     final height = MediaQuery.of(context).size.width;
     final width = MediaQuery.of(context).size.width;
 
-    return profileController.isLoading.value == true
-        ? const ShimmerProfileScreen()
-        : Obx(
-            () => Stack(
+    return Obx(
+      () => profileController.isLoading.value
+          ? const ShimmerProfileScreen()
+          : Stack(
               children: [
                 Container(
                   decoration: const BoxDecoration(
@@ -102,7 +114,7 @@ class CustomProfileDetail extends StatelessWidget {
                           children: [
                             value.data?.phone != null
                                 ? GestureDetector(
-                                    onTap: onCallTapped,
+                                    onTap: widget.onCallTapped,
                                     child: const ContactMore(
                                       icons:
                                           'assets/icons/profile_icons/call.svg',
@@ -110,8 +122,8 @@ class CustomProfileDetail extends StatelessWidget {
                                     ),
                                   )
                                 : GestureDetector(
-                                    onTap: onCallTapped == null
-                                        ? onCallTapped
+                                    onTap: widget.onCallTapped == null
+                                        ? widget.onCallTapped
                                         : null,
                                     child: const ContactMore(
                                       icons:
@@ -123,8 +135,8 @@ class CustomProfileDetail extends StatelessWidget {
                                   ),
                             value.data?.email != null
                                 ? GestureDetector(
-                                    onTap: onEmailTapped == null
-                                        ? onCallTapped
+                                    onTap: widget.onEmailTapped == null
+                                        ? widget.onCallTapped
                                         : null,
                                     child: const ContactMore(
                                       icons:
@@ -133,8 +145,8 @@ class CustomProfileDetail extends StatelessWidget {
                                     ),
                                   )
                                 : GestureDetector(
-                                    onTap: onEmailTapped == null
-                                        ? onCallTapped
+                                    onTap: widget.onEmailTapped == null
+                                        ? widget.onCallTapped
                                         : null,
                                     child: const ContactMore(
                                       icons:
@@ -148,7 +160,7 @@ class CustomProfileDetail extends StatelessWidget {
                                         .profileModel.value.data?.telegram !=
                                     null
                                 ? GestureDetector(
-                                    onTap: onTelegramTapped,
+                                    onTap: widget.onTelegramTapped,
                                     child: const ContactMore(
                                       icons:
                                           'assets/icons/profile_icons/telegram.svg',
@@ -156,8 +168,8 @@ class CustomProfileDetail extends StatelessWidget {
                                     ),
                                   )
                                 : GestureDetector(
-                                    onTap: onTelegramTapped == null
-                                        ? onCallTapped
+                                    onTap: widget.onTelegramTapped == null
+                                        ? widget.onCallTapped
                                         : null,
                                     child: const ContactMore(
                                       icons:
@@ -169,7 +181,7 @@ class CustomProfileDetail extends StatelessWidget {
                                   ),
                             value.data?.name != null
                                 ? GestureDetector(
-                                    onTap: onWebsiteTapped,
+                                    onTap: widget.onWebsiteTapped,
                                     child: const ContactMore(
                                       icons:
                                           'assets/icons/profile_icons/website.svg',
@@ -177,8 +189,8 @@ class CustomProfileDetail extends StatelessWidget {
                                     ),
                                   )
                                 : GestureDetector(
-                                    onTap: onWebsiteTapped == null
-                                        ? onCallTapped
+                                    onTap: widget.onWebsiteTapped == null
+                                        ? widget.onCallTapped
                                         : null,
                                     child: const ContactMore(
                                       icons:
@@ -221,7 +233,7 @@ class CustomProfileDetail extends StatelessWidget {
                           color: AppColor.mainColor,
                         ),
                       ),
-                      child: value.data?.defaultPhoto == null
+                      child: value.data?.defaultPhoto != null
                           ? Container(
                               clipBehavior: Clip.antiAlias,
                               width: width,
@@ -233,20 +245,20 @@ class CustomProfileDetail extends StatelessWidget {
                                   color: AppColor.mainColor,
                                 ),
                                 image: DecorationImage(
-                                  image: NetworkImage(
-                                      '${value.data?.defaultPhoto}'),
+                                  image: NetworkImage('${value.data?.profile}'),
+                                  scale: 1.0,
                                 ),
                               ),
                             )
-                          : const CircleAvatar(
-                              backgroundColor: Colors.amber,
-                              child: Text('CT'),
+                          : CircleAvatar(
+                              backgroundColor: AppColor.blueColor99,
+                              child: Text('${value.data?.name![0]}'),
                             ),
                     ),
                   ),
                 ),
               ],
             ),
-          );
+    );
   }
 }

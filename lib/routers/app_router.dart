@@ -5,6 +5,7 @@ import 'package:cic_mobile/auth/register_cic/screen/enter_phone_number_screen.da
 import 'package:cic_mobile/auth/register_cic/screen/set_pin_code_screen.dart';
 import 'package:cic_mobile/modules/bottom_navigationbar/botton_navbar.dart';
 import 'package:cic_mobile/modules/splash_screen/splash_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,6 +25,10 @@ import '../modules/ut_trading/screens/ut_trading_screen.dart';
 
 final loginController = Get.put(LoginController());
 
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell');
 final GoRouter approuter = GoRouter(
   initialLocation: "/splash_screen",
   routes: <RouteBase>[
@@ -138,6 +143,7 @@ final GoRouter approuter = GoRouter(
           ],
         ),
         GoRoute(
+          // parentNavigatorKey: _rootNavigatorKey,
           path: 'qr_scan',
           name: 'QR_Scan',
           builder: (context, state) {

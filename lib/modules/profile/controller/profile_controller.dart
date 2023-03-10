@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../auth/login_cic/controllers/login_controller.dart';
-import '../models/user_profile_model.dart';
+import '../models/personal_profile_model/user_profile_model.dart';
 
 class ProfileController extends GetxController {
   var apibaseHelper = ApiBaseHelper();

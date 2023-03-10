@@ -2,8 +2,8 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../profile/models/current_address/user_current_address_model.dart';
-import '../../../profile/models/gender/user_gender_model.dart';
+import '../../../profile/models/personal_profile_model/current_address/user_current_address_model.dart';
+import '../../../profile/models/personal_profile_model/gender/user_gender_model.dart';
 import 'companies/companies_model.dart';
 import 'position/position_model.dart';
 import 'purpose/purpose_model.dart';
