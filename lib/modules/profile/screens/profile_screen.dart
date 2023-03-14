@@ -18,22 +18,25 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen>
     with SingleTickerProviderStateMixin {
-  final homeController = Get.put(HomeController());
   final contactMoreController = Get.put(TechicalSupportController());
   final profileController = Get.put(ProfileController());
+  final homeController = Get.put(HomeController());
   final companyProfileController = Get.put(CompanyProfileController());
   late TabController _tabController;
 
   @override
   void initState() {
-    profileController
-        .profileController(homeController.userModel.value.customerId);
+    // debugPrint('= = =${profileController.list}');
+
+    debugPrint(
+        '= = =hehehfekjfeehjfejefhjjheefjh${homeController.userModel.value.customerId}');
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final profileController = Get.put(ProfileController());
     final List<String> tabs = <String>['Personal Profile', 'Company Profile '];
     return DefaultTabController(
       length: tabs.length,
@@ -65,10 +68,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                     ),
                   ],
                   flexibleSpace: const FlexibleSpaceBar(
-                    collapseMode: CollapseMode.none,
-                    centerTitle: true,
-                    background: CustomProfileDetail(),
-                  ),
+                      collapseMode: CollapseMode.none,
+                      centerTitle: true,
+                      background: CustomProfileDetail()),
                 ),
               ),
             ];
@@ -123,22 +125,32 @@ class _ProfileScreenState extends State<ProfileScreen>
                                 )
                               : Padding(
                                   padding: const EdgeInsets.only(left: 20.0),
-                                  child: Text(
-                                    '${profileController.profileModel.value.data?.about}',
-                                    textAlign: TextAlign.start,
-                                  ),
+                                  child: profileController
+                                              .profileDetailModel.value.about !=
+                                          null
+                                      ? Text(
+                                          '${profileController.profileDetailModel.value.about}')
+                                      : const Center(
+                                          heightFactor: 8,
+                                          child: CircleAvatar(),
+                                        ),
                                 ),
                         ),
                       ],
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        itemCount: 1,
-                        itemBuilder: (context, index) {
-                          return const CompanyProfileScreen();
-                        },
-                      ),
+                    Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            itemCount: 1,
+                            itemBuilder: (context, index) {
+                              return const CompanyProfileScreen();
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

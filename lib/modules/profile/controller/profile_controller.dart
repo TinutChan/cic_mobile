@@ -3,29 +3,34 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../auth/login_cic/controllers/login_controller.dart';
-import '../models/personal_profile_model/user_profile_model.dart';
+import '../models/personal_profile_model/data/data_model.dart';
 
 class ProfileController extends GetxController {
+
   var apibaseHelper = ApiBaseHelper();
   final loginController = Get.put(LoginController());
-
-  var list = <UserProfileModel>[].obs;
-  var profileModel = UserProfileModel().obs;
+  var profileDetailModel = DataProfileDetail().obs;
   var isLoading = false.obs;
 
-  Future profileController(int? id) async {
-    isLoading(true);
-    await apibaseHelper
-        .onNetworkRequesting(
-            url: 'member/$id', methode: METHODE.get, isAuthorize: true)
-        .then((responseData) {
-      profileModel.value = UserProfileModel.fromJson(responseData);
-      // debugPrint('= = = = Data: $profileModel');
-      isLoading(false);
-    }).onError((ErrorModel error, stackTrace) {
-      debugPrint('= = = = = Error: ${error.bodyString}');
-      isLoading(false);
-    });
-    return profileModel.value;
+  Future<void> profileDetail({int? id}) async {
+    isLoading.value = true;
+    try {
+      await apibaseHelper
+          .onNetworkRequesting(
+        url: 'member/974',
+        methode: METHODE.get,
+        isAuthorize: true,
+      )
+          .then((response) {
+        profileDetailModel.value = DataProfileDetail.fromJson(response['data']);
+        debugPrint('${profileDetailModel.value}');
+      }).onError((ErrorModel error, _) {
+        debugPrint(error.bodyString.toString());
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

@@ -26,20 +26,20 @@ class CustomProfileDetail extends StatefulWidget {
 }
 
 class _CustomProfileDetailState extends State<CustomProfileDetail> {
-  final controller = Get.put(ProfileController());
+  // final controller = Get.put(ProfileController());
 
   final techSupportController = Get.put(TechicalSupportController());
   final profileController = Get.put(ProfileController());
+
   @override
   void initState() {
-    profileController.isLoading.value;
-    profileController.profileController;
+    debugPrint('= = =Detail List ${profileController.profileDetailModel}');
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final value = profileController.profileModel.value;
+    final profileController = Get.put(ProfileController());
     final height = MediaQuery.of(context).size.width;
     final width = MediaQuery.of(context).size.width;
 
@@ -77,7 +77,7 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                       children: [
                         SizedBox(height: height / 6),
                         Text(
-                          '${value.data?.name}',
+                          '${profileController.profileDetailModel.value.name}',
                           style: theme()
                               .textTheme
                               .displayLarge!
@@ -89,7 +89,7 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                           children: [
                             const Icon(Icons.verified_user_outlined, size: 18),
                             Text(
-                              '${value.data?.position}',
+                              '${profileController.profileDetailModel.value.position}',
                               style: theme()
                                   .textTheme
                                   .displaySmall!
@@ -100,9 +100,9 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                         const SizedBox(height: 8),
                         Text(
                           // ignore: unnecessary_null_comparison
-                          '${value.data?.companyName}' == null
-                              ? '${value.data?.companyName}'
-                              : "Company Name",
+                          profileController
+                                  .profileDetailModel.value.companyName ??
+                              "Company Name",
                           style: theme()
                               .textTheme
                               .displaySmall!
@@ -112,7 +112,8 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            value.data?.phone != null
+                            profileController.profileDetailModel.value.phone !=
+                                    null
                                 ? GestureDetector(
                                     onTap: widget.onCallTapped,
                                     child: const ContactMore(
@@ -133,7 +134,8 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                                           Colors.grey, BlendMode.srcIn),
                                     ),
                                   ),
-                            value.data?.email != null
+                            profileController.profileDetailModel.value.email !=
+                                    null
                                 ? GestureDetector(
                                     onTap: widget.onEmailTapped == null
                                         ? widget.onCallTapped
@@ -157,7 +159,7 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                                     ),
                                   ),
                             profileController
-                                        .profileModel.value.data?.telegram !=
+                                        .profileDetailModel.value.telegram !=
                                     null
                                 ? GestureDetector(
                                     onTap: widget.onTelegramTapped,
@@ -179,7 +181,8 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                                           Colors.grey, BlendMode.srcIn),
                                     ),
                                   ),
-                            value.data?.name != null
+                            profileController.profileDetailModel.value.name !=
+                                    null
                                 ? GestureDetector(
                                     onTap: widget.onWebsiteTapped,
                                     child: const ContactMore(
@@ -233,7 +236,9 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                           color: AppColor.mainColor,
                         ),
                       ),
-                      child: value.data?.defaultPhoto != null
+                      child: profileController
+                                  .profileDetailModel.value.defaultPhoto !=
+                              null
                           ? Container(
                               clipBehavior: Clip.antiAlias,
                               width: width,
@@ -245,14 +250,16 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                                   color: AppColor.mainColor,
                                 ),
                                 image: DecorationImage(
-                                  image: NetworkImage('${value.data?.profile}'),
+                                  image: NetworkImage(
+                                      '${profileController.profileDetailModel.value.profile}'),
                                   scale: 1.0,
                                 ),
                               ),
                             )
                           : CircleAvatar(
                               backgroundColor: AppColor.blueColor99,
-                              child: Text('${value.data?.name![0]}'),
+                              child: Text(profileController
+                                  .profileDetailModel.value.name![0]),
                             ),
                     ),
                   ),

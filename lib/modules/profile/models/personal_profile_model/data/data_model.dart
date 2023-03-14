@@ -1,5 +1,61 @@
+// // ignore_for_file: invalid_annotation_target
+
+// import 'package:freezed_annotation/freezed_annotation.dart';
+
+// import '../../../../home/models/user_model/current_address/currnet_address_model.dart';
+// import '../gender/user_gender_model.dart';
+
+// part 'data_model.freezed.dart';
+// part 'data_model.g.dart';
+
+// @freezed
+// class Data with _$Data {
+//   factory Data({
+//     final int? id,
+//     final String? code,
+//     final String? display,
+//     final String? position,
+//     final String? profile,
+//     @JsonKey(name: "default_photo") final String? defaultPhoto,
+//     final String? name,
+//     final Gender? gender,
+//     @JsonKey(name: "date_of_birth") final String? dateOfBirth,
+//     final Gender? nationality,
+//     final String? recommended,
+//     @JsonKey(name: "number_share") final int? numberShare,
+//     final String? expertise,
+//     @JsonKey(name: "member_type") final List<String>? memberType,
+//     @JsonKey(name: "year_joined") final String? yearJoined,
+//     @JsonKey(name: "profile_biography") final String? profileBiography,
+//     final String? about,
+//     final String? other,
+//     @JsonKey(name: "identity_type") final Gender? identityType,
+//     @JsonKey(name: "identity_number") final String? identityNumber,
+//     @JsonKey(name: "identity_date") final String? identityDate,
+//     @JsonKey(name: "identity_expired_date") final String? identityExpiredDate,
+//     @JsonKey(name: "company_name") final String? companyName,
+//     @JsonKey(name: "current_address") final CurrentAddress? currentAddress,
+//     @JsonKey(name: "street_no") final String? streetNo,
+//     @JsonKey(name: "house_no") final String? houseNo,
+//     @JsonKey(name: "permanent_address") final CurrentAddress? permanentAddress,
+//     @JsonKey(name: "permanent_street_no") final String? permanentStreetNo,
+//     @JsonKey(name: "permanent_house_no") final String? permanentHouseNo,
+//     final String? phone,
+//     final String? email,
+//     final String? whatapp,
+//     final String? telegram,
+//     final String? messenger,
+//     final String? skype,
+//     final String? website,
+//     final String? facebook,
+//     final String? linkedin,
+//     final String? twitter,
+//   }) = _Data;
+
 // ignore_for_file: invalid_annotation_target
 
+//   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+// }
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../home/models/user_model/current_address/currnet_address_model.dart';
@@ -9,48 +65,49 @@ part 'data_model.freezed.dart';
 part 'data_model.g.dart';
 
 @freezed
-class Data with _$Data {
-  factory Data({
-    int? id,
-    String? code,
-    String? display,
-    String? position,
-    String? profile,
-    @JsonKey(name: "default_photo") String? defaultPhoto,
-    String? name,
-    Gender? gender,
-    @JsonKey(name: "date_of_birth") String? dateOfBirth,
-    Gender? nationality,
-    String? recommended,
-    @JsonKey(name: "number_share") int? numberShare,
-    String? expertise,
-    @JsonKey(name: "member_type") List<String>? memberType,
-    @JsonKey(name: "year_joined") String? yearJoined,
-    @JsonKey(name: "profile_biography") String? profileBiography,
-    String? about,
-    String? other,
-    @JsonKey(name: "identity_type") Gender? identityType,
-    @JsonKey(name: "identity_number") String? identityNumber,
-    @JsonKey(name: "identity_date") String? identityDate,
-    @JsonKey(name: "identity_expired_date") String? identityExpiredDate,
-    @JsonKey(name: "company_name") String? companyName,
-    @JsonKey(name: "current_address") CurrentAddress? currentAddress,
-    @JsonKey(name: "street_no") String? streetNo,
-    @JsonKey(name: "house_no") String? houseNo,
-    @JsonKey(name: "permanent_address") CurrentAddress? permanentAddress,
-    @JsonKey(name: "permanent_street_no") String? permanentStreetNo,
-    @JsonKey(name: "permanent_house_no") String? permanentHouseNo,
-    String? phone,
-    String? email,
-    String? whatapp,
-    String? telegram,
-    String? messenger,
-    String? skype,
-    String? website,
-    String? facebook,
-    String? linkedin,
-    String? twitter,
-  }) = _Data;
+class DataProfileDetail with _$DataProfileDetail {
+  factory DataProfileDetail({
+    final int? id,
+    final String? code,
+    final String? display,
+    final String? position,
+    final String? profile,
+    @JsonKey(name: 'default_photo') final String? defaultPhoto,
+    final String? name,
+    final Gender? gender,
+    @JsonKey(name: 'date_of_birth') final String? dateOfBirth,
+    final Gender? nationality,
+    final String? recommended,
+    @JsonKey(name: 'number_share') final int? numberShare,
+    final String? expertise,
+    @JsonKey(name: 'member_type') final List<String>? memberType,
+    @JsonKey(name: 'year_joined') final String? yearJoined,
+    @JsonKey(name: "profile_biography") final String? profileBiography,
+    final String? about,
+    final String? other,
+    @JsonKey(name: 'identity_type') final Gender? identityType,
+    @JsonKey(name: 'identity_number') final String? identityNumber,
+    @JsonKey(name: 'identity_date') final String? identityDate,
+    @JsonKey(name: 'identity_expired_date') final String? identityExpiredDate,
+    @JsonKey(name: 'company_name') final String? companyName,
+    @JsonKey(name: 'current_address') final CurrentAddress? currentAddress,
+    @JsonKey(name: 'street_no') final String? streetNo,
+    @JsonKey(name: 'house_no') String? houseNo,
+    @JsonKey(name: 'permanent_address') final CurrentAddress? permanentAddress,
+    @JsonKey(name: 'permanent_street_no') String? permanentStreetNo,
+    @JsonKey(name: 'permanent_house_no') final String? permanentHouseNo,
+    final String? phone,
+    final String? email,
+    final String? whatapp,
+    final String? telegram,
+    final String? messenger,
+    final String? skype,
+    final String? website,
+    final String? facebook,
+    final String? linkedin,
+    final String? twitter,
+  }) = _DataProfileDetail;
 
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  factory DataProfileDetail.fromJson(Map<String, dynamic> json) =>
+      _$DataProfileDetailFromJson(json);
 }

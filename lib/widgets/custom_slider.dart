@@ -58,7 +58,7 @@ class _CustomSliderState extends State<CustomSlider> {
               });
             },
             autoPlayCurve: Curves.decelerate,
-            autoPlay: true,
+            autoPlay: false,
             viewportFraction: widget.viewportFraction,
             padEnds: widget.padEnds,
             pageSnapping: true,

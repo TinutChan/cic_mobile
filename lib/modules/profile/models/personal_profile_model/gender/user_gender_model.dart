@@ -6,9 +6,9 @@ part 'user_gender_model.g.dart';
 @freezed
 class Gender with _$Gender {
   factory Gender({
-    int? id,
-    String? display,
-    String? displayKhmer,
+   final int? id,
+   final String? display,
+   final String? displayKhmer,
   }) = _Gender;
 
   factory Gender.fromJson(Map<String, dynamic> json) => _$GenderFromJson(json);

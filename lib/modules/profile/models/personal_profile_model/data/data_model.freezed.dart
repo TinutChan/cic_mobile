@@ -14,57 +14,57 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Data _$DataFromJson(Map<String, dynamic> json) {
-  return _Data.fromJson(json);
+DataProfileDetail _$DataProfileDetailFromJson(Map<String, dynamic> json) {
+  return _DataProfileDetail.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Data {
+mixin _$DataProfileDetail {
   int? get id => throw _privateConstructorUsedError;
   String? get code => throw _privateConstructorUsedError;
   String? get display => throw _privateConstructorUsedError;
   String? get position => throw _privateConstructorUsedError;
   String? get profile => throw _privateConstructorUsedError;
-  @JsonKey(name: "default_photo")
+  @JsonKey(name: 'default_photo')
   String? get defaultPhoto => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   Gender? get gender => throw _privateConstructorUsedError;
-  @JsonKey(name: "date_of_birth")
+  @JsonKey(name: 'date_of_birth')
   String? get dateOfBirth => throw _privateConstructorUsedError;
   Gender? get nationality => throw _privateConstructorUsedError;
   String? get recommended => throw _privateConstructorUsedError;
-  @JsonKey(name: "number_share")
+  @JsonKey(name: 'number_share')
   int? get numberShare => throw _privateConstructorUsedError;
   String? get expertise => throw _privateConstructorUsedError;
-  @JsonKey(name: "member_type")
+  @JsonKey(name: 'member_type')
   List<String>? get memberType => throw _privateConstructorUsedError;
-  @JsonKey(name: "year_joined")
+  @JsonKey(name: 'year_joined')
   String? get yearJoined => throw _privateConstructorUsedError;
   @JsonKey(name: "profile_biography")
   String? get profileBiography => throw _privateConstructorUsedError;
   String? get about => throw _privateConstructorUsedError;
   String? get other => throw _privateConstructorUsedError;
-  @JsonKey(name: "identity_type")
+  @JsonKey(name: 'identity_type')
   Gender? get identityType => throw _privateConstructorUsedError;
-  @JsonKey(name: "identity_number")
+  @JsonKey(name: 'identity_number')
   String? get identityNumber => throw _privateConstructorUsedError;
-  @JsonKey(name: "identity_date")
+  @JsonKey(name: 'identity_date')
   String? get identityDate => throw _privateConstructorUsedError;
-  @JsonKey(name: "identity_expired_date")
+  @JsonKey(name: 'identity_expired_date')
   String? get identityExpiredDate => throw _privateConstructorUsedError;
-  @JsonKey(name: "company_name")
+  @JsonKey(name: 'company_name')
   String? get companyName => throw _privateConstructorUsedError;
-  @JsonKey(name: "current_address")
+  @JsonKey(name: 'current_address')
   CurrentAddress? get currentAddress => throw _privateConstructorUsedError;
-  @JsonKey(name: "street_no")
+  @JsonKey(name: 'street_no')
   String? get streetNo => throw _privateConstructorUsedError;
-  @JsonKey(name: "house_no")
+  @JsonKey(name: 'house_no')
   String? get houseNo => throw _privateConstructorUsedError;
-  @JsonKey(name: "permanent_address")
+  @JsonKey(name: 'permanent_address')
   CurrentAddress? get permanentAddress => throw _privateConstructorUsedError;
-  @JsonKey(name: "permanent_street_no")
+  @JsonKey(name: 'permanent_street_no')
   String? get permanentStreetNo => throw _privateConstructorUsedError;
-  @JsonKey(name: "permanent_house_no")
+  @JsonKey(name: 'permanent_house_no')
   String? get permanentHouseNo => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
@@ -79,13 +79,15 @@ mixin _$Data {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
+  $DataProfileDetailCopyWith<DataProfileDetail> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DataCopyWith<$Res> {
-  factory $DataCopyWith(Data value, $Res Function(Data) then) =
-      _$DataCopyWithImpl<$Res, Data>;
+abstract class $DataProfileDetailCopyWith<$Res> {
+  factory $DataProfileDetailCopyWith(
+          DataProfileDetail value, $Res Function(DataProfileDetail) then) =
+      _$DataProfileDetailCopyWithImpl<$Res, DataProfileDetail>;
   @useResult
   $Res call(
       {int? id,
@@ -93,30 +95,30 @@ abstract class $DataCopyWith<$Res> {
       String? display,
       String? position,
       String? profile,
-      @JsonKey(name: "default_photo") String? defaultPhoto,
+      @JsonKey(name: 'default_photo') String? defaultPhoto,
       String? name,
       Gender? gender,
-      @JsonKey(name: "date_of_birth") String? dateOfBirth,
+      @JsonKey(name: 'date_of_birth') String? dateOfBirth,
       Gender? nationality,
       String? recommended,
-      @JsonKey(name: "number_share") int? numberShare,
+      @JsonKey(name: 'number_share') int? numberShare,
       String? expertise,
-      @JsonKey(name: "member_type") List<String>? memberType,
-      @JsonKey(name: "year_joined") String? yearJoined,
+      @JsonKey(name: 'member_type') List<String>? memberType,
+      @JsonKey(name: 'year_joined') String? yearJoined,
       @JsonKey(name: "profile_biography") String? profileBiography,
       String? about,
       String? other,
-      @JsonKey(name: "identity_type") Gender? identityType,
-      @JsonKey(name: "identity_number") String? identityNumber,
-      @JsonKey(name: "identity_date") String? identityDate,
-      @JsonKey(name: "identity_expired_date") String? identityExpiredDate,
-      @JsonKey(name: "company_name") String? companyName,
-      @JsonKey(name: "current_address") CurrentAddress? currentAddress,
-      @JsonKey(name: "street_no") String? streetNo,
-      @JsonKey(name: "house_no") String? houseNo,
-      @JsonKey(name: "permanent_address") CurrentAddress? permanentAddress,
-      @JsonKey(name: "permanent_street_no") String? permanentStreetNo,
-      @JsonKey(name: "permanent_house_no") String? permanentHouseNo,
+      @JsonKey(name: 'identity_type') Gender? identityType,
+      @JsonKey(name: 'identity_number') String? identityNumber,
+      @JsonKey(name: 'identity_date') String? identityDate,
+      @JsonKey(name: 'identity_expired_date') String? identityExpiredDate,
+      @JsonKey(name: 'company_name') String? companyName,
+      @JsonKey(name: 'current_address') CurrentAddress? currentAddress,
+      @JsonKey(name: 'street_no') String? streetNo,
+      @JsonKey(name: 'house_no') String? houseNo,
+      @JsonKey(name: 'permanent_address') CurrentAddress? permanentAddress,
+      @JsonKey(name: 'permanent_street_no') String? permanentStreetNo,
+      @JsonKey(name: 'permanent_house_no') String? permanentHouseNo,
       String? phone,
       String? email,
       String? whatapp,
@@ -136,9 +138,9 @@ abstract class $DataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DataCopyWithImpl<$Res, $Val extends Data>
-    implements $DataCopyWith<$Res> {
-  _$DataCopyWithImpl(this._value, this._then);
+class _$DataProfileDetailCopyWithImpl<$Res, $Val extends DataProfileDetail>
+    implements $DataProfileDetailCopyWith<$Res> {
+  _$DataProfileDetailCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -410,9 +412,11 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
 }
 
 /// @nodoc
-abstract class _$$_DataCopyWith<$Res> implements $DataCopyWith<$Res> {
-  factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
-      __$$_DataCopyWithImpl<$Res>;
+abstract class _$$_DataProfileDetailCopyWith<$Res>
+    implements $DataProfileDetailCopyWith<$Res> {
+  factory _$$_DataProfileDetailCopyWith(_$_DataProfileDetail value,
+          $Res Function(_$_DataProfileDetail) then) =
+      __$$_DataProfileDetailCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -421,30 +425,30 @@ abstract class _$$_DataCopyWith<$Res> implements $DataCopyWith<$Res> {
       String? display,
       String? position,
       String? profile,
-      @JsonKey(name: "default_photo") String? defaultPhoto,
+      @JsonKey(name: 'default_photo') String? defaultPhoto,
       String? name,
       Gender? gender,
-      @JsonKey(name: "date_of_birth") String? dateOfBirth,
+      @JsonKey(name: 'date_of_birth') String? dateOfBirth,
       Gender? nationality,
       String? recommended,
-      @JsonKey(name: "number_share") int? numberShare,
+      @JsonKey(name: 'number_share') int? numberShare,
       String? expertise,
-      @JsonKey(name: "member_type") List<String>? memberType,
-      @JsonKey(name: "year_joined") String? yearJoined,
+      @JsonKey(name: 'member_type') List<String>? memberType,
+      @JsonKey(name: 'year_joined') String? yearJoined,
       @JsonKey(name: "profile_biography") String? profileBiography,
       String? about,
       String? other,
-      @JsonKey(name: "identity_type") Gender? identityType,
-      @JsonKey(name: "identity_number") String? identityNumber,
-      @JsonKey(name: "identity_date") String? identityDate,
-      @JsonKey(name: "identity_expired_date") String? identityExpiredDate,
-      @JsonKey(name: "company_name") String? companyName,
-      @JsonKey(name: "current_address") CurrentAddress? currentAddress,
-      @JsonKey(name: "street_no") String? streetNo,
-      @JsonKey(name: "house_no") String? houseNo,
-      @JsonKey(name: "permanent_address") CurrentAddress? permanentAddress,
-      @JsonKey(name: "permanent_street_no") String? permanentStreetNo,
-      @JsonKey(name: "permanent_house_no") String? permanentHouseNo,
+      @JsonKey(name: 'identity_type') Gender? identityType,
+      @JsonKey(name: 'identity_number') String? identityNumber,
+      @JsonKey(name: 'identity_date') String? identityDate,
+      @JsonKey(name: 'identity_expired_date') String? identityExpiredDate,
+      @JsonKey(name: 'company_name') String? companyName,
+      @JsonKey(name: 'current_address') CurrentAddress? currentAddress,
+      @JsonKey(name: 'street_no') String? streetNo,
+      @JsonKey(name: 'house_no') String? houseNo,
+      @JsonKey(name: 'permanent_address') CurrentAddress? permanentAddress,
+      @JsonKey(name: 'permanent_street_no') String? permanentStreetNo,
+      @JsonKey(name: 'permanent_house_no') String? permanentHouseNo,
       String? phone,
       String? email,
       String? whatapp,
@@ -469,9 +473,11 @@ abstract class _$$_DataCopyWith<$Res> implements $DataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res, _$_Data>
-    implements _$$_DataCopyWith<$Res> {
-  __$$_DataCopyWithImpl(_$_Data _value, $Res Function(_$_Data) _then)
+class __$$_DataProfileDetailCopyWithImpl<$Res>
+    extends _$DataProfileDetailCopyWithImpl<$Res, _$_DataProfileDetail>
+    implements _$$_DataProfileDetailCopyWith<$Res> {
+  __$$_DataProfileDetailCopyWithImpl(
+      _$_DataProfileDetail _value, $Res Function(_$_DataProfileDetail) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -517,7 +523,7 @@ class __$$_DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res, _$_Data>
     Object? linkedin = freezed,
     Object? twitter = freezed,
   }) {
-    return _then(_$_Data(
+    return _then(_$_DataProfileDetail(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -680,37 +686,37 @@ class __$$_DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res, _$_Data>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Data implements _Data {
-  _$_Data(
+class _$_DataProfileDetail implements _DataProfileDetail {
+  _$_DataProfileDetail(
       {this.id,
       this.code,
       this.display,
       this.position,
       this.profile,
-      @JsonKey(name: "default_photo") this.defaultPhoto,
+      @JsonKey(name: 'default_photo') this.defaultPhoto,
       this.name,
       this.gender,
-      @JsonKey(name: "date_of_birth") this.dateOfBirth,
+      @JsonKey(name: 'date_of_birth') this.dateOfBirth,
       this.nationality,
       this.recommended,
-      @JsonKey(name: "number_share") this.numberShare,
+      @JsonKey(name: 'number_share') this.numberShare,
       this.expertise,
-      @JsonKey(name: "member_type") final List<String>? memberType,
-      @JsonKey(name: "year_joined") this.yearJoined,
+      @JsonKey(name: 'member_type') final List<String>? memberType,
+      @JsonKey(name: 'year_joined') this.yearJoined,
       @JsonKey(name: "profile_biography") this.profileBiography,
       this.about,
       this.other,
-      @JsonKey(name: "identity_type") this.identityType,
-      @JsonKey(name: "identity_number") this.identityNumber,
-      @JsonKey(name: "identity_date") this.identityDate,
-      @JsonKey(name: "identity_expired_date") this.identityExpiredDate,
-      @JsonKey(name: "company_name") this.companyName,
-      @JsonKey(name: "current_address") this.currentAddress,
-      @JsonKey(name: "street_no") this.streetNo,
-      @JsonKey(name: "house_no") this.houseNo,
-      @JsonKey(name: "permanent_address") this.permanentAddress,
-      @JsonKey(name: "permanent_street_no") this.permanentStreetNo,
-      @JsonKey(name: "permanent_house_no") this.permanentHouseNo,
+      @JsonKey(name: 'identity_type') this.identityType,
+      @JsonKey(name: 'identity_number') this.identityNumber,
+      @JsonKey(name: 'identity_date') this.identityDate,
+      @JsonKey(name: 'identity_expired_date') this.identityExpiredDate,
+      @JsonKey(name: 'company_name') this.companyName,
+      @JsonKey(name: 'current_address') this.currentAddress,
+      @JsonKey(name: 'street_no') this.streetNo,
+      @JsonKey(name: 'house_no') this.houseNo,
+      @JsonKey(name: 'permanent_address') this.permanentAddress,
+      @JsonKey(name: 'permanent_street_no') this.permanentStreetNo,
+      @JsonKey(name: 'permanent_house_no') this.permanentHouseNo,
       this.phone,
       this.email,
       this.whatapp,
@@ -723,7 +729,8 @@ class _$_Data implements _Data {
       this.twitter})
       : _memberType = memberType;
 
-  factory _$_Data.fromJson(Map<String, dynamic> json) => _$$_DataFromJson(json);
+  factory _$_DataProfileDetail.fromJson(Map<String, dynamic> json) =>
+      _$$_DataProfileDetailFromJson(json);
 
   @override
   final int? id;
@@ -736,27 +743,27 @@ class _$_Data implements _Data {
   @override
   final String? profile;
   @override
-  @JsonKey(name: "default_photo")
+  @JsonKey(name: 'default_photo')
   final String? defaultPhoto;
   @override
   final String? name;
   @override
   final Gender? gender;
   @override
-  @JsonKey(name: "date_of_birth")
+  @JsonKey(name: 'date_of_birth')
   final String? dateOfBirth;
   @override
   final Gender? nationality;
   @override
   final String? recommended;
   @override
-  @JsonKey(name: "number_share")
+  @JsonKey(name: 'number_share')
   final int? numberShare;
   @override
   final String? expertise;
   final List<String>? _memberType;
   @override
-  @JsonKey(name: "member_type")
+  @JsonKey(name: 'member_type')
   List<String>? get memberType {
     final value = _memberType;
     if (value == null) return null;
@@ -766,7 +773,7 @@ class _$_Data implements _Data {
   }
 
   @override
-  @JsonKey(name: "year_joined")
+  @JsonKey(name: 'year_joined')
   final String? yearJoined;
   @override
   @JsonKey(name: "profile_biography")
@@ -776,37 +783,37 @@ class _$_Data implements _Data {
   @override
   final String? other;
   @override
-  @JsonKey(name: "identity_type")
+  @JsonKey(name: 'identity_type')
   final Gender? identityType;
   @override
-  @JsonKey(name: "identity_number")
+  @JsonKey(name: 'identity_number')
   final String? identityNumber;
   @override
-  @JsonKey(name: "identity_date")
+  @JsonKey(name: 'identity_date')
   final String? identityDate;
   @override
-  @JsonKey(name: "identity_expired_date")
+  @JsonKey(name: 'identity_expired_date')
   final String? identityExpiredDate;
   @override
-  @JsonKey(name: "company_name")
+  @JsonKey(name: 'company_name')
   final String? companyName;
   @override
-  @JsonKey(name: "current_address")
+  @JsonKey(name: 'current_address')
   final CurrentAddress? currentAddress;
   @override
-  @JsonKey(name: "street_no")
+  @JsonKey(name: 'street_no')
   final String? streetNo;
   @override
-  @JsonKey(name: "house_no")
+  @JsonKey(name: 'house_no')
   final String? houseNo;
   @override
-  @JsonKey(name: "permanent_address")
+  @JsonKey(name: 'permanent_address')
   final CurrentAddress? permanentAddress;
   @override
-  @JsonKey(name: "permanent_street_no")
+  @JsonKey(name: 'permanent_street_no')
   final String? permanentStreetNo;
   @override
-  @JsonKey(name: "permanent_house_no")
+  @JsonKey(name: 'permanent_house_no')
   final String? permanentHouseNo;
   @override
   final String? phone;
@@ -831,14 +838,14 @@ class _$_Data implements _Data {
 
   @override
   String toString() {
-    return 'Data(id: $id, code: $code, display: $display, position: $position, profile: $profile, defaultPhoto: $defaultPhoto, name: $name, gender: $gender, dateOfBirth: $dateOfBirth, nationality: $nationality, recommended: $recommended, numberShare: $numberShare, expertise: $expertise, memberType: $memberType, yearJoined: $yearJoined, profileBiography: $profileBiography, about: $about, other: $other, identityType: $identityType, identityNumber: $identityNumber, identityDate: $identityDate, identityExpiredDate: $identityExpiredDate, companyName: $companyName, currentAddress: $currentAddress, streetNo: $streetNo, houseNo: $houseNo, permanentAddress: $permanentAddress, permanentStreetNo: $permanentStreetNo, permanentHouseNo: $permanentHouseNo, phone: $phone, email: $email, whatapp: $whatapp, telegram: $telegram, messenger: $messenger, skype: $skype, website: $website, facebook: $facebook, linkedin: $linkedin, twitter: $twitter)';
+    return 'DataProfileDetail(id: $id, code: $code, display: $display, position: $position, profile: $profile, defaultPhoto: $defaultPhoto, name: $name, gender: $gender, dateOfBirth: $dateOfBirth, nationality: $nationality, recommended: $recommended, numberShare: $numberShare, expertise: $expertise, memberType: $memberType, yearJoined: $yearJoined, profileBiography: $profileBiography, about: $about, other: $other, identityType: $identityType, identityNumber: $identityNumber, identityDate: $identityDate, identityExpiredDate: $identityExpiredDate, companyName: $companyName, currentAddress: $currentAddress, streetNo: $streetNo, houseNo: $houseNo, permanentAddress: $permanentAddress, permanentStreetNo: $permanentStreetNo, permanentHouseNo: $permanentHouseNo, phone: $phone, email: $email, whatapp: $whatapp, telegram: $telegram, messenger: $messenger, skype: $skype, website: $website, facebook: $facebook, linkedin: $linkedin, twitter: $twitter)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Data &&
+            other is _$_DataProfileDetail &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.display, display) || other.display == display) &&
@@ -952,64 +959,65 @@ class _$_Data implements _Data {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataCopyWith<_$_Data> get copyWith =>
-      __$$_DataCopyWithImpl<_$_Data>(this, _$identity);
+  _$$_DataProfileDetailCopyWith<_$_DataProfileDetail> get copyWith =>
+      __$$_DataProfileDetailCopyWithImpl<_$_DataProfileDetail>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DataToJson(
+    return _$$_DataProfileDetailToJson(
       this,
     );
   }
 }
 
-abstract class _Data implements Data {
-  factory _Data(
+abstract class _DataProfileDetail implements DataProfileDetail {
+  factory _DataProfileDetail(
       {final int? id,
       final String? code,
       final String? display,
       final String? position,
       final String? profile,
-      @JsonKey(name: "default_photo")
+      @JsonKey(name: 'default_photo')
           final String? defaultPhoto,
       final String? name,
       final Gender? gender,
-      @JsonKey(name: "date_of_birth")
+      @JsonKey(name: 'date_of_birth')
           final String? dateOfBirth,
       final Gender? nationality,
       final String? recommended,
-      @JsonKey(name: "number_share")
+      @JsonKey(name: 'number_share')
           final int? numberShare,
       final String? expertise,
-      @JsonKey(name: "member_type")
+      @JsonKey(name: 'member_type')
           final List<String>? memberType,
-      @JsonKey(name: "year_joined")
+      @JsonKey(name: 'year_joined')
           final String? yearJoined,
       @JsonKey(name: "profile_biography")
           final String? profileBiography,
       final String? about,
       final String? other,
-      @JsonKey(name: "identity_type")
+      @JsonKey(name: 'identity_type')
           final Gender? identityType,
-      @JsonKey(name: "identity_number")
+      @JsonKey(name: 'identity_number')
           final String? identityNumber,
-      @JsonKey(name: "identity_date")
+      @JsonKey(name: 'identity_date')
           final String? identityDate,
-      @JsonKey(name: "identity_expired_date")
+      @JsonKey(name: 'identity_expired_date')
           final String? identityExpiredDate,
-      @JsonKey(name: "company_name")
+      @JsonKey(name: 'company_name')
           final String? companyName,
-      @JsonKey(name: "current_address")
+      @JsonKey(name: 'current_address')
           final CurrentAddress? currentAddress,
-      @JsonKey(name: "street_no")
+      @JsonKey(name: 'street_no')
           final String? streetNo,
-      @JsonKey(name: "house_no")
+      @JsonKey(name: 'house_no')
           final String? houseNo,
-      @JsonKey(name: "permanent_address")
+      @JsonKey(name: 'permanent_address')
           final CurrentAddress? permanentAddress,
-      @JsonKey(name: "permanent_street_no")
+      @JsonKey(name: 'permanent_street_no')
           final String? permanentStreetNo,
-      @JsonKey(name: "permanent_house_no")
+      @JsonKey(name: 'permanent_house_no')
           final String? permanentHouseNo,
       final String? phone,
       final String? email,
@@ -1020,9 +1028,10 @@ abstract class _Data implements Data {
       final String? website,
       final String? facebook,
       final String? linkedin,
-      final String? twitter}) = _$_Data;
+      final String? twitter}) = _$_DataProfileDetail;
 
-  factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
+  factory _DataProfileDetail.fromJson(Map<String, dynamic> json) =
+      _$_DataProfileDetail.fromJson;
 
   @override
   int? get id;
@@ -1035,29 +1044,29 @@ abstract class _Data implements Data {
   @override
   String? get profile;
   @override
-  @JsonKey(name: "default_photo")
+  @JsonKey(name: 'default_photo')
   String? get defaultPhoto;
   @override
   String? get name;
   @override
   Gender? get gender;
   @override
-  @JsonKey(name: "date_of_birth")
+  @JsonKey(name: 'date_of_birth')
   String? get dateOfBirth;
   @override
   Gender? get nationality;
   @override
   String? get recommended;
   @override
-  @JsonKey(name: "number_share")
+  @JsonKey(name: 'number_share')
   int? get numberShare;
   @override
   String? get expertise;
   @override
-  @JsonKey(name: "member_type")
+  @JsonKey(name: 'member_type')
   List<String>? get memberType;
   @override
-  @JsonKey(name: "year_joined")
+  @JsonKey(name: 'year_joined')
   String? get yearJoined;
   @override
   @JsonKey(name: "profile_biography")
@@ -1067,37 +1076,37 @@ abstract class _Data implements Data {
   @override
   String? get other;
   @override
-  @JsonKey(name: "identity_type")
+  @JsonKey(name: 'identity_type')
   Gender? get identityType;
   @override
-  @JsonKey(name: "identity_number")
+  @JsonKey(name: 'identity_number')
   String? get identityNumber;
   @override
-  @JsonKey(name: "identity_date")
+  @JsonKey(name: 'identity_date')
   String? get identityDate;
   @override
-  @JsonKey(name: "identity_expired_date")
+  @JsonKey(name: 'identity_expired_date')
   String? get identityExpiredDate;
   @override
-  @JsonKey(name: "company_name")
+  @JsonKey(name: 'company_name')
   String? get companyName;
   @override
-  @JsonKey(name: "current_address")
+  @JsonKey(name: 'current_address')
   CurrentAddress? get currentAddress;
   @override
-  @JsonKey(name: "street_no")
+  @JsonKey(name: 'street_no')
   String? get streetNo;
   @override
-  @JsonKey(name: "house_no")
+  @JsonKey(name: 'house_no')
   String? get houseNo;
   @override
-  @JsonKey(name: "permanent_address")
+  @JsonKey(name: 'permanent_address')
   CurrentAddress? get permanentAddress;
   @override
-  @JsonKey(name: "permanent_street_no")
+  @JsonKey(name: 'permanent_street_no')
   String? get permanentStreetNo;
   @override
-  @JsonKey(name: "permanent_house_no")
+  @JsonKey(name: 'permanent_house_no')
   String? get permanentHouseNo;
   @override
   String? get phone;
@@ -1121,5 +1130,6 @@ abstract class _Data implements Data {
   String? get twitter;
   @override
   @JsonKey(ignore: true)
-  _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
+  _$$_DataProfileDetailCopyWith<_$_DataProfileDetail> get copyWith =>
+      throw _privateConstructorUsedError;
 }

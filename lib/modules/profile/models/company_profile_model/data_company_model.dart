@@ -59,5 +59,6 @@ class CompanyDataModel with _$CompanyDataModel {
     @JsonKey(name: 'company_files') CompanyFiles? companyFiles,
   }) = _CompanyDataModel;
 
-  factory CompanyDataModel.fromJson(Map<String, dynamic> json) => _$CompanyDataModelFromJson(json);
+  factory CompanyDataModel.fromJson(Map<String, dynamic> json) =>
+      _$CompanyDataModelFromJson(json);
 }

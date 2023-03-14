@@ -6,7 +6,8 @@ part of 'data_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Data _$$_DataFromJson(Map<String, dynamic> json) => _$_Data(
+_$_DataProfileDetail _$$_DataProfileDetailFromJson(Map<String, dynamic> json) =>
+    _$_DataProfileDetail(
       id: json['id'] as int?,
       code: json['code'] as String?,
       display: json['display'] as String?,
@@ -62,7 +63,9 @@ _$_Data _$$_DataFromJson(Map<String, dynamic> json) => _$_Data(
       twitter: json['twitter'] as String?,
     );
 
-Map<String, dynamic> _$$_DataToJson(_$_Data instance) => <String, dynamic>{
+Map<String, dynamic> _$$_DataProfileDetailToJson(
+        _$_DataProfileDetail instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'code': instance.code,
       'display': instance.display,
