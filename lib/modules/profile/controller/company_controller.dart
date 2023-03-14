@@ -5,24 +5,31 @@ import '../../../utils/helper/api_base_helper.dart';
 import '../models/company_profile_model/data_company_model.dart';
 
 class CompanyProfileController extends GetxController {
-  var companyProfileModel = CompanyDataModel().obs;
-  var companyProfileList = <CompanyDataModel>[].obs;
-  var apiBaseHelper = ApiBaseHelper();
+  var companyProfileModel = DataCompanyProfileModel().obs;
+  // var companyProfileList = <CompanyDataModel>[].obs;
+  final _apiBaseHelper = ApiBaseHelper();
+  final isLoading = false.obs;
 
-  Future companyProfileInformation(int? id) async {
-    await apiBaseHelper
-        .onNetworkRequesting(
-            url: 'member/company/$id', methode: METHODE.get, isAuthorize: true)
-        .then((responseData) {
-      var response = responseData['data'];
-      response.map((e) {
-        debugPrint('= = = Element: $e');
-        companyProfileList.add(CompanyDataModel.fromJson(e));
-        debugPrint('= = = $companyProfileList');
-      }).toList();
-    }).onError((ErrorModel error, stackTrace) {
-      debugPrint('= = = = ERorr: $error');
-    });
-    return companyProfileList;
+  Future<void> companyProfileDetail({int? id}) async {
+    isLoading(true);
+    try {
+      await _apiBaseHelper
+          .onNetworkRequesting(
+        url: 'member/$id',
+        methode: METHODE.get,
+        isAuthorize: true,
+      )
+          .then((response) {
+        debugPrint('response: $response');
+        // companyProfileModel.value =
+        //     DataCompanyProfileModel.fromJson(response['data']);
+      }).onError((ErrorModel error, _) {
+        debugPrint(error.bodyString.toString());
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

@@ -8,9 +8,9 @@ part 'major_business_model.g.dart';
 @freezed
 class MajorOfBusiness with _$MajorOfBusiness {
   factory MajorOfBusiness({
-    int? id,
-    String? display,
-    @JsonKey(name: 'display_khmer') String? displayKhmer,
+   final String? display,
+  final  int? id,
+    @JsonKey(name: 'display_khmer') final String? displayKhmer,
   }) = _MajorOfBusiness;
 
   factory MajorOfBusiness.fromJson(Map<String, dynamic> json) =>

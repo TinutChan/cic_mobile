@@ -26,10 +26,8 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   @override
   void initState() {
-    // debugPrint('= = =${profileController.list}');
-
-    debugPrint(
-        '= = =hehehfekjfeehjfejefhjjheefjh${homeController.userModel.value.customerId}');
+    profileController.profileDetail(
+        id: homeController.userModel.value.customerId);
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
@@ -59,10 +57,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                   actions: [
                     IconButton(
                       onPressed: () {
-                        debugPrint(
-                            '= = = = Id: ${homeController.userModel.value.customerId}');
-                        companyProfileController.companyProfileInformation(
-                            homeController.userModel.value.customerId);
+                        // debugPrint(
+                        //     '= = = = Id: ${homeController.userModel.value.customerId}');
+                        // companyProfileController.companyProfileDetail();
                       },
                       icon: const Icon(Icons.add),
                     ),
@@ -70,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   flexibleSpace: const FlexibleSpaceBar(
                       collapseMode: CollapseMode.none,
                       centerTitle: true,
-                      background: CustomProfileDetail()),
+                      background: CustomProfileDetail(),),
                 ),
               ),
             ];

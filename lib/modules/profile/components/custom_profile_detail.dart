@@ -26,16 +26,8 @@ class CustomProfileDetail extends StatefulWidget {
 }
 
 class _CustomProfileDetailState extends State<CustomProfileDetail> {
-  // final controller = Get.put(ProfileController());
-
   final techSupportController = Get.put(TechicalSupportController());
   final profileController = Get.put(ProfileController());
-
-  @override
-  void initState() {
-    debugPrint('= = =Detail List ${profileController.profileDetailModel}');
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

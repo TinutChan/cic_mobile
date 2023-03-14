@@ -20,8 +20,8 @@ MajorOfBusiness _$MajorOfBusinessFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MajorOfBusiness {
-  int? get id => throw _privateConstructorUsedError;
   String? get display => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'display_khmer')
   String? get displayKhmer => throw _privateConstructorUsedError;
 
@@ -38,8 +38,8 @@ abstract class $MajorOfBusinessCopyWith<$Res> {
       _$MajorOfBusinessCopyWithImpl<$Res, MajorOfBusiness>;
   @useResult
   $Res call(
-      {int? id,
-      String? display,
+      {String? display,
+      int? id,
       @JsonKey(name: 'display_khmer') String? displayKhmer});
 }
 
@@ -56,19 +56,19 @@ class _$MajorOfBusinessCopyWithImpl<$Res, $Val extends MajorOfBusiness>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
     Object? display = freezed,
+    Object? id = freezed,
     Object? displayKhmer = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
       display: freezed == display
           ? _value.display
           : display // ignore: cast_nullable_to_non_nullable
               as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       displayKhmer: freezed == displayKhmer
           ? _value.displayKhmer
           : displayKhmer // ignore: cast_nullable_to_non_nullable
@@ -86,8 +86,8 @@ abstract class _$$_MajorOfBusinessCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
-      String? display,
+      {String? display,
+      int? id,
       @JsonKey(name: 'display_khmer') String? displayKhmer});
 }
 
@@ -102,19 +102,19 @@ class __$$_MajorOfBusinessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
     Object? display = freezed,
+    Object? id = freezed,
     Object? displayKhmer = freezed,
   }) {
     return _then(_$_MajorOfBusiness(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
       display: freezed == display
           ? _value.display
           : display // ignore: cast_nullable_to_non_nullable
               as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       displayKhmer: freezed == displayKhmer
           ? _value.displayKhmer
           : displayKhmer // ignore: cast_nullable_to_non_nullable
@@ -127,24 +127,24 @@ class __$$_MajorOfBusinessCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MajorOfBusiness implements _MajorOfBusiness {
   _$_MajorOfBusiness(
-      {this.id,
-      this.display,
+      {this.display,
+      this.id,
       @JsonKey(name: 'display_khmer') this.displayKhmer});
 
   factory _$_MajorOfBusiness.fromJson(Map<String, dynamic> json) =>
       _$$_MajorOfBusinessFromJson(json);
 
   @override
-  final int? id;
-  @override
   final String? display;
+  @override
+  final int? id;
   @override
   @JsonKey(name: 'display_khmer')
   final String? displayKhmer;
 
   @override
   String toString() {
-    return 'MajorOfBusiness(id: $id, display: $display, displayKhmer: $displayKhmer)';
+    return 'MajorOfBusiness(display: $display, id: $id, displayKhmer: $displayKhmer)';
   }
 
   @override
@@ -152,15 +152,15 @@ class _$_MajorOfBusiness implements _MajorOfBusiness {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MajorOfBusiness &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.display, display) || other.display == display) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.displayKhmer, displayKhmer) ||
                 other.displayKhmer == displayKhmer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, display, displayKhmer);
+  int get hashCode => Object.hash(runtimeType, display, id, displayKhmer);
 
   @JsonKey(ignore: true)
   @override
@@ -178,8 +178,8 @@ class _$_MajorOfBusiness implements _MajorOfBusiness {
 
 abstract class _MajorOfBusiness implements MajorOfBusiness {
   factory _MajorOfBusiness(
-          {final int? id,
-          final String? display,
+          {final String? display,
+          final int? id,
           @JsonKey(name: 'display_khmer') final String? displayKhmer}) =
       _$_MajorOfBusiness;
 
@@ -187,9 +187,9 @@ abstract class _MajorOfBusiness implements MajorOfBusiness {
       _$_MajorOfBusiness.fromJson;
 
   @override
-  int? get id;
-  @override
   String? get display;
+  @override
+  int? get id;
   @override
   @JsonKey(name: 'display_khmer')
   String? get displayKhmer;

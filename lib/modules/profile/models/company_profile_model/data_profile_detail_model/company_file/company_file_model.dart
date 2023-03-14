@@ -8,10 +8,10 @@ part 'company_file_model.g.dart';
 @freezed
 class CompanyFiles with _$CompanyFiles {
   factory CompanyFiles({
-    @JsonKey(name: 'company_patent_doc') List<String>? companyPatentDoc,
-    @JsonKey(name: 'company_licence_doc') List<String>? companyLicenceDoc,
+    @JsonKey(name: 'company_patent_doc')final List<String>? companyPatentDoc,
+    @JsonKey(name: 'company_licence_doc')final List<String>? companyLicenceDoc,
     @JsonKey(name: 'company_MoC_certificate')
-        List<String>? companyMoCCertificate,
+       final List<String>? companyMoCCertificate,
   }) = _CompanyFiles;
 
   factory CompanyFiles.fromJson(Map<String, dynamic> json) =>

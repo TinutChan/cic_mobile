@@ -6,7 +6,6 @@ import '../../../auth/login_cic/controllers/login_controller.dart';
 import '../models/personal_profile_model/data/data_model.dart';
 
 class ProfileController extends GetxController {
-
   var apibaseHelper = ApiBaseHelper();
   final loginController = Get.put(LoginController());
   var profileDetailModel = DataProfileDetail().obs;
@@ -17,13 +16,13 @@ class ProfileController extends GetxController {
     try {
       await apibaseHelper
           .onNetworkRequesting(
-        url: 'member/974',
+        url: 'member/$id',
         methode: METHODE.get,
         isAuthorize: true,
       )
           .then((response) {
         profileDetailModel.value = DataProfileDetail.fromJson(response['data']);
-        debugPrint('${profileDetailModel.value}');
+        debugPrint(' = = =response: $response');
       }).onError((ErrorModel error, _) {
         debugPrint(error.bodyString.toString());
       });
