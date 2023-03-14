@@ -20,8 +20,11 @@ CompanyFiles _$CompanyFilesFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CompanyFiles {
+  @JsonKey(name: 'company_patent_doc')
   List<String>? get companyPatentDoc => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_licence_doc')
   List<String>? get companyLicenceDoc => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_MoC_certificate')
   List<String>? get companyMoCCertificate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,9 +40,12 @@ abstract class $CompanyFilesCopyWith<$Res> {
       _$CompanyFilesCopyWithImpl<$Res, CompanyFiles>;
   @useResult
   $Res call(
-      {List<String>? companyPatentDoc,
-      List<String>? companyLicenceDoc,
-      List<String>? companyMoCCertificate});
+      {@JsonKey(name: 'company_patent_doc')
+          List<String>? companyPatentDoc,
+      @JsonKey(name: 'company_licence_doc')
+          List<String>? companyLicenceDoc,
+      @JsonKey(name: 'company_MoC_certificate')
+          List<String>? companyMoCCertificate});
 }
 
 /// @nodoc
@@ -85,9 +91,12 @@ abstract class _$$_CompanyFilesCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<String>? companyPatentDoc,
-      List<String>? companyLicenceDoc,
-      List<String>? companyMoCCertificate});
+      {@JsonKey(name: 'company_patent_doc')
+          List<String>? companyPatentDoc,
+      @JsonKey(name: 'company_licence_doc')
+          List<String>? companyLicenceDoc,
+      @JsonKey(name: 'company_MoC_certificate')
+          List<String>? companyMoCCertificate});
 }
 
 /// @nodoc
@@ -126,9 +135,12 @@ class __$$_CompanyFilesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CompanyFiles implements _CompanyFiles {
   _$_CompanyFiles(
-      {final List<String>? companyPatentDoc,
-      final List<String>? companyLicenceDoc,
-      final List<String>? companyMoCCertificate})
+      {@JsonKey(name: 'company_patent_doc')
+          final List<String>? companyPatentDoc,
+      @JsonKey(name: 'company_licence_doc')
+          final List<String>? companyLicenceDoc,
+      @JsonKey(name: 'company_MoC_certificate')
+          final List<String>? companyMoCCertificate})
       : _companyPatentDoc = companyPatentDoc,
         _companyLicenceDoc = companyLicenceDoc,
         _companyMoCCertificate = companyMoCCertificate;
@@ -138,6 +150,7 @@ class _$_CompanyFiles implements _CompanyFiles {
 
   final List<String>? _companyPatentDoc;
   @override
+  @JsonKey(name: 'company_patent_doc')
   List<String>? get companyPatentDoc {
     final value = _companyPatentDoc;
     if (value == null) return null;
@@ -149,6 +162,7 @@ class _$_CompanyFiles implements _CompanyFiles {
 
   final List<String>? _companyLicenceDoc;
   @override
+  @JsonKey(name: 'company_licence_doc')
   List<String>? get companyLicenceDoc {
     final value = _companyLicenceDoc;
     if (value == null) return null;
@@ -160,6 +174,7 @@ class _$_CompanyFiles implements _CompanyFiles {
 
   final List<String>? _companyMoCCertificate;
   @override
+  @JsonKey(name: 'company_MoC_certificate')
   List<String>? get companyMoCCertificate {
     final value = _companyMoCCertificate;
     if (value == null) return null;
@@ -211,18 +226,24 @@ class _$_CompanyFiles implements _CompanyFiles {
 
 abstract class _CompanyFiles implements CompanyFiles {
   factory _CompanyFiles(
-      {final List<String>? companyPatentDoc,
-      final List<String>? companyLicenceDoc,
-      final List<String>? companyMoCCertificate}) = _$_CompanyFiles;
+      {@JsonKey(name: 'company_patent_doc')
+          final List<String>? companyPatentDoc,
+      @JsonKey(name: 'company_licence_doc')
+          final List<String>? companyLicenceDoc,
+      @JsonKey(name: 'company_MoC_certificate')
+          final List<String>? companyMoCCertificate}) = _$_CompanyFiles;
 
   factory _CompanyFiles.fromJson(Map<String, dynamic> json) =
       _$_CompanyFiles.fromJson;
 
   @override
+  @JsonKey(name: 'company_patent_doc')
   List<String>? get companyPatentDoc;
   @override
+  @JsonKey(name: 'company_licence_doc')
   List<String>? get companyLicenceDoc;
   @override
+  @JsonKey(name: 'company_MoC_certificate')
   List<String>? get companyMoCCertificate;
   @override
   @JsonKey(ignore: true)

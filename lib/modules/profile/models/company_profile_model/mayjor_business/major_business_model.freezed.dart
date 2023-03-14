@@ -22,6 +22,7 @@ MajorOfBusiness _$MajorOfBusinessFromJson(Map<String, dynamic> json) {
 mixin _$MajorOfBusiness {
   int? get id => throw _privateConstructorUsedError;
   String? get display => throw _privateConstructorUsedError;
+  @JsonKey(name: 'display_khmer')
   String? get displayKhmer => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,10 @@ abstract class $MajorOfBusinessCopyWith<$Res> {
           MajorOfBusiness value, $Res Function(MajorOfBusiness) then) =
       _$MajorOfBusinessCopyWithImpl<$Res, MajorOfBusiness>;
   @useResult
-  $Res call({int? id, String? display, String? displayKhmer});
+  $Res call(
+      {int? id,
+      String? display,
+      @JsonKey(name: 'display_khmer') String? displayKhmer});
 }
 
 /// @nodoc
@@ -81,7 +85,10 @@ abstract class _$$_MajorOfBusinessCopyWith<$Res>
       __$$_MajorOfBusinessCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? display, String? displayKhmer});
+  $Res call(
+      {int? id,
+      String? display,
+      @JsonKey(name: 'display_khmer') String? displayKhmer});
 }
 
 /// @nodoc
@@ -119,7 +126,10 @@ class __$$_MajorOfBusinessCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MajorOfBusiness implements _MajorOfBusiness {
-  _$_MajorOfBusiness({this.id, this.display, this.displayKhmer});
+  _$_MajorOfBusiness(
+      {this.id,
+      this.display,
+      @JsonKey(name: 'display_khmer') this.displayKhmer});
 
   factory _$_MajorOfBusiness.fromJson(Map<String, dynamic> json) =>
       _$$_MajorOfBusinessFromJson(json);
@@ -129,6 +139,7 @@ class _$_MajorOfBusiness implements _MajorOfBusiness {
   @override
   final String? display;
   @override
+  @JsonKey(name: 'display_khmer')
   final String? displayKhmer;
 
   @override
@@ -167,9 +178,10 @@ class _$_MajorOfBusiness implements _MajorOfBusiness {
 
 abstract class _MajorOfBusiness implements MajorOfBusiness {
   factory _MajorOfBusiness(
-      {final int? id,
-      final String? display,
-      final String? displayKhmer}) = _$_MajorOfBusiness;
+          {final int? id,
+          final String? display,
+          @JsonKey(name: 'display_khmer') final String? displayKhmer}) =
+      _$_MajorOfBusiness;
 
   factory _MajorOfBusiness.fromJson(Map<String, dynamic> json) =
       _$_MajorOfBusiness.fromJson;
@@ -179,6 +191,7 @@ abstract class _MajorOfBusiness implements MajorOfBusiness {
   @override
   String? get display;
   @override
+  @JsonKey(name: 'display_khmer')
   String? get displayKhmer;
   @override
   @JsonKey(ignore: true)

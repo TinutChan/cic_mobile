@@ -1,25 +1,16 @@
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../constants/color_app/color_app.dart';
-import '../../../widgets/custom_slider.dart';
 import '../../account/controller/technical_support_controller.dart';
 import '../../home/controller/home_controller.dart';
 import '../components/custom_profile_detail.dart';
+import '../controller/company_controller.dart';
+import 'company_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen(
-      {super.key,
-      this.onCallTapped,
-      this.onTelegramTapped,
-      this.onEmailTapped,
-      this.onWebsiteTapped});
-  final VoidCallback? onCallTapped;
-  final VoidCallback? onTelegramTapped;
-  final VoidCallback? onEmailTapped;
-  final VoidCallback? onWebsiteTapped;
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -30,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   final homeController = Get.put(HomeController());
   final contactMoreController = Get.put(TechicalSupportController());
   final profileController = Get.put(ProfileController());
-
+  final companyProfileController = Get.put(CompanyProfileController());
   late TabController _tabController;
 
   @override
@@ -65,7 +56,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                   actions: [
                     IconButton(
                       onPressed: () {
-                        profileController.profileController(
+                        debugPrint(
+                            '= = = = Id: ${homeController.userModel.value.customerId}');
+                        companyProfileController.companyProfileInformation(
                             homeController.userModel.value.customerId);
                       },
                       icon: const Icon(Icons.add),
@@ -143,60 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
                         itemCount: 1,
                         itemBuilder: (context, index) {
-                          return Container(
-                            padding: const EdgeInsets.symmetric(vertical: 15.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    const CircleAvatar(),
-                                    const SizedBox(width: 20),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: const [
-                                        Text('Cambodia Investors Corporation'),
-                                        Text('Beyond Investment Opportunity'),
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    GestureDetector(
-                                      onTap: () {
-                                        debugPrint('= = = =Tapped====');
-                                        context.pop(
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return const ListTile();
-                                            },
-                                          ),
-                                        );
-                                      },
-                                      child: const Icon(Icons.more_horiz),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text('About'),
-                                    Icon(Icons.edit)
-                                  ],
-                                ),
-                                const SizedBox(height: 12),
-                                const Text(
-                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Gravida sit tortor nisl fringilla porttitor viverra scelerisque. Turpis nisl et facilisis aliquam ultricies interdum lectus eget facilisis aliquam.'),
-                                const SizedBox(height: 20),
-                                const CustomSlider(
-                                  margin: EdgeInsets.only(right: 12.0),
-                                  padEnds: false,
-                                  viewportFraction: 0.9,
-                                ),
-                              ],
-                            ),
-                          );
+                          return const CompanyProfileScreen();
                         },
                       ),
                     ),

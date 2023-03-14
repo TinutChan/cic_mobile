@@ -14,112 +14,176 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Data _$DataFromJson(Map<String, dynamic> json) {
-  return _Data.fromJson(json);
+CompanyDataModel _$CompanyDataModelFromJson(Map<String, dynamic> json) {
+  return _CompanyDataModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Data {
+mixin _$CompanyDataModel {
   int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'member_id')
   int? get memberId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_name')
   String? get companyName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'khmer_name')
   String? get khmerName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'major_of_business')
   MajorOfBusiness? get majorOfBusiness => throw _privateConstructorUsedError;
   String? get position => throw _privateConstructorUsedError;
+  @JsonKey(name: 'legal_status')
   MajorOfBusiness? get legalStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'registered_business')
   MajorOfBusiness? get registeredBusiness => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_size')
   int? get companySize => throw _privateConstructorUsedError;
+  @JsonKey(name: 'number_of_branches')
   int? get numberOfBranches => throw _privateConstructorUsedError;
+  @JsonKey(name: 'business_model')
   MajorOfBusiness? get businessModel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'capital_investment')
   String? get capitalInvestment => throw _privateConstructorUsedError;
+  @JsonKey(name: 'year_founded')
   String? get yearFounded => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_primary')
   int? get isPrimary => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_diagnostic_report')
   String? get companyDiagnosticReport => throw _privateConstructorUsedError;
+  @JsonKey(name: 'companymilestones')
   String? get companyMilestones => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_logo')
   String? get companyLogo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'service_images')
   String? get serviceImages => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_slogan')
   String? get companySlogan => throw _privateConstructorUsedError;
+  @JsonKey(name: 'personal_interest')
   String? get personalInterest => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_profile')
   String? get companyProfile => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_product_and_service')
   String? get companyProductAndService => throw _privateConstructorUsedError;
+  @JsonKey(name: 'house_no')
   String? get houseNo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'street_no')
   String? get streetNo => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
+  @JsonKey(name: 'phone_number')
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'what_app')
   String? get whatApp => throw _privateConstructorUsedError;
   String? get telegram => throw _privateConstructorUsedError;
   String? get messenger => throw _privateConstructorUsedError;
   String? get skype => throw _privateConstructorUsedError;
+  @JsonKey(name: 'we_chat')
   String? get weChat => throw _privateConstructorUsedError;
   String? get website => throw _privateConstructorUsedError;
   String? get facebook => throw _privateConstructorUsedError;
   String? get linkedin => throw _privateConstructorUsedError;
   String? get twitter => throw _privateConstructorUsedError;
+  @JsonKey(name: 'type_of_organization')
   MajorOfBusiness? get typeOfOrganization => throw _privateConstructorUsedError;
   MajorOfBusiness? get industry => throw _privateConstructorUsedError;
   String? get industry1 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tax_identification_number')
   String? get taxIdentificationNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: 'number_of_staff')
   int? get numberOfStaff => throw _privateConstructorUsedError;
+  @JsonKey(name: 'owner_name')
   String? get ownerName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_activity_images')
   List<String>? get companyActivityImages => throw _privateConstructorUsedError;
+  @JsonKey(name: 'company_files')
   CompanyFiles? get companyFiles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
+  $CompanyDataModelCopyWith<CompanyDataModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DataCopyWith<$Res> {
-  factory $DataCopyWith(Data value, $Res Function(Data) then) =
-      _$DataCopyWithImpl<$Res, Data>;
+abstract class $CompanyDataModelCopyWith<$Res> {
+  factory $CompanyDataModelCopyWith(
+          CompanyDataModel value, $Res Function(CompanyDataModel) then) =
+      _$CompanyDataModelCopyWithImpl<$Res, CompanyDataModel>;
   @useResult
   $Res call(
       {int? id,
-      int? memberId,
-      String? companyName,
-      String? khmerName,
-      MajorOfBusiness? majorOfBusiness,
+      @JsonKey(name: 'member_id')
+          int? memberId,
+      @JsonKey(name: 'company_name')
+          String? companyName,
+      @JsonKey(name: 'khmer_name')
+          String? khmerName,
+      @JsonKey(name: 'major_of_business')
+          MajorOfBusiness? majorOfBusiness,
       String? position,
-      MajorOfBusiness? legalStatus,
-      MajorOfBusiness? registeredBusiness,
-      int? companySize,
-      int? numberOfBranches,
-      MajorOfBusiness? businessModel,
-      String? capitalInvestment,
-      String? yearFounded,
-      int? isPrimary,
-      String? companyDiagnosticReport,
-      String? companyMilestones,
-      String? companyLogo,
-      String? serviceImages,
-      String? companySlogan,
-      String? personalInterest,
-      String? companyProfile,
-      String? companyProductAndService,
-      String? houseNo,
-      String? streetNo,
+      @JsonKey(name: 'legal_status')
+          MajorOfBusiness? legalStatus,
+      @JsonKey(name: 'registered_business')
+          MajorOfBusiness? registeredBusiness,
+      @JsonKey(name: 'company_size')
+          int? companySize,
+      @JsonKey(name: 'number_of_branches')
+          int? numberOfBranches,
+      @JsonKey(name: 'business_model')
+          MajorOfBusiness? businessModel,
+      @JsonKey(name: 'capital_investment')
+          String? capitalInvestment,
+      @JsonKey(name: 'year_founded')
+          String? yearFounded,
+      @JsonKey(name: 'is_primary')
+          int? isPrimary,
+      @JsonKey(name: 'company_diagnostic_report')
+          String? companyDiagnosticReport,
+      @JsonKey(name: 'companymilestones')
+          String? companyMilestones,
+      @JsonKey(name: 'company_logo')
+          String? companyLogo,
+      @JsonKey(name: 'service_images')
+          String? serviceImages,
+      @JsonKey(name: 'company_slogan')
+          String? companySlogan,
+      @JsonKey(name: 'personal_interest')
+          String? personalInterest,
+      @JsonKey(name: 'company_profile')
+          String? companyProfile,
+      @JsonKey(name: 'company_product_and_service')
+          String? companyProductAndService,
+      @JsonKey(name: 'house_no')
+          String? houseNo,
+      @JsonKey(name: 'street_no')
+          String? streetNo,
       String? address,
-      String? phoneNumber,
+      @JsonKey(name: 'phone_number')
+          String? phoneNumber,
       String? email,
-      String? whatApp,
+      @JsonKey(name: 'what_app')
+          String? whatApp,
       String? telegram,
       String? messenger,
       String? skype,
-      String? weChat,
+      @JsonKey(name: 'we_chat')
+          String? weChat,
       String? website,
       String? facebook,
       String? linkedin,
       String? twitter,
-      MajorOfBusiness? typeOfOrganization,
+      @JsonKey(name: 'type_of_organization')
+          MajorOfBusiness? typeOfOrganization,
       MajorOfBusiness? industry,
       String? industry1,
-      String? taxIdentificationNumber,
-      int? numberOfStaff,
-      String? ownerName,
-      List<String>? companyActivityImages,
-      CompanyFiles? companyFiles});
+      @JsonKey(name: 'tax_identification_number')
+          String? taxIdentificationNumber,
+      @JsonKey(name: 'number_of_staff')
+          int? numberOfStaff,
+      @JsonKey(name: 'owner_name')
+          String? ownerName,
+      @JsonKey(name: 'company_activity_images')
+          List<String>? companyActivityImages,
+      @JsonKey(name: 'company_files')
+          CompanyFiles? companyFiles});
 
   $MajorOfBusinessCopyWith<$Res>? get majorOfBusiness;
   $MajorOfBusinessCopyWith<$Res>? get legalStatus;
@@ -131,9 +195,9 @@ abstract class $DataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DataCopyWithImpl<$Res, $Val extends Data>
-    implements $DataCopyWith<$Res> {
-  _$DataCopyWithImpl(this._value, this._then);
+class _$CompanyDataModelCopyWithImpl<$Res, $Val extends CompanyDataModel>
+    implements $CompanyDataModelCopyWith<$Res> {
+  _$CompanyDataModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -454,56 +518,89 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
 }
 
 /// @nodoc
-abstract class _$$_DataCopyWith<$Res> implements $DataCopyWith<$Res> {
-  factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
-      __$$_DataCopyWithImpl<$Res>;
+abstract class _$$_CompanyDataModelCopyWith<$Res>
+    implements $CompanyDataModelCopyWith<$Res> {
+  factory _$$_CompanyDataModelCopyWith(
+          _$_CompanyDataModel value, $Res Function(_$_CompanyDataModel) then) =
+      __$$_CompanyDataModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int? id,
-      int? memberId,
-      String? companyName,
-      String? khmerName,
-      MajorOfBusiness? majorOfBusiness,
+      @JsonKey(name: 'member_id')
+          int? memberId,
+      @JsonKey(name: 'company_name')
+          String? companyName,
+      @JsonKey(name: 'khmer_name')
+          String? khmerName,
+      @JsonKey(name: 'major_of_business')
+          MajorOfBusiness? majorOfBusiness,
       String? position,
-      MajorOfBusiness? legalStatus,
-      MajorOfBusiness? registeredBusiness,
-      int? companySize,
-      int? numberOfBranches,
-      MajorOfBusiness? businessModel,
-      String? capitalInvestment,
-      String? yearFounded,
-      int? isPrimary,
-      String? companyDiagnosticReport,
-      String? companyMilestones,
-      String? companyLogo,
-      String? serviceImages,
-      String? companySlogan,
-      String? personalInterest,
-      String? companyProfile,
-      String? companyProductAndService,
-      String? houseNo,
-      String? streetNo,
+      @JsonKey(name: 'legal_status')
+          MajorOfBusiness? legalStatus,
+      @JsonKey(name: 'registered_business')
+          MajorOfBusiness? registeredBusiness,
+      @JsonKey(name: 'company_size')
+          int? companySize,
+      @JsonKey(name: 'number_of_branches')
+          int? numberOfBranches,
+      @JsonKey(name: 'business_model')
+          MajorOfBusiness? businessModel,
+      @JsonKey(name: 'capital_investment')
+          String? capitalInvestment,
+      @JsonKey(name: 'year_founded')
+          String? yearFounded,
+      @JsonKey(name: 'is_primary')
+          int? isPrimary,
+      @JsonKey(name: 'company_diagnostic_report')
+          String? companyDiagnosticReport,
+      @JsonKey(name: 'companymilestones')
+          String? companyMilestones,
+      @JsonKey(name: 'company_logo')
+          String? companyLogo,
+      @JsonKey(name: 'service_images')
+          String? serviceImages,
+      @JsonKey(name: 'company_slogan')
+          String? companySlogan,
+      @JsonKey(name: 'personal_interest')
+          String? personalInterest,
+      @JsonKey(name: 'company_profile')
+          String? companyProfile,
+      @JsonKey(name: 'company_product_and_service')
+          String? companyProductAndService,
+      @JsonKey(name: 'house_no')
+          String? houseNo,
+      @JsonKey(name: 'street_no')
+          String? streetNo,
       String? address,
-      String? phoneNumber,
+      @JsonKey(name: 'phone_number')
+          String? phoneNumber,
       String? email,
-      String? whatApp,
+      @JsonKey(name: 'what_app')
+          String? whatApp,
       String? telegram,
       String? messenger,
       String? skype,
-      String? weChat,
+      @JsonKey(name: 'we_chat')
+          String? weChat,
       String? website,
       String? facebook,
       String? linkedin,
       String? twitter,
-      MajorOfBusiness? typeOfOrganization,
+      @JsonKey(name: 'type_of_organization')
+          MajorOfBusiness? typeOfOrganization,
       MajorOfBusiness? industry,
       String? industry1,
-      String? taxIdentificationNumber,
-      int? numberOfStaff,
-      String? ownerName,
-      List<String>? companyActivityImages,
-      CompanyFiles? companyFiles});
+      @JsonKey(name: 'tax_identification_number')
+          String? taxIdentificationNumber,
+      @JsonKey(name: 'number_of_staff')
+          int? numberOfStaff,
+      @JsonKey(name: 'owner_name')
+          String? ownerName,
+      @JsonKey(name: 'company_activity_images')
+          List<String>? companyActivityImages,
+      @JsonKey(name: 'company_files')
+          CompanyFiles? companyFiles});
 
   @override
   $MajorOfBusinessCopyWith<$Res>? get majorOfBusiness;
@@ -522,9 +619,11 @@ abstract class _$$_DataCopyWith<$Res> implements $DataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res, _$_Data>
-    implements _$$_DataCopyWith<$Res> {
-  __$$_DataCopyWithImpl(_$_Data _value, $Res Function(_$_Data) _then)
+class __$$_CompanyDataModelCopyWithImpl<$Res>
+    extends _$CompanyDataModelCopyWithImpl<$Res, _$_CompanyDataModel>
+    implements _$$_CompanyDataModelCopyWith<$Res> {
+  __$$_CompanyDataModelCopyWithImpl(
+      _$_CompanyDataModel _value, $Res Function(_$_CompanyDataModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -575,7 +674,7 @@ class __$$_DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res, _$_Data>
     Object? companyActivityImages = freezed,
     Object? companyFiles = freezed,
   }) {
-    return _then(_$_Data(
+    return _then(_$_CompanyDataModel(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -758,111 +857,167 @@ class __$$_DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res, _$_Data>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Data implements _Data {
-  _$_Data(
+class _$_CompanyDataModel implements _CompanyDataModel {
+  _$_CompanyDataModel(
       {this.id,
-      this.memberId,
-      this.companyName,
-      this.khmerName,
-      this.majorOfBusiness,
+      @JsonKey(name: 'member_id')
+          this.memberId,
+      @JsonKey(name: 'company_name')
+          this.companyName,
+      @JsonKey(name: 'khmer_name')
+          this.khmerName,
+      @JsonKey(name: 'major_of_business')
+          this.majorOfBusiness,
       this.position,
-      this.legalStatus,
-      this.registeredBusiness,
-      this.companySize,
-      this.numberOfBranches,
-      this.businessModel,
-      this.capitalInvestment,
-      this.yearFounded,
-      this.isPrimary,
-      this.companyDiagnosticReport,
-      this.companyMilestones,
-      this.companyLogo,
-      this.serviceImages,
-      this.companySlogan,
-      this.personalInterest,
-      this.companyProfile,
-      this.companyProductAndService,
-      this.houseNo,
-      this.streetNo,
+      @JsonKey(name: 'legal_status')
+          this.legalStatus,
+      @JsonKey(name: 'registered_business')
+          this.registeredBusiness,
+      @JsonKey(name: 'company_size')
+          this.companySize,
+      @JsonKey(name: 'number_of_branches')
+          this.numberOfBranches,
+      @JsonKey(name: 'business_model')
+          this.businessModel,
+      @JsonKey(name: 'capital_investment')
+          this.capitalInvestment,
+      @JsonKey(name: 'year_founded')
+          this.yearFounded,
+      @JsonKey(name: 'is_primary')
+          this.isPrimary,
+      @JsonKey(name: 'company_diagnostic_report')
+          this.companyDiagnosticReport,
+      @JsonKey(name: 'companymilestones')
+          this.companyMilestones,
+      @JsonKey(name: 'company_logo')
+          this.companyLogo,
+      @JsonKey(name: 'service_images')
+          this.serviceImages,
+      @JsonKey(name: 'company_slogan')
+          this.companySlogan,
+      @JsonKey(name: 'personal_interest')
+          this.personalInterest,
+      @JsonKey(name: 'company_profile')
+          this.companyProfile,
+      @JsonKey(name: 'company_product_and_service')
+          this.companyProductAndService,
+      @JsonKey(name: 'house_no')
+          this.houseNo,
+      @JsonKey(name: 'street_no')
+          this.streetNo,
       this.address,
-      this.phoneNumber,
+      @JsonKey(name: 'phone_number')
+          this.phoneNumber,
       this.email,
-      this.whatApp,
+      @JsonKey(name: 'what_app')
+          this.whatApp,
       this.telegram,
       this.messenger,
       this.skype,
-      this.weChat,
+      @JsonKey(name: 'we_chat')
+          this.weChat,
       this.website,
       this.facebook,
       this.linkedin,
       this.twitter,
-      this.typeOfOrganization,
+      @JsonKey(name: 'type_of_organization')
+          this.typeOfOrganization,
       this.industry,
       this.industry1,
-      this.taxIdentificationNumber,
-      this.numberOfStaff,
-      this.ownerName,
-      final List<String>? companyActivityImages,
-      this.companyFiles})
+      @JsonKey(name: 'tax_identification_number')
+          this.taxIdentificationNumber,
+      @JsonKey(name: 'number_of_staff')
+          this.numberOfStaff,
+      @JsonKey(name: 'owner_name')
+          this.ownerName,
+      @JsonKey(name: 'company_activity_images')
+          final List<String>? companyActivityImages,
+      @JsonKey(name: 'company_files')
+          this.companyFiles})
       : _companyActivityImages = companyActivityImages;
 
-  factory _$_Data.fromJson(Map<String, dynamic> json) => _$$_DataFromJson(json);
+  factory _$_CompanyDataModel.fromJson(Map<String, dynamic> json) =>
+      _$$_CompanyDataModelFromJson(json);
 
   @override
   final int? id;
   @override
+  @JsonKey(name: 'member_id')
   final int? memberId;
   @override
+  @JsonKey(name: 'company_name')
   final String? companyName;
   @override
+  @JsonKey(name: 'khmer_name')
   final String? khmerName;
   @override
+  @JsonKey(name: 'major_of_business')
   final MajorOfBusiness? majorOfBusiness;
   @override
   final String? position;
   @override
+  @JsonKey(name: 'legal_status')
   final MajorOfBusiness? legalStatus;
   @override
+  @JsonKey(name: 'registered_business')
   final MajorOfBusiness? registeredBusiness;
   @override
+  @JsonKey(name: 'company_size')
   final int? companySize;
   @override
+  @JsonKey(name: 'number_of_branches')
   final int? numberOfBranches;
   @override
+  @JsonKey(name: 'business_model')
   final MajorOfBusiness? businessModel;
   @override
+  @JsonKey(name: 'capital_investment')
   final String? capitalInvestment;
   @override
+  @JsonKey(name: 'year_founded')
   final String? yearFounded;
   @override
+  @JsonKey(name: 'is_primary')
   final int? isPrimary;
   @override
+  @JsonKey(name: 'company_diagnostic_report')
   final String? companyDiagnosticReport;
   @override
+  @JsonKey(name: 'companymilestones')
   final String? companyMilestones;
   @override
+  @JsonKey(name: 'company_logo')
   final String? companyLogo;
   @override
+  @JsonKey(name: 'service_images')
   final String? serviceImages;
   @override
+  @JsonKey(name: 'company_slogan')
   final String? companySlogan;
   @override
+  @JsonKey(name: 'personal_interest')
   final String? personalInterest;
   @override
+  @JsonKey(name: 'company_profile')
   final String? companyProfile;
   @override
+  @JsonKey(name: 'company_product_and_service')
   final String? companyProductAndService;
   @override
+  @JsonKey(name: 'house_no')
   final String? houseNo;
   @override
+  @JsonKey(name: 'street_no')
   final String? streetNo;
   @override
   final String? address;
   @override
+  @JsonKey(name: 'phone_number')
   final String? phoneNumber;
   @override
   final String? email;
   @override
+  @JsonKey(name: 'what_app')
   final String? whatApp;
   @override
   final String? telegram;
@@ -871,6 +1026,7 @@ class _$_Data implements _Data {
   @override
   final String? skype;
   @override
+  @JsonKey(name: 'we_chat')
   final String? weChat;
   @override
   final String? website;
@@ -881,19 +1037,24 @@ class _$_Data implements _Data {
   @override
   final String? twitter;
   @override
+  @JsonKey(name: 'type_of_organization')
   final MajorOfBusiness? typeOfOrganization;
   @override
   final MajorOfBusiness? industry;
   @override
   final String? industry1;
   @override
+  @JsonKey(name: 'tax_identification_number')
   final String? taxIdentificationNumber;
   @override
+  @JsonKey(name: 'number_of_staff')
   final int? numberOfStaff;
   @override
+  @JsonKey(name: 'owner_name')
   final String? ownerName;
   final List<String>? _companyActivityImages;
   @override
+  @JsonKey(name: 'company_activity_images')
   List<String>? get companyActivityImages {
     final value = _companyActivityImages;
     if (value == null) return null;
@@ -904,18 +1065,19 @@ class _$_Data implements _Data {
   }
 
   @override
+  @JsonKey(name: 'company_files')
   final CompanyFiles? companyFiles;
 
   @override
   String toString() {
-    return 'Data(id: $id, memberId: $memberId, companyName: $companyName, khmerName: $khmerName, majorOfBusiness: $majorOfBusiness, position: $position, legalStatus: $legalStatus, registeredBusiness: $registeredBusiness, companySize: $companySize, numberOfBranches: $numberOfBranches, businessModel: $businessModel, capitalInvestment: $capitalInvestment, yearFounded: $yearFounded, isPrimary: $isPrimary, companyDiagnosticReport: $companyDiagnosticReport, companyMilestones: $companyMilestones, companyLogo: $companyLogo, serviceImages: $serviceImages, companySlogan: $companySlogan, personalInterest: $personalInterest, companyProfile: $companyProfile, companyProductAndService: $companyProductAndService, houseNo: $houseNo, streetNo: $streetNo, address: $address, phoneNumber: $phoneNumber, email: $email, whatApp: $whatApp, telegram: $telegram, messenger: $messenger, skype: $skype, weChat: $weChat, website: $website, facebook: $facebook, linkedin: $linkedin, twitter: $twitter, typeOfOrganization: $typeOfOrganization, industry: $industry, industry1: $industry1, taxIdentificationNumber: $taxIdentificationNumber, numberOfStaff: $numberOfStaff, ownerName: $ownerName, companyActivityImages: $companyActivityImages, companyFiles: $companyFiles)';
+    return 'CompanyDataModel(id: $id, memberId: $memberId, companyName: $companyName, khmerName: $khmerName, majorOfBusiness: $majorOfBusiness, position: $position, legalStatus: $legalStatus, registeredBusiness: $registeredBusiness, companySize: $companySize, numberOfBranches: $numberOfBranches, businessModel: $businessModel, capitalInvestment: $capitalInvestment, yearFounded: $yearFounded, isPrimary: $isPrimary, companyDiagnosticReport: $companyDiagnosticReport, companyMilestones: $companyMilestones, companyLogo: $companyLogo, serviceImages: $serviceImages, companySlogan: $companySlogan, personalInterest: $personalInterest, companyProfile: $companyProfile, companyProductAndService: $companyProductAndService, houseNo: $houseNo, streetNo: $streetNo, address: $address, phoneNumber: $phoneNumber, email: $email, whatApp: $whatApp, telegram: $telegram, messenger: $messenger, skype: $skype, weChat: $weChat, website: $website, facebook: $facebook, linkedin: $linkedin, twitter: $twitter, typeOfOrganization: $typeOfOrganization, industry: $industry, industry1: $industry1, taxIdentificationNumber: $taxIdentificationNumber, numberOfStaff: $numberOfStaff, ownerName: $ownerName, companyActivityImages: $companyActivityImages, companyFiles: $companyFiles)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Data &&
+            other is _$_CompanyDataModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.memberId, memberId) ||
                 other.memberId == memberId) &&
@@ -1050,121 +1212,177 @@ class _$_Data implements _Data {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataCopyWith<_$_Data> get copyWith =>
-      __$$_DataCopyWithImpl<_$_Data>(this, _$identity);
+  _$$_CompanyDataModelCopyWith<_$_CompanyDataModel> get copyWith =>
+      __$$_CompanyDataModelCopyWithImpl<_$_CompanyDataModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DataToJson(
+    return _$$_CompanyDataModelToJson(
       this,
     );
   }
 }
 
-abstract class _Data implements Data {
-  factory _Data(
+abstract class _CompanyDataModel implements CompanyDataModel {
+  factory _CompanyDataModel(
       {final int? id,
-      final int? memberId,
-      final String? companyName,
-      final String? khmerName,
-      final MajorOfBusiness? majorOfBusiness,
+      @JsonKey(name: 'member_id')
+          final int? memberId,
+      @JsonKey(name: 'company_name')
+          final String? companyName,
+      @JsonKey(name: 'khmer_name')
+          final String? khmerName,
+      @JsonKey(name: 'major_of_business')
+          final MajorOfBusiness? majorOfBusiness,
       final String? position,
-      final MajorOfBusiness? legalStatus,
-      final MajorOfBusiness? registeredBusiness,
-      final int? companySize,
-      final int? numberOfBranches,
-      final MajorOfBusiness? businessModel,
-      final String? capitalInvestment,
-      final String? yearFounded,
-      final int? isPrimary,
-      final String? companyDiagnosticReport,
-      final String? companyMilestones,
-      final String? companyLogo,
-      final String? serviceImages,
-      final String? companySlogan,
-      final String? personalInterest,
-      final String? companyProfile,
-      final String? companyProductAndService,
-      final String? houseNo,
-      final String? streetNo,
+      @JsonKey(name: 'legal_status')
+          final MajorOfBusiness? legalStatus,
+      @JsonKey(name: 'registered_business')
+          final MajorOfBusiness? registeredBusiness,
+      @JsonKey(name: 'company_size')
+          final int? companySize,
+      @JsonKey(name: 'number_of_branches')
+          final int? numberOfBranches,
+      @JsonKey(name: 'business_model')
+          final MajorOfBusiness? businessModel,
+      @JsonKey(name: 'capital_investment')
+          final String? capitalInvestment,
+      @JsonKey(name: 'year_founded')
+          final String? yearFounded,
+      @JsonKey(name: 'is_primary')
+          final int? isPrimary,
+      @JsonKey(name: 'company_diagnostic_report')
+          final String? companyDiagnosticReport,
+      @JsonKey(name: 'companymilestones')
+          final String? companyMilestones,
+      @JsonKey(name: 'company_logo')
+          final String? companyLogo,
+      @JsonKey(name: 'service_images')
+          final String? serviceImages,
+      @JsonKey(name: 'company_slogan')
+          final String? companySlogan,
+      @JsonKey(name: 'personal_interest')
+          final String? personalInterest,
+      @JsonKey(name: 'company_profile')
+          final String? companyProfile,
+      @JsonKey(name: 'company_product_and_service')
+          final String? companyProductAndService,
+      @JsonKey(name: 'house_no')
+          final String? houseNo,
+      @JsonKey(name: 'street_no')
+          final String? streetNo,
       final String? address,
-      final String? phoneNumber,
+      @JsonKey(name: 'phone_number')
+          final String? phoneNumber,
       final String? email,
-      final String? whatApp,
+      @JsonKey(name: 'what_app')
+          final String? whatApp,
       final String? telegram,
       final String? messenger,
       final String? skype,
-      final String? weChat,
+      @JsonKey(name: 'we_chat')
+          final String? weChat,
       final String? website,
       final String? facebook,
       final String? linkedin,
       final String? twitter,
-      final MajorOfBusiness? typeOfOrganization,
+      @JsonKey(name: 'type_of_organization')
+          final MajorOfBusiness? typeOfOrganization,
       final MajorOfBusiness? industry,
       final String? industry1,
-      final String? taxIdentificationNumber,
-      final int? numberOfStaff,
-      final String? ownerName,
-      final List<String>? companyActivityImages,
-      final CompanyFiles? companyFiles}) = _$_Data;
+      @JsonKey(name: 'tax_identification_number')
+          final String? taxIdentificationNumber,
+      @JsonKey(name: 'number_of_staff')
+          final int? numberOfStaff,
+      @JsonKey(name: 'owner_name')
+          final String? ownerName,
+      @JsonKey(name: 'company_activity_images')
+          final List<String>? companyActivityImages,
+      @JsonKey(name: 'company_files')
+          final CompanyFiles? companyFiles}) = _$_CompanyDataModel;
 
-  factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
+  factory _CompanyDataModel.fromJson(Map<String, dynamic> json) =
+      _$_CompanyDataModel.fromJson;
 
   @override
   int? get id;
   @override
+  @JsonKey(name: 'member_id')
   int? get memberId;
   @override
+  @JsonKey(name: 'company_name')
   String? get companyName;
   @override
+  @JsonKey(name: 'khmer_name')
   String? get khmerName;
   @override
+  @JsonKey(name: 'major_of_business')
   MajorOfBusiness? get majorOfBusiness;
   @override
   String? get position;
   @override
+  @JsonKey(name: 'legal_status')
   MajorOfBusiness? get legalStatus;
   @override
+  @JsonKey(name: 'registered_business')
   MajorOfBusiness? get registeredBusiness;
   @override
+  @JsonKey(name: 'company_size')
   int? get companySize;
   @override
+  @JsonKey(name: 'number_of_branches')
   int? get numberOfBranches;
   @override
+  @JsonKey(name: 'business_model')
   MajorOfBusiness? get businessModel;
   @override
+  @JsonKey(name: 'capital_investment')
   String? get capitalInvestment;
   @override
+  @JsonKey(name: 'year_founded')
   String? get yearFounded;
   @override
+  @JsonKey(name: 'is_primary')
   int? get isPrimary;
   @override
+  @JsonKey(name: 'company_diagnostic_report')
   String? get companyDiagnosticReport;
   @override
+  @JsonKey(name: 'companymilestones')
   String? get companyMilestones;
   @override
+  @JsonKey(name: 'company_logo')
   String? get companyLogo;
   @override
+  @JsonKey(name: 'service_images')
   String? get serviceImages;
   @override
+  @JsonKey(name: 'company_slogan')
   String? get companySlogan;
   @override
+  @JsonKey(name: 'personal_interest')
   String? get personalInterest;
   @override
+  @JsonKey(name: 'company_profile')
   String? get companyProfile;
   @override
+  @JsonKey(name: 'company_product_and_service')
   String? get companyProductAndService;
   @override
+  @JsonKey(name: 'house_no')
   String? get houseNo;
   @override
+  @JsonKey(name: 'street_no')
   String? get streetNo;
   @override
   String? get address;
   @override
+  @JsonKey(name: 'phone_number')
   String? get phoneNumber;
   @override
   String? get email;
   @override
+  @JsonKey(name: 'what_app')
   String? get whatApp;
   @override
   String? get telegram;
@@ -1173,6 +1391,7 @@ abstract class _Data implements Data {
   @override
   String? get skype;
   @override
+  @JsonKey(name: 'we_chat')
   String? get weChat;
   @override
   String? get website;
@@ -1183,22 +1402,29 @@ abstract class _Data implements Data {
   @override
   String? get twitter;
   @override
+  @JsonKey(name: 'type_of_organization')
   MajorOfBusiness? get typeOfOrganization;
   @override
   MajorOfBusiness? get industry;
   @override
   String? get industry1;
   @override
+  @JsonKey(name: 'tax_identification_number')
   String? get taxIdentificationNumber;
   @override
+  @JsonKey(name: 'number_of_staff')
   int? get numberOfStaff;
   @override
+  @JsonKey(name: 'owner_name')
   String? get ownerName;
   @override
+  @JsonKey(name: 'company_activity_images')
   List<String>? get companyActivityImages;
   @override
+  @JsonKey(name: 'company_files')
   CompanyFiles? get companyFiles;
   @override
   @JsonKey(ignore: true)
-  _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
+  _$$_CompanyDataModelCopyWith<_$_CompanyDataModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }

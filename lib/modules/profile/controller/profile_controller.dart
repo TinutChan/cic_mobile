@@ -20,7 +20,7 @@ class ProfileController extends GetxController {
             url: 'member/$id', methode: METHODE.get, isAuthorize: true)
         .then((responseData) {
       profileModel.value = UserProfileModel.fromJson(responseData);
-      debugPrint('= = = = Data: $profileModel');
+      // debugPrint('= = = = Data: $profileModel');
       isLoading(false);
     }).onError((ErrorModel error, stackTrace) {
       debugPrint('= = = = = Error: ${error.bodyString}');

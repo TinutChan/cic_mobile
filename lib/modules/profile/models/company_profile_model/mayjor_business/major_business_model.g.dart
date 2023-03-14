@@ -10,12 +10,12 @@ _$_MajorOfBusiness _$$_MajorOfBusinessFromJson(Map<String, dynamic> json) =>
     _$_MajorOfBusiness(
       id: json['id'] as int?,
       display: json['display'] as String?,
-      displayKhmer: json['displayKhmer'] as String?,
+      displayKhmer: json['display_khmer'] as String?,
     );
 
 Map<String, dynamic> _$$_MajorOfBusinessToJson(_$_MajorOfBusiness instance) =>
     <String, dynamic>{
       'id': instance.id,
       'display': instance.display,
-      'displayKhmer': instance.displayKhmer,
+      'display_khmer': instance.displayKhmer,
     };

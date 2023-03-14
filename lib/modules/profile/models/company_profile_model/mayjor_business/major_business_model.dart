@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'major_business_model.freezed.dart';
@@ -8,7 +10,7 @@ class MajorOfBusiness with _$MajorOfBusiness {
   factory MajorOfBusiness({
     int? id,
     String? display,
-    String? displayKhmer,
+    @JsonKey(name: 'display_khmer') String? displayKhmer,
   }) = _MajorOfBusiness;
 
   factory MajorOfBusiness.fromJson(Map<String, dynamic> json) =>

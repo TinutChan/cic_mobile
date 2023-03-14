@@ -22,7 +22,7 @@ class HomeController extends GetxController {
             url: 'user', methode: METHODE.get, isAuthorize: true)
         .then((response) {
       userModel.value = UserDetailModel.fromJson(response);
-      debugPrint('= = = =${userModel.value}');
+      // debugPrint('= = = =${userModel.value}');
       isLoading(false);
     }).onError((ErrorModel error, _) {
       debugPrint(' = = = = On Error: ${error.bodyString} = = = = ');

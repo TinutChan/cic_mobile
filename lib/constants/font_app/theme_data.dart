@@ -17,6 +17,21 @@ ThemeData theme() {
         fontSize: 14,
         fontFamily: 'DMSans',
       ),
+      //  titleLarge: TextStyle(
+      //   fontWeight: FontWeight.w400,
+      //   fontSize: 14,
+      //   fontFamily: 'DMSans',
+      // ),
+      // titleMedium: TextStyle(
+      //   fontWeight: FontWeight.w400,
+      //   fontSize: 14,
+      //   fontFamily: 'DMSans',
+      // ),
+      titleSmall: TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+        fontFamily: 'DMSans',
+      ),
     ),
   );
 }

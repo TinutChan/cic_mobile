@@ -8,20 +8,20 @@ part of 'company_file_model.dart';
 
 _$_CompanyFiles _$$_CompanyFilesFromJson(Map<String, dynamic> json) =>
     _$_CompanyFiles(
-      companyPatentDoc: (json['companyPatentDoc'] as List<dynamic>?)
+      companyPatentDoc: (json['company_patent_doc'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      companyLicenceDoc: (json['companyLicenceDoc'] as List<dynamic>?)
+      companyLicenceDoc: (json['company_licence_doc'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      companyMoCCertificate: (json['companyMoCCertificate'] as List<dynamic>?)
+      companyMoCCertificate: (json['company_MoC_certificate'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
     );
 
 Map<String, dynamic> _$$_CompanyFilesToJson(_$_CompanyFiles instance) =>
     <String, dynamic>{
-      'companyPatentDoc': instance.companyPatentDoc,
-      'companyLicenceDoc': instance.companyLicenceDoc,
-      'companyMoCCertificate': instance.companyMoCCertificate,
+      'company_patent_doc': instance.companyPatentDoc,
+      'company_licence_doc': instance.companyLicenceDoc,
+      'company_MoC_certificate': instance.companyMoCCertificate,
     };

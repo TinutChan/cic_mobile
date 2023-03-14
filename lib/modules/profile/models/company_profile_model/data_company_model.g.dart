@@ -6,117 +6,120 @@ part of 'data_company_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Data _$$_DataFromJson(Map<String, dynamic> json) => _$_Data(
+_$_CompanyDataModel _$$_CompanyDataModelFromJson(Map<String, dynamic> json) =>
+    _$_CompanyDataModel(
       id: json['id'] as int?,
-      memberId: json['memberId'] as int?,
-      companyName: json['companyName'] as String?,
-      khmerName: json['khmerName'] as String?,
-      majorOfBusiness: json['majorOfBusiness'] == null
+      memberId: json['member_id'] as int?,
+      companyName: json['company_name'] as String?,
+      khmerName: json['khmer_name'] as String?,
+      majorOfBusiness: json['major_of_business'] == null
           ? null
           : MajorOfBusiness.fromJson(
-              json['majorOfBusiness'] as Map<String, dynamic>),
+              json['major_of_business'] as Map<String, dynamic>),
       position: json['position'] as String?,
-      legalStatus: json['legalStatus'] == null
+      legalStatus: json['legal_status'] == null
           ? null
           : MajorOfBusiness.fromJson(
-              json['legalStatus'] as Map<String, dynamic>),
-      registeredBusiness: json['registeredBusiness'] == null
+              json['legal_status'] as Map<String, dynamic>),
+      registeredBusiness: json['registered_business'] == null
           ? null
           : MajorOfBusiness.fromJson(
-              json['registeredBusiness'] as Map<String, dynamic>),
-      companySize: json['companySize'] as int?,
-      numberOfBranches: json['numberOfBranches'] as int?,
-      businessModel: json['businessModel'] == null
+              json['registered_business'] as Map<String, dynamic>),
+      companySize: json['company_size'] as int?,
+      numberOfBranches: json['number_of_branches'] as int?,
+      businessModel: json['business_model'] == null
           ? null
           : MajorOfBusiness.fromJson(
-              json['businessModel'] as Map<String, dynamic>),
-      capitalInvestment: json['capitalInvestment'] as String?,
-      yearFounded: json['yearFounded'] as String?,
-      isPrimary: json['isPrimary'] as int?,
-      companyDiagnosticReport: json['companyDiagnosticReport'] as String?,
-      companyMilestones: json['companyMilestones'] as String?,
-      companyLogo: json['companyLogo'] as String?,
-      serviceImages: json['serviceImages'] as String?,
-      companySlogan: json['companySlogan'] as String?,
-      personalInterest: json['personalInterest'] as String?,
-      companyProfile: json['companyProfile'] as String?,
-      companyProductAndService: json['companyProductAndService'] as String?,
-      houseNo: json['houseNo'] as String?,
-      streetNo: json['streetNo'] as String?,
+              json['business_model'] as Map<String, dynamic>),
+      capitalInvestment: json['capital_investment'] as String?,
+      yearFounded: json['year_founded'] as String?,
+      isPrimary: json['is_primary'] as int?,
+      companyDiagnosticReport: json['company_diagnostic_report'] as String?,
+      companyMilestones: json['companymilestones'] as String?,
+      companyLogo: json['company_logo'] as String?,
+      serviceImages: json['service_images'] as String?,
+      companySlogan: json['company_slogan'] as String?,
+      personalInterest: json['personal_interest'] as String?,
+      companyProfile: json['company_profile'] as String?,
+      companyProductAndService: json['company_product_and_service'] as String?,
+      houseNo: json['house_no'] as String?,
+      streetNo: json['street_no'] as String?,
       address: json['address'] as String?,
-      phoneNumber: json['phoneNumber'] as String?,
+      phoneNumber: json['phone_number'] as String?,
       email: json['email'] as String?,
-      whatApp: json['whatApp'] as String?,
+      whatApp: json['what_app'] as String?,
       telegram: json['telegram'] as String?,
       messenger: json['messenger'] as String?,
       skype: json['skype'] as String?,
-      weChat: json['weChat'] as String?,
+      weChat: json['we_chat'] as String?,
       website: json['website'] as String?,
       facebook: json['facebook'] as String?,
       linkedin: json['linkedin'] as String?,
       twitter: json['twitter'] as String?,
-      typeOfOrganization: json['typeOfOrganization'] == null
+      typeOfOrganization: json['type_of_organization'] == null
           ? null
           : MajorOfBusiness.fromJson(
-              json['typeOfOrganization'] as Map<String, dynamic>),
+              json['type_of_organization'] as Map<String, dynamic>),
       industry: json['industry'] == null
           ? null
           : MajorOfBusiness.fromJson(json['industry'] as Map<String, dynamic>),
       industry1: json['industry1'] as String?,
-      taxIdentificationNumber: json['taxIdentificationNumber'] as String?,
-      numberOfStaff: json['numberOfStaff'] as int?,
-      ownerName: json['ownerName'] as String?,
-      companyActivityImages: (json['companyActivityImages'] as List<dynamic>?)
+      taxIdentificationNumber: json['tax_identification_number'] as String?,
+      numberOfStaff: json['number_of_staff'] as int?,
+      ownerName: json['owner_name'] as String?,
+      companyActivityImages: (json['company_activity_images'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      companyFiles: json['companyFiles'] == null
+      companyFiles: json['company_files'] == null
           ? null
-          : CompanyFiles.fromJson(json['companyFiles'] as Map<String, dynamic>),
+          : CompanyFiles.fromJson(
+              json['company_files'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_DataToJson(_$_Data instance) => <String, dynamic>{
+Map<String, dynamic> _$$_CompanyDataModelToJson(_$_CompanyDataModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
-      'memberId': instance.memberId,
-      'companyName': instance.companyName,
-      'khmerName': instance.khmerName,
-      'majorOfBusiness': instance.majorOfBusiness,
+      'member_id': instance.memberId,
+      'company_name': instance.companyName,
+      'khmer_name': instance.khmerName,
+      'major_of_business': instance.majorOfBusiness,
       'position': instance.position,
-      'legalStatus': instance.legalStatus,
-      'registeredBusiness': instance.registeredBusiness,
-      'companySize': instance.companySize,
-      'numberOfBranches': instance.numberOfBranches,
-      'businessModel': instance.businessModel,
-      'capitalInvestment': instance.capitalInvestment,
-      'yearFounded': instance.yearFounded,
-      'isPrimary': instance.isPrimary,
-      'companyDiagnosticReport': instance.companyDiagnosticReport,
-      'companyMilestones': instance.companyMilestones,
-      'companyLogo': instance.companyLogo,
-      'serviceImages': instance.serviceImages,
-      'companySlogan': instance.companySlogan,
-      'personalInterest': instance.personalInterest,
-      'companyProfile': instance.companyProfile,
-      'companyProductAndService': instance.companyProductAndService,
-      'houseNo': instance.houseNo,
-      'streetNo': instance.streetNo,
+      'legal_status': instance.legalStatus,
+      'registered_business': instance.registeredBusiness,
+      'company_size': instance.companySize,
+      'number_of_branches': instance.numberOfBranches,
+      'business_model': instance.businessModel,
+      'capital_investment': instance.capitalInvestment,
+      'year_founded': instance.yearFounded,
+      'is_primary': instance.isPrimary,
+      'company_diagnostic_report': instance.companyDiagnosticReport,
+      'companymilestones': instance.companyMilestones,
+      'company_logo': instance.companyLogo,
+      'service_images': instance.serviceImages,
+      'company_slogan': instance.companySlogan,
+      'personal_interest': instance.personalInterest,
+      'company_profile': instance.companyProfile,
+      'company_product_and_service': instance.companyProductAndService,
+      'house_no': instance.houseNo,
+      'street_no': instance.streetNo,
       'address': instance.address,
-      'phoneNumber': instance.phoneNumber,
+      'phone_number': instance.phoneNumber,
       'email': instance.email,
-      'whatApp': instance.whatApp,
+      'what_app': instance.whatApp,
       'telegram': instance.telegram,
       'messenger': instance.messenger,
       'skype': instance.skype,
-      'weChat': instance.weChat,
+      'we_chat': instance.weChat,
       'website': instance.website,
       'facebook': instance.facebook,
       'linkedin': instance.linkedin,
       'twitter': instance.twitter,
-      'typeOfOrganization': instance.typeOfOrganization,
+      'type_of_organization': instance.typeOfOrganization,
       'industry': instance.industry,
       'industry1': instance.industry1,
-      'taxIdentificationNumber': instance.taxIdentificationNumber,
-      'numberOfStaff': instance.numberOfStaff,
-      'ownerName': instance.ownerName,
-      'companyActivityImages': instance.companyActivityImages,
-      'companyFiles': instance.companyFiles,
+      'tax_identification_number': instance.taxIdentificationNumber,
+      'number_of_staff': instance.numberOfStaff,
+      'owner_name': instance.ownerName,
+      'company_activity_images': instance.companyActivityImages,
+      'company_files': instance.companyFiles,
     };
