@@ -4,10 +4,10 @@ import '../constants/color_app/color_app.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
- CustomTextField({
+  CustomTextField({
     Key? key,
     this.labelText,
-    required this.hintText,
+    this.hintText,
     this.focusNode,
     required this.obscureText,
     this.textEditingController,
@@ -21,12 +21,15 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.initialText,
     this.prefixIcon,
+    this.label,
+    this.minLines,
   }) : super(key: key);
 
   Color focusBorderColor = Colors.black45;
   Color labelColor = const Color(0xff0A0B09);
   Color textColor = Colors.black;
   int maxLines = 1;
+  final int? minLines;
   bool isRequired = false;
   TextInputType textInputType = TextInputType.text;
   final String? labelText;
@@ -45,6 +48,7 @@ class CustomTextField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   int? maxLength = 40;
   final String? initialText;
+  final Widget? label;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +69,12 @@ class CustomTextField extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         hintText: hintText,
+        label: label,
+        labelText: labelText,
+        labelStyle: const TextStyle(color: Colors.grey),
       ),
+      maxLines: minLines,
+      minLines: minLines,
     );
   }
 }
