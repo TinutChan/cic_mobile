@@ -1,3 +1,4 @@
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:cic_mobile/constants/app_icon/app_icon.dart';
 import 'package:cic_mobile/routers/app_router.dart';
 import 'package:flutter/cupertino.dart';
@@ -173,7 +174,32 @@ class _AccountScreenState extends State<AccountScreen> {
                   color: AppColor.darkGrey,
                 ),
                 onPressed: (context) {
-                  showDialogBottom(context);
+                  showDialogBottom(
+                    context: context,
+                    title: 'data',
+                    bottomSheetAction: BottomSheetAction(
+                      title: const Text('s'),
+                      onPressed: (context) {},
+                    ),
+                  );
+                  // showDialogBottom(
+                  //   context: context,
+                  //   children: [
+                  //     ListTile(
+                  //         title: const Center(child: Text('Chat Telegram')),
+                  //         onTap: () async {
+                  //           techSupportController.launchInBrowser(
+                  //               Uri.parse('https://t.me/NutxT'));
+                  //         }),
+                  //     ListTile(
+                  //       leading: const Icon(Icons.photo),
+                  //       title: const Text('Photo'),
+                  //       onTap: () {
+                  //         Navigator.pop(context);
+                  //       },
+                  //     ),
+                  //   ],
+                  // );
                 },
               ),
             ],

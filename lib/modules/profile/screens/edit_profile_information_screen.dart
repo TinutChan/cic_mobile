@@ -1,3 +1,4 @@
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:cic_mobile/modules/profile/components/update_profile_shimmer.dart';
@@ -21,35 +22,11 @@ class EditProfileInformationScreen extends StatefulWidget {
 class _EditProfileInformationScreenState
     extends State<EditProfileInformationScreen> {
   final profileController = Get.put(ProfileController());
-  final updateProfileController = Get.put(UpdateProfileController());
+  final _updateProfileController = Get.put(UpdateProfileController());
 
   @override
   void initState() {
-    updateProfileController.fullNameEditingController.value =
-        TextEditingController(
-            text: profileController.profileDetailModel.value.name);
-    updateProfileController.positionEditingController.value =
-        TextEditingController(
-            text: profileController.profileDetailModel.value.position);
-    updateProfileController.companyNameEditingController.value =
-        TextEditingController(
-            text: profileController.profileDetailModel.value.companyName);
-    updateProfileController.phoneEditingController.value =
-        TextEditingController(
-            text: profileController.profileDetailModel.value.phone);
-    updateProfileController.emailEditingController.value =
-        TextEditingController(
-            text: profileController.profileDetailModel.value.email);
-
-    updateProfileController.telegramEditingController.value =
-        TextEditingController(
-            text: profileController.profileDetailModel.value.telegram);
-    updateProfileController.websiteEditingController.value =
-        TextEditingController(
-            text: profileController.profileDetailModel.value.website);
-    updateProfileController.aboutEditingController.value =
-        TextEditingController(
-            text: profileController.profileDetailModel.value.about);
+    _updateProfileController.initailEditProfile();
     super.initState();
   }
 
@@ -91,7 +68,7 @@ class _EditProfileInformationScreenState
                     title: "Are You Sure?",
                     content: "You want to save!",
                     onPressed: () {
-                      updateProfileController.updateProfileController();
+                      _updateProfileController.updateProfileController();
                       context.pop();
                       // context.go('/profile');
                     },
@@ -111,7 +88,7 @@ class _EditProfileInformationScreenState
         ],
       ),
       body: Obx(
-        () => updateProfileController.isLoading.value
+        () => _updateProfileController.isLoading.value
             ? const UpdateProfileShimmer()
             : GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus,
@@ -130,8 +107,27 @@ class _EditProfileInformationScreenState
                               const SizedBox(height: 12),
                               GestureDetector(
                                 onTap: () {
-                                  debugPrint(
-                                      '= = = =Tapped To change Photo= = = = ');
+                                  showAdaptiveActionSheet(
+                                    context: context,
+                                    actions: <BottomSheetAction>[
+                                      BottomSheetAction(
+                                        title: const Text('View'),
+                                        onPressed: (_) {},
+                                      ),
+                                      BottomSheetAction(
+                                        title: const Text('Chage Photo'),
+                                        onPressed: (_) {},
+                                      ),
+                                      BottomSheetAction(
+                                        title: const Text('Remove'),
+                                        onPressed: (_) {},
+                                      ),
+                                    ],
+                                    androidBorderRadius: 15,
+                                    cancelAction: CancelAction(
+                                      title: const Text('Cancel'),
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   'Change Profile Photo',
@@ -146,49 +142,49 @@ class _EditProfileInformationScreenState
                           ),
                         ),
                         CustomTextField(
-                          textEditingController: updateProfileController
+                          textEditingController: _updateProfileController
                               .fullNameEditingController.value,
                           labelText: 'Name',
                           minLines: 1,
                           obscureText: false,
                         ),
                         CustomTextField(
-                          textEditingController: updateProfileController
+                          textEditingController: _updateProfileController
                               .positionEditingController.value,
                           labelText: 'Position',
                           minLines: 1,
                           obscureText: false,
                         ),
                         CustomTextField(
-                          textEditingController: updateProfileController
+                          textEditingController: _updateProfileController
                               .companyNameEditingController.value,
                           labelText: 'Company Name',
                           minLines: 1,
                           obscureText: false,
                         ),
                         CustomTextField(
-                          textEditingController: updateProfileController
+                          textEditingController: _updateProfileController
                               .phoneEditingController.value,
                           labelText: 'Phone Number',
                           minLines: 1,
                           obscureText: false,
                         ),
                         CustomTextField(
-                          textEditingController: updateProfileController
+                          textEditingController: _updateProfileController
                               .emailEditingController.value,
                           labelText: 'Email',
                           minLines: 1,
                           obscureText: false,
                         ),
                         CustomTextField(
-                          textEditingController: updateProfileController
+                          textEditingController: _updateProfileController
                               .telegramEditingController.value,
                           labelText: 'Telegram',
                           minLines: 1,
                           obscureText: false,
                         ),
                         CustomTextField(
-                          textEditingController: updateProfileController
+                          textEditingController: _updateProfileController
                               .websiteEditingController.value,
                           labelText: 'Website',
                           minLines: 1,
@@ -196,7 +192,7 @@ class _EditProfileInformationScreenState
                         ),
                         SizedBox(
                           child: CustomTextField(
-                            textEditingController: updateProfileController
+                            textEditingController: _updateProfileController
                                 .aboutEditingController.value,
                             labelText: 'About Us',
                             minLines: 6,
