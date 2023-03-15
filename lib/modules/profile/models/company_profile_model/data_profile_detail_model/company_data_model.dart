@@ -5,8 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'company_file/company_file_model.dart';
 import 'mayjor_business/major_business_model.dart';
 
-part 'data_company_model.freezed.dart';
-part 'data_company_model.g.dart';
+part 'company_data_model.freezed.dart';
+part 'company_data_model.g.dart';
 
 @freezed
 class CompanyDataModel with _$CompanyDataModel {

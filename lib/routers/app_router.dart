@@ -4,6 +4,7 @@ import 'package:cic_mobile/auth/register_cic/screen/create_password_screen.dart'
 import 'package:cic_mobile/auth/register_cic/screen/enter_phone_number_screen.dart';
 import 'package:cic_mobile/auth/register_cic/screen/set_pin_code_screen.dart';
 import 'package:cic_mobile/modules/bottom_navigationbar/botton_navbar.dart';
+import 'package:cic_mobile/modules/profile/screens/edit_profile_information_screen.dart';
 import 'package:cic_mobile/modules/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -160,10 +161,17 @@ final GoRouter approuter = GoRouter(
       ],
     ),
     GoRoute(
-      path: '/profile',
-      builder: (context, state) {
-        return const ProfileScreen();
-      },
-    )
+        path: '/profile',
+        builder: (context, state) {
+          return const ProfileScreen();
+        },
+      ),
+          GoRoute(
+            path: '/editprofileinfomation',
+            builder: (context, state) {
+              return const EditProfileInformationScreen();
+            },
+          ),
+      
   ],
 );

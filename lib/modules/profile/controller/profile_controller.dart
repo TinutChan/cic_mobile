@@ -22,7 +22,6 @@ class ProfileController extends GetxController {
       )
           .then((response) {
         profileDetailModel.value = DataProfileDetail.fromJson(response['data']);
-        debugPrint(' = = =response: $response');
       }).onError((ErrorModel error, _) {
         debugPrint(error.bodyString.toString());
       });

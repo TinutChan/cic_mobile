@@ -243,8 +243,8 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                                 ),
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      '${profileController.profileDetailModel.value.profile}'),
-                                  scale: 1.0,
+                                    '${profileController.profileDetailModel.value.profile}',
+                                  ),
                                 ),
                               ),
                             )

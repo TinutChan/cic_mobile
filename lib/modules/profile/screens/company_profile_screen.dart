@@ -7,12 +7,12 @@ import '../../../widgets/custom_slider.dart';
 class CompanyProfileScreen extends StatelessWidget {
   const CompanyProfileScreen({
     super.key,
-    this.image,
-    this.title,
-    this.subtitle,
-    this.onTapped,
-    this.onTappedEdit,
-    this.desc,
+    required this.image,
+    required this.title,
+    required this.subtitle,
+    required this.onTapped,
+    required this.onTappedEdit,
+    required this.desc,
     this.sildeImage,
   });
 
@@ -81,6 +81,20 @@ class CompanyProfileScreen extends StatelessWidget {
             margin: EdgeInsets.only(right: 12.0),
             padEnds: false,
             viewportFraction: 0.9,
+          ),
+          const SizedBox(height: 15.0),
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              minimumSize: const Size(double.infinity, 50),
+              elevation: 0,
+              backgroundColor: AppColor.mainColor.withOpacity(0.08),
+            ),
+            onPressed: () {},
+            icon: const Icon(Icons.add_circle_outline),
+            label: const Text('Add Company'),
           ),
         ],
       ),

@@ -8,8 +8,8 @@ part 'major_business_model.g.dart';
 @freezed
 class MajorOfBusiness with _$MajorOfBusiness {
   factory MajorOfBusiness({
-   final String? display,
-  final  int? id,
+    final String? display,
+    final int? id,
     @JsonKey(name: 'display_khmer') final String? displayKhmer,
   }) = _MajorOfBusiness;
 

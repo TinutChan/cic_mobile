@@ -1,6 +1,7 @@
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../constants/color_app/color_app.dart';
 import '../../account/controller/technical_support_controller.dart';
@@ -27,6 +28,8 @@ class _ProfileScreenState extends State<ProfileScreen>
   @override
   void initState() {
     profileController.profileDetail(
+        id: homeController.userModel.value.customerId);
+    companyProfileController.companyProfileDetail(
         id: homeController.userModel.value.customerId);
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
@@ -56,18 +59,21 @@ class _ProfileScreenState extends State<ProfileScreen>
                   forceElevated: innerBoxIsScrolled,
                   actions: [
                     IconButton(
+                        onPressed: () {
+                          context.push('/editprofileinfomation');
+                        },
+                        icon: const Icon(Icons.edit_square)),
+                    IconButton(
                       onPressed: () {
-                        // debugPrint(
-                        //     '= = = = Id: ${homeController.userModel.value.customerId}');
-                        // companyProfileController.companyProfileDetail();
                       },
-                      icon: const Icon(Icons.add),
+                      icon: const Icon(Icons.settings),
                     ),
                   ],
                   flexibleSpace: const FlexibleSpaceBar(
-                      collapseMode: CollapseMode.none,
-                      centerTitle: true,
-                      background: CustomProfileDetail(),),
+                    collapseMode: CollapseMode.none,
+                    centerTitle: true,
+                    background: CustomProfileDetail(),
+                  ),
                 ),
               ),
             ];
@@ -138,13 +144,44 @@ class _ProfileScreenState extends State<ProfileScreen>
                     Column(
                       children: [
                         Expanded(
-                          child: ListView.builder(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            itemCount: 1,
-                            itemBuilder: (context, index) {
-                              return const CompanyProfileScreen();
-                            },
+                          child: Obx(
+                            () => companyProfileController.isLoading.value
+                                ? const Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : ListView.builder(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20.0),
+                                    itemCount: companyProfileController
+                                        .listCompanyProfile.length,
+                                    itemBuilder: (context, index) {
+                                      return CompanyProfileScreen(
+                                        image: companyProfileController
+                                            .companyProfileModel
+                                            .value
+                                            .companyLogo,
+                                        title: companyProfileController
+                                            .companyProfileModel
+                                            .value
+                                            .companyName,
+                                        subtitle: companyProfileController
+                                            .companyProfileModel
+                                            .value
+                                            .companyProfile,
+                                        onTapped: () {},
+                                        onTappedEdit: () {},
+                                        desc: companyProfileController
+                                            .companyProfileModel
+                                            .value
+                                            .typeOfOrganization
+                                            ?.display,
+                                        sildeImage: companyProfileController
+                                            .companyProfileModel
+                                            .value
+                                            .ownerName,
+                                      );
+                                    },
+                                  ),
                           ),
                         ),
                       ],
