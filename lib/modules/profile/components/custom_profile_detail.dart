@@ -228,31 +228,34 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                           color: AppColor.mainColor,
                         ),
                       ),
-                      child: profileController
-                                  .profileDetailModel.value.defaultPhoto !=
-                              null
-                          ? Container(
-                              clipBehavior: Clip.antiAlias,
-                              width: width,
-                              height: height,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  width: 3,
-                                  color: AppColor.mainColor,
-                                ),
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                    '${profileController.profileDetailModel.value.profile}',
+                      child:
+                          profileController.profileDetailModel.value.profile !=
+                                  null
+                              ? Container(
+                                  clipBehavior: Clip.antiAlias,
+                                  width: width,
+                                  height: height,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      width: 3,
+                                      color: AppColor.mainColor,
+                                    ),
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        '${profileController.profileDetailModel.value.profile}',
+                                      ),
+                                      // 'https://lh3.googleusercontent.com/nKc2zdiPVN77yVjcJkbFZ902bOiq7p1MofsfrfBkgXI1SFkJRRAlEsn2HACvzvfjDp1xZaYR9Md1_Uvv2UlyBcHGVz_2kIpbKai0nWL5'),
+                                    ),
+                                  ),
+                                )
+                              : CircleAvatar(
+                                  backgroundColor: AppColor.blueColor99,
+                                  child: Text(
+                                    profileController
+                                        .profileDetailModel.value.name![0],
                                   ),
                                 ),
-                              ),
-                            )
-                          : CircleAvatar(
-                              backgroundColor: AppColor.blueColor99,
-                              child: Text(profileController
-                                  .profileDetailModel.value.name![0]),
-                            ),
                     ),
                   ),
                 ),

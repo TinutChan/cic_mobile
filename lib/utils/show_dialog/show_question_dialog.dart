@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-showQuestionAlertDialog({
+Future<void> showQuestionAlertDialog({
   BuildContext? context,
   VoidCallback? onPressed,
   String? title,
   String? content,
-}) {
+}) async {
   Widget okButton = TextButton(
     onPressed: onPressed,
     child: const Text("OK"),
@@ -26,7 +26,7 @@ showQuestionAlertDialog({
   );
 
   // show the dialog
-  showDialog(
+  await showDialog(
     context: context!,
     builder: (BuildContext context) {
       return alert;

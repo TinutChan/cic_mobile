@@ -1,4 +1,6 @@
+import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/modules/account/screens/account_screen.dart';
+import 'package:cic_mobile/modules/event/screens/event_screen.dart';
 import 'package:cic_mobile/modules/home/controller/home_controller.dart';
 import 'package:cic_mobile/modules/home/screens/home_screen.dart';
 import 'package:cic_mobile/modules/qr_scan/screens/qr_scan_screen.dart';
@@ -19,6 +21,7 @@ class _BottonNavBarState extends State<BottonNavBar> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     QRScanScreen(),
+    EventScreen(),
     AccountScreen(),
   ];
 
@@ -38,13 +41,24 @@ class _BottonNavBarState extends State<BottonNavBar> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/home_inactive.svg'),
+            icon:
+                SvgPicture.asset('assets/icons/home_inactive.svg', height: 23),
             label: 'Home',
-            activeIcon: SvgPicture.asset('assets/icons/home_active.svg'),
+            activeIcon:
+                SvgPicture.asset('assets/icons/home_active.svg', height: 23),
           ),
           BottomNavigationBarItem(
               icon: SvgPicture.asset('assets/icons/qr_scan_inactive.svg'),
               label: 'QR Scan'),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset('assets/icons/event.svg'),
+            label: 'Event',
+            activeIcon: SvgPicture.asset(
+              'assets/icons/event.svg',
+              colorFilter:
+                  ColorFilter.mode(AppColor.mainColor, BlendMode.srcIn),
+            ),
+          ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/icons/account_inactive.svg'),
             label: 'Account',

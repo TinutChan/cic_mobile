@@ -161,17 +161,16 @@ final GoRouter approuter = GoRouter(
       ],
     ),
     GoRoute(
-        path: '/profile',
-        builder: (context, state) {
-          return const ProfileScreen();
-        },
-      ),
-          GoRoute(
-            path: '/editprofileinfomation',
-            builder: (context, state) {
-              return const EditProfileInformationScreen();
-            },
-          ),
-      
+      path: '/profile',
+      builder: (context, state) {
+        return const ProfileScreen();
+      },
+    ),
+    GoRoute(
+      path: '/editprofileinfomation',
+      builder: (context, state) {
+        return EditProfileInformationScreen();
+      },
+    ),
   ],
 );
