@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:get/get.dart';
 
-import '../../../utils/show_dialog/show_question_dialog.dart';
 import '../../../widgets/custom_textfield.dart';
 
 class EditProfileInformationScreen extends StatefulWidget {
@@ -63,16 +62,18 @@ class _EditProfileInformationScreenState
             child: Center(
               child: GestureDetector(
                 onTap: () {
-                  showQuestionAlertDialog(
-                    context: context,
-                    title: "Are You Sure?",
-                    content: "You want to save!",
-                    onPressed: () {
-                      _updateProfileController.updateProfileController();
-                      context.pop();
-                      // context.go('/profile');
-                    },
-                  );
+                  _updateProfileController.updateProfileController();
+                  context.pop();
+                  // showQuestionAlertDialog(
+                  //   context: context,
+                  //   title: "Are You Sure?",
+                  //   content: "You want to save!",
+                  // onPressed: () {
+                  // _updateProfileController.updateProfileController();
+                  // context.pop();
+                  // context.go('/profile');
+                  // },
+                  // );
                 },
                 child: Text(
                   'Done',

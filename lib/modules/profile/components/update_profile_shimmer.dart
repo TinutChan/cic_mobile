@@ -13,6 +13,7 @@ class UpdateProfileShimmer extends StatelessWidget {
       baseColor: Colors.grey.shade400,
       highlightColor: Colors.grey.shade100,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           CircleAvatar(
             minRadius: 40.0,
@@ -26,7 +27,6 @@ class UpdateProfileShimmer extends StatelessWidget {
           CustomTextField(obscureText: false),
           CustomTextField(obscureText: false),
           CustomTextField(obscureText: false),
-          
         ],
       ),
     );

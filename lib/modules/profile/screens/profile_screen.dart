@@ -1,3 +1,4 @@
+import 'package:cic_mobile/modules/profile/controller/edit_profile_controller.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,6 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   final profileController = Get.put(ProfileController());
   final homeController = Get.put(HomeController());
   final companyProfileController = Get.put(CompanyProfileController());
+  final updateProfileController = Get.put(UpdateProfileController());
   late TabController _tabController;
 
   @override
@@ -31,6 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         id: homeController.userModel.value.customerId);
     companyProfileController.companyProfileDetail(
         id: homeController.userModel.value.customerId);
+    updateProfileController.onRefreshData();
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
@@ -64,8 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                         },
                         icon: const Icon(Icons.edit_square)),
                     IconButton(
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                       icon: const Icon(Icons.settings),
                     ),
                   ],
@@ -79,6 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             ];
           },
           body: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 margin: const EdgeInsets.only(top: 85),
@@ -106,7 +109,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                 ),
               ),
               Expanded(
-                flex: 1,
                 child: TabBarView(
                   controller: _tabController,
                   children: [
@@ -134,7 +136,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                                       ? Text(
                                           '${profileController.profileDetailModel.value.about}')
                                       : const Center(
-                                          heightFactor: 8,
                                           child: CircleAvatar(),
                                         ),
                                 ),

@@ -2,6 +2,7 @@ import 'package:cic_mobile/modules/home/controller/home_controller.dart';
 import 'package:cic_mobile/modules/profile/base_repository/profile_repo.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:cic_mobile/modules/profile/models/personal_profile_model/data/data_model.dart';
+import 'package:cic_mobile/routers/app_router.dart';
 import 'package:cic_mobile/utils/helper/api_base_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -42,7 +43,19 @@ class UpdateProfileController extends GetxController implements ProfileRepo {
             "website": websiteEditingController.value.text,
             "about": aboutEditingController.value.text,
           }).then((response) {
-        debugPrint('Response: $response');
+        var message = response['message'];
+        var success = response['success'];
+        if (success == true) {
+          approuter.go('/profile');
+          // SnackBar(
+          //   shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(10.0)),
+          //   duration: const Duration(seconds: 5),
+          //   backgroundColor: Colors.green,
+          //   content: message,
+          // );
+          debugPrint('$message');
+        }
         isLoading(false);
       });
     } catch (e) {
@@ -77,16 +90,15 @@ class UpdateProfileController extends GetxController implements ProfileRepo {
         text: profileController.profileDetailModel.value.about);
   }
 
-    @override
-    void updateProfile() {
-    }
-    
-      @override
-      void changeProfilePicture() {
-      }
-  }
-  
   @override
-  void updateProfile() {
-  }
+  void updateProfile() {}
 
+  @override
+  void changeProfilePicture() {}
+
+  Future<void> onRefreshData() async {
+    await updateProfileController();
+    update();
+    debugPrint('= = = onRefresh: ');
+  }
+}
