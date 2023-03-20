@@ -35,7 +35,7 @@ class _AccountScreenState extends State<AccountScreen> {
           children: [
             IconButton(
               onPressed: () {
-                context.go('/');
+                context.go('/home');
               },
               icon: const Icon(Icons.arrow_back_ios_new),
             ),
@@ -48,18 +48,6 @@ class _AccountScreenState extends State<AccountScreen> {
         brightness: Brightness.light,
         applicationType: ApplicationType.material,
         sections: [
-          SettingsSection(
-            title: const Text('App System'),
-            tiles: [
-              SettingsTile.navigation(
-                leading: const Icon(Icons.person_3_rounded),
-                title: Text('Profile', style: AppFont.text16blackColor),
-                onPressed: (context) {
-                  approuter.push('/profile');
-                },
-              ),
-            ],
-          ),
           SettingsSection(
             title: const Text('App System'),
             tiles: [

@@ -28,7 +28,7 @@ class LoginController extends GetxController {
               '+855${phoneNumberController.value.text.replaceFirst("0", "")}',
           'password': passwordController.value.text,
         }).then((response) async {
-      context.go('/');
+      context.go('/home');
 
       LocalDataStorage.storeCurrentUser(response['access_token'].toString());
       final token = await LocalDataStorage.getCurrentUser();
@@ -39,7 +39,6 @@ class LoginController extends GetxController {
     });
   }
 
-  
   functionFetchToken() async {
     token.value = await LocalDataStorage.getCurrentUser();
   }

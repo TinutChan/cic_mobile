@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 1), () async {
       var token = await LocalDataStorage.getCurrentUser();
       if (token != '') {
-        approuter.go('/');
+        approuter.go('/home');
       } else {
         approuter.go('/login');
       }

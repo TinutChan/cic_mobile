@@ -27,7 +27,7 @@ class InvestmentScreen extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
-                context.go('/');
+                context.go('/home');
               },
               icon: const Icon(Icons.arrow_back_ios_new),
             ),

@@ -1,15 +1,13 @@
 import 'package:cic_mobile/constants/color_app/color_app.dart';
-import 'package:cic_mobile/modules/account/screens/account_screen.dart';
-import 'package:cic_mobile/modules/event/screens/event_screen.dart';
 import 'package:cic_mobile/modules/home/controller/home_controller.dart';
-import 'package:cic_mobile/modules/home/screens/home_screen.dart';
-import 'package:cic_mobile/modules/qr_scan/screens/qr_scan_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class BottonNavBar extends StatefulWidget {
-  const BottonNavBar({super.key});
+  const BottonNavBar({super.key, required this.child});
+  final Widget child;
 
   @override
   State<BottonNavBar> createState() => _BottonNavBarState();
@@ -18,26 +16,15 @@ class BottonNavBar extends StatefulWidget {
 final homeController = Get.put(HomeController());
 
 class _BottonNavBarState extends State<BottonNavBar> {
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    QRScanScreen(),
-    EventScreen(),
-    AccountScreen(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      homeController.currentIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _widgetOptions.elementAt(homeController.currentIndex),
+      body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: homeController.currentIndex,
-        onTap: _onItemTapped,
+        currentIndex: _calculateSelectedIndex(context),
+        onTap: (index) {
+          _onItemTapped(index, context);
+        },
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
@@ -67,5 +54,40 @@ class _BottonNavBarState extends State<BottonNavBar> {
         ],
       ),
     );
+  }
+
+  void _onItemTapped(int index, BuildContext context) {
+    switch (index) {
+      case 0:
+        (context).go('/home');
+        break;
+      case 1:
+        context.go('/qr_scan');
+        break;
+      case 2:
+        (context).go('/event');
+        break;
+      case 3:
+        (context).go('/account');
+        break;
+    }
+  }
+
+  static int _calculateSelectedIndex(BuildContext context) {
+    final String location = GoRouterState.of(context).location;
+    if (location.startsWith('/home')) {
+      return 0;
+    }
+    if (location.startsWith('/qr_scan')) {
+      return 1;
+    }
+    if (location.startsWith('/event')) {
+      return 2;
+    }
+    if (location.startsWith('/account')) {
+      return 3;
+    }
+
+    return 0;
   }
 }

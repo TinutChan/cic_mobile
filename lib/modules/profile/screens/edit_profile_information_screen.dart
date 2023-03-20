@@ -46,13 +46,6 @@ class _EditProfileInformationScreenState
         leading: IconButton(
           onPressed: () {
             context.pop();
-            //  showQuestionAlertDialog(
-            //   context: context,
-            //   title: "Are You Sure?",
-            //   content: "You want to cancel!",
-            //   onPressed: () {
-            //     context.go('/profile');
-            //   },
           },
           icon: Icon(Icons.close, color: AppColor.blackColor),
         ),
@@ -63,17 +56,6 @@ class _EditProfileInformationScreenState
               child: GestureDetector(
                 onTap: () {
                   _updateProfileController.updateProfileController();
-                  context.pop();
-                  // showQuestionAlertDialog(
-                  //   context: context,
-                  //   title: "Are You Sure?",
-                  //   content: "You want to save!",
-                  // onPressed: () {
-                  // _updateProfileController.updateProfileController();
-                  // context.pop();
-                  // context.go('/profile');
-                  // },
-                  // );
                 },
                 child: Text(
                   'Done',
@@ -104,7 +86,22 @@ class _EditProfileInformationScreenState
                         Center(
                           child: Column(
                             children: [
-                              const CircleAvatar(minRadius: 50.0),
+                              CircleAvatar(
+                                minRadius: 50.0,
+                                child: Container(
+                                  clipBehavior: Clip.antiAlias,
+                                  width: 90,
+                                  height: 90,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.amber,
+                                  ),
+                                  child: Image.network(
+                                    'https://scontent.fpnh11-1.fna.fbcdn.net/v/t39.30808-6/324592476_517960903784950_7732506958625149910_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=174925&_nc_eui2=AeFkz8ZU7HhojJPzNronw7FQyMa8OiP3ymvIxrw6I_fKa0V5i8fJQaBOEDtYBx8BT5DZQh0d5f3XBGWK_uUhIxOk&_nc_ohc=rxMWWWjzWPwAX8lAdjX&_nc_ht=scontent.fpnh11-1.fna&oh=00_AfAnQ_N_tfkRpfK9KlveAQz9JxBhuD3C2kNOCX12S71s0Q&oe=641DAD48',
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
                               const SizedBox(height: 12),
                               GestureDetector(
                                 onTap: () {
@@ -117,7 +114,10 @@ class _EditProfileInformationScreenState
                                       ),
                                       BottomSheetAction(
                                         title: const Text('Chage Photo'),
-                                        onPressed: (_) {},
+                                        onPressed: (context) {
+                                          _updateProfileController
+                                              .pickedImage();
+                                        },
                                       ),
                                       BottomSheetAction(
                                         title: const Text('Remove'),

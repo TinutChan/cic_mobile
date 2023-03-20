@@ -4,5 +4,4 @@ abstract class ProfileRepo {
   DataProfileDetail? profileModel;
   void initailEditProfile();
   void updateProfile();
-  void changeProfilePicture();
 }

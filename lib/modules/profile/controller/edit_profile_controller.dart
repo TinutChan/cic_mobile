@@ -1,5 +1,6 @@
 import 'package:cic_mobile/modules/home/controller/home_controller.dart';
 import 'package:cic_mobile/modules/profile/base_repository/profile_repo.dart';
+import 'package:cic_mobile/modules/profile/controller/company_controller.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:cic_mobile/modules/profile/models/personal_profile_model/data/data_model.dart';
 import 'package:cic_mobile/routers/app_router.dart';
@@ -11,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 class UpdateProfileController extends GetxController implements ProfileRepo {
   final _apiBaseHelper = ApiBaseHelper();
   final homeController = Get.put(HomeController());
+  final companyProfileController = Get.find<CompanyProfileController>();
 
   final fullNameEditingController = TextEditingController().obs;
   final positionEditingController = TextEditingController().obs;
@@ -46,7 +48,9 @@ class UpdateProfileController extends GetxController implements ProfileRepo {
         var message = response['message'];
         var success = response['success'];
         if (success == true) {
-          approuter.go('/profile');
+          approuter.pop();
+          onRefreshData();
+          // approuter.go('/profile');
           // SnackBar(
           //   shape: RoundedRectangleBorder(
           //       borderRadius: BorderRadius.circular(10.0)),
@@ -93,11 +97,25 @@ class UpdateProfileController extends GetxController implements ProfileRepo {
   @override
   void updateProfile() {}
 
-  @override
-  void changeProfilePicture() {}
+  Future<dynamic> pickedImage() async {
+    try {
+      final XFile? pickedFile = await _picker.pickImage(
+        source: ImageSource.gallery,
+        maxWidth: double.infinity,
+        maxHeight: double.infinity,
+        imageQuality: 100,
+      );
+      return await pickedFile!.readAsBytes();
+    } catch (e) {
+      debugPrint('Image Picker error => $e');
+    }
+  }
 
   Future<void> onRefreshData() async {
-    await updateProfileController();
+    profileController.profileDetail(
+        id: homeController.userModel.value.customerId);
+    companyProfileController.companyProfileDetail(
+        id: homeController.userModel.value.customerId);
     update();
     debugPrint('= = = onRefresh: ');
   }

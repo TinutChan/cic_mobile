@@ -1,12 +1,10 @@
 import 'package:cic_mobile/utils/helper/api_base_helper.dart';
-import 'package:cic_mobile/utils/helper/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/user_model/user_model.dart';
 
 class HomeController extends GetxController {
-  var currentIndex = 0;
   int activeIndex = 0;
   final _apiBaseHelper = ApiBaseHelper();
   final userModel = UserDetailModel().obs;
@@ -30,5 +28,4 @@ class HomeController extends GetxController {
     });
     return userModel.value;
   }
-  
 }

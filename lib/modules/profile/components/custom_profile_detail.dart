@@ -1,5 +1,4 @@
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
-import 'package:cic_mobile/modules/profile/controller/edit_profile_controller.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,15 +25,7 @@ class CustomProfileDetail extends StatefulWidget {
 }
 
 class _CustomProfileDetailState extends State<CustomProfileDetail> {
-  // final techSupportController = Get.put(TechicalSupportController());
-  final _updateProfileController = Get.put(UpdateProfileController());
   final profileController = Get.put(ProfileController());
-  @override
-  void initState() {
-    _updateProfileController.updateProfileController();
-    _updateProfileController.onRefreshData();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

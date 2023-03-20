@@ -1,6 +1,6 @@
-import 'package:cic_mobile/modules/profile/controller/edit_profile_controller.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,7 +24,6 @@ class _ProfileScreenState extends State<ProfileScreen>
   final profileController = Get.put(ProfileController());
   final homeController = Get.put(HomeController());
   final companyProfileController = Get.put(CompanyProfileController());
-  final updateProfileController = Get.put(UpdateProfileController());
   late TabController _tabController;
 
   @override
@@ -33,7 +32,6 @@ class _ProfileScreenState extends State<ProfileScreen>
         id: homeController.userModel.value.customerId);
     companyProfileController.companyProfileDetail(
         id: homeController.userModel.value.customerId);
-    updateProfileController.onRefreshData();
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
@@ -63,11 +61,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                   actions: [
                     IconButton(
                         onPressed: () {
-                          context.push('/editprofileinfomation');
+                          context.push('/account/editprofileinfomation');
                         },
                         icon: const Icon(Icons.edit_square)),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.push('/account/setting');
+                      },
                       icon: const Icon(Icons.settings),
                     ),
                   ],
@@ -84,7 +84,8 @@ class _ProfileScreenState extends State<ProfileScreen>
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 85),
+                margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.13),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 5,
@@ -135,8 +136,27 @@ class _ProfileScreenState extends State<ProfileScreen>
                                           null
                                       ? Text(
                                           '${profileController.profileDetailModel.value.about}')
-                                      : const Center(
-                                          child: CircleAvatar(),
+                                      : Center(
+                                          child: Container(
+                                            padding: const EdgeInsets.only(
+                                                top: 10, left: 20, right: 20),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                SvgPicture.asset(
+                                                    'assets/icons/profile_icons/empty_state.svg'),
+                                                const Text('No Report Yet'),
+                                                const Text(
+                                                  'Here’s where you’ll find the newest',
+                                                ),
+                                                const Text(
+                                                    'report from our App.'),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                 ),
                         ),
