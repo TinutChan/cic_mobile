@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
@@ -239,11 +240,21 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                                       width: 3,
                                       color: AppColor.mainColor,
                                     ),
-                                    image: DecorationImage(
-                                      image: NetworkImage(
+                                    // image: DecorationImage(
+                                    //   image: NetworkImage(
+                                    //     '${profileController.profileDetailModel.value.profile}',
+                                    //   ),
+                                    // ),
+                                    // image: DecorationImage(image: Image.network(imageUrl: '',))
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
                                         '${profileController.profileDetailModel.value.profile}',
-                                      ),
-                                    ),
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
                                   ),
                                 )
                               : CircleAvatar(
