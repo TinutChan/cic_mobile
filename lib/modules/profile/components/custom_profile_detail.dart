@@ -243,7 +243,6 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                                       image: NetworkImage(
                                         '${profileController.profileDetailModel.value.profile}',
                                       ),
-                                      // 'https://lh3.googleusercontent.com/nKc2zdiPVN77yVjcJkbFZ902bOiq7p1MofsfrfBkgXI1SFkJRRAlEsn2HACvzvfjDp1xZaYR9Md1_Uvv2UlyBcHGVz_2kIpbKai0nWL5'),
                                     ),
                                   ),
                                 )

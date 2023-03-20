@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:cic_mobile/modules/home/controller/home_controller.dart';
 import 'package:cic_mobile/modules/profile/base_repository/profile_repo.dart';
 import 'package:cic_mobile/modules/profile/controller/company_controller.dart';
@@ -95,19 +98,47 @@ class UpdateProfileController extends GetxController implements ProfileRepo {
   }
 
   @override
-  void updateProfile() {}
+  Future updateProfilePicture() async {
+    isLoading(true);
+    List<int> imageBytes = image!.readAsBytesSync();
+    String base64Image = base64Encode(imageBytes);
+    await _apiBaseHelper.onNetworkRequesting(
+        url: 'user/change-profile',
+        methode: METHODE.post,
+        isAuthorize: true,
+        body: {
+          'profile': 'data:image/png;base64,$base64Image',
+        }).then((value) {
+      debugPrint('Updated Successed: $value');
+    });
+  }
+
+  File? image;
+  String? imagePath;
 
   Future<dynamic> pickedImage() async {
+    isLoading(true);
     try {
-      final XFile? pickedFile = await _picker.pickImage(
+      final pickedFile = await _picker.pickImage(
         source: ImageSource.gallery,
         maxWidth: double.infinity,
         maxHeight: double.infinity,
         imageQuality: 100,
       );
-      return await pickedFile!.readAsBytes();
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+        imagePath = pickedFile.path;
+        // debugPrint('ImagePath: $imagePath');
+        // debugPrint('Image: $image');
+        update();
+        isLoading(false);
+      } else {
+        debugPrint('No image selected.');
+      }
+      return imagePath;
     } catch (e) {
-      debugPrint('Image Picker error => $e');
+      // debugPrint('Image Picker error = = = = = $e');
+      isLoading(false);
     }
   }
 
@@ -117,6 +148,6 @@ class UpdateProfileController extends GetxController implements ProfileRepo {
     companyProfileController.companyProfileDetail(
         id: homeController.userModel.value.customerId);
     update();
-    debugPrint('= = = onRefresh: ');
+    // debugPrint('= = = onRefresh: ');
   }
 }

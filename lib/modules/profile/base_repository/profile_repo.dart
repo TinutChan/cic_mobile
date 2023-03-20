@@ -3,5 +3,5 @@ import 'package:cic_mobile/modules/profile/models/personal_profile_model/data/da
 abstract class ProfileRepo {
   DataProfileDetail? profileModel;
   void initailEditProfile();
-  void updateProfile();
+  Future updateProfilePicture();
 }
