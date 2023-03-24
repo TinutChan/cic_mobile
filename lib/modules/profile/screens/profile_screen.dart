@@ -113,54 +113,56 @@ class _ProfileScreenState extends State<ProfileScreen>
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Padding(
-                          padding:
-                              EdgeInsets.only(left: 20, top: 10, bottom: 10),
-                          child: Text('About'),
-                        ),
-                        Obx(
-                          () => profileController.isLoading.value
-                              ? const Center(
-                                  heightFactor: 8,
-                                  child: CircularProgressIndicator(),
-                                )
-                              : Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: profileController
-                                              .profileDetailModel.value.about !=
-                                          null
-                                      ? Text(
-                                          '${profileController.profileDetailModel.value.about}')
-                                      : Center(
-                                          child: Container(
-                                            padding: const EdgeInsets.only(
-                                                top: 10, left: 20, right: 20),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                SvgPicture.asset(
-                                                    'assets/icons/profile_icons/empty_state.svg'),
-                                                const Text('No Report Yet'),
-                                                const Text(
-                                                  'Here’s where you’ll find the newest',
-                                                ),
-                                                const Text(
-                                                    'report from our App.'),
-                                              ],
+                    SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                            child: Text('About'),
+                          ),
+                          Obx(
+                            () => profileController.isLoading.value
+                                ? const Center(
+                                    heightFactor: 8,
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: profileController.profileDetailModel
+                                                .value.about !=
+                                            null
+                                        ? Text(
+                                            '${profileController.profileDetailModel.value.about}')
+                                        : Center(
+                                            child: Container(
+                                              padding: const EdgeInsets.only(
+                                                  top: 10, left: 20, right: 20),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  SvgPicture.asset(
+                                                      'assets/icons/profile_icons/empty_state.svg'),
+                                                  const Text('No Report Yet'),
+                                                  const Text(
+                                                    'Here’s where you’ll find the newest',
+                                                  ),
+                                                  const Text(
+                                                      'report from our App.'),
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                ),
-                        ),
-                      ],
+                                  ),
+                          ),
+                        ],
+                      ),
                     ),
                     Column(
                       children: [

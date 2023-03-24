@@ -170,6 +170,7 @@ class _EditProfileInformationScreenState
                           minLines: 1,
                           obscureText: false,
                         ),
+                        const SizedBox(height: 8.0),
                         CustomTextField(
                           textEditingController: _updateProfileController
                               .positionEditingController.value,
@@ -177,6 +178,7 @@ class _EditProfileInformationScreenState
                           minLines: 1,
                           obscureText: false,
                         ),
+                        const SizedBox(height: 8.0),
                         CustomTextField(
                           textEditingController: _updateProfileController
                               .companyNameEditingController.value,
@@ -184,6 +186,7 @@ class _EditProfileInformationScreenState
                           minLines: 1,
                           obscureText: false,
                         ),
+                        const SizedBox(height: 8.0),
                         CustomTextField(
                           textEditingController: _updateProfileController
                               .phoneEditingController.value,
@@ -191,6 +194,7 @@ class _EditProfileInformationScreenState
                           minLines: 1,
                           obscureText: false,
                         ),
+                        const SizedBox(height: 8.0),
                         CustomTextField(
                           textEditingController: _updateProfileController
                               .emailEditingController.value,
@@ -198,6 +202,7 @@ class _EditProfileInformationScreenState
                           minLines: 1,
                           obscureText: false,
                         ),
+                        const SizedBox(height: 8.0),
                         CustomTextField(
                           textEditingController: _updateProfileController
                               .telegramEditingController.value,
@@ -205,6 +210,7 @@ class _EditProfileInformationScreenState
                           minLines: 1,
                           obscureText: false,
                         ),
+                        const SizedBox(height: 8.0),
                         CustomTextField(
                           textEditingController: _updateProfileController
                               .websiteEditingController.value,
@@ -212,14 +218,13 @@ class _EditProfileInformationScreenState
                           minLines: 1,
                           obscureText: false,
                         ),
-                        SizedBox(
-                          child: CustomTextField(
-                            textEditingController: _updateProfileController
-                                .aboutEditingController.value,
-                            labelText: 'About Us',
-                            minLines: 6,
-                            obscureText: false,
-                          ),
+                        const SizedBox(height: 8.0),
+                        CustomTextField(
+                          textEditingController: _updateProfileController
+                              .aboutEditingController.value,
+                          labelText: 'About Us',
+                          minLines: 1,
+                          obscureText: false,
                         ),
                       ],
                     ),

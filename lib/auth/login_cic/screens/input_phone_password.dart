@@ -106,6 +106,7 @@ class InputPhoneNumberPasswordScreen extends StatelessWidget {
                         : true,
                     onPressed: () async {
                       await loginController.getLoginControler(context);
+                      loginController.clear();
                     },
                     label: 'Login',
                   ),

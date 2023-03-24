@@ -16,6 +16,11 @@ class LoginController extends GetxController {
   final isLoading = false.obs;
   final token = ''.obs;
 
+  clear() {
+    phoneNumberController.value.clear();
+    passwordController.value.clear();
+  }
+
   Future<void> getLoginControler(BuildContext context) async {
     isLoading(true);
 
@@ -33,6 +38,7 @@ class LoginController extends GetxController {
       LocalDataStorage.storeCurrentUser(response['access_token'].toString());
       final token = await LocalDataStorage.getCurrentUser();
       debugPrint('----------------------$token');
+      isLoading(false);
     }).onError((ErrorModel error, statusCode) {
       debugPrint('===OnError: ${error.bodyString} ${error.statusCode}');
       isLoading(false);
