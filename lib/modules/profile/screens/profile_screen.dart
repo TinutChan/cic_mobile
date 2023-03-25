@@ -1,3 +1,4 @@
+import 'package:cic_mobile/modules/profile/components/custom_popup_menu_button.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,7 +10,7 @@ import '../../account/controller/technical_support_controller.dart';
 import '../../home/controller/home_controller.dart';
 import '../components/custom_profile_detail.dart';
 import '../controller/company_controller.dart';
-import 'company_profile_screen.dart';
+import '../components/custom_company_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -172,39 +173,52 @@ class _ProfileScreenState extends State<ProfileScreen>
                                 ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
-                                : ListView.builder(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
-                                    itemCount: companyProfileController
-                                        .listCompanyProfile.length,
-                                    itemBuilder: (context, index) {
-                                      return CompanyProfileScreen(
-                                        image: companyProfileController
-                                            .companyProfileModel
-                                            .value
-                                            .companyLogo,
-                                        title: companyProfileController
-                                            .companyProfileModel
-                                            .value
-                                            .companyName,
-                                        subtitle: companyProfileController
-                                            .companyProfileModel
-                                            .value
-                                            .companyProfile,
-                                        onTapped: () {},
-                                        onTappedEdit: () {},
-                                        desc: companyProfileController
-                                            .companyProfileModel
-                                            .value
-                                            .typeOfOrganization
-                                            ?.display,
-                                        sildeImage: companyProfileController
-                                            .companyProfileModel
-                                            .value
-                                            .ownerName,
-                                      );
-                                    },
-                                  ),
+                                : companyProfileController
+                                        .listCompanyProfile.isNotEmpty
+                                    ? ListView.builder(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20.0),
+                                        itemCount: companyProfileController
+                                            .listCompanyProfile.length,
+                                        itemBuilder: (context, index) {
+                                          return CompanyProfileScreen(
+                                            image: companyProfileController
+                                                .companyProfileModel
+                                                .value
+                                                .companyLogo,
+                                            title: companyProfileController
+                                                .companyProfileModel
+                                                .value
+                                                .companyName,
+                                            subtitle: companyProfileController
+                                                .companyProfileModel
+                                                .value
+                                                .companySlogan,
+                                            onTapped: () {
+                                              const CustomPopUpmenuBotton();
+                                            },
+                                            desc: companyProfileController
+                                                .companyProfileModel
+                                                .value
+                                                .personalInterest,
+                                            productService:
+                                                companyProfileController
+                                                    .companyProfileModel
+                                                    .value
+                                                    .companyProductAndService,
+                                            sildeImage: companyProfileController
+                                                .companyProfileModel
+                                                .value
+                                                .ownerName,
+                                            addCompany: () {
+                                              context.push(
+                                                  '/account/create/company');
+                                            },
+                                          );
+                                        },
+                                      )
+                                    : SvgPicture.asset(
+                                        'assets/icons/profile_icons/empty_state.svg'),
                           ),
                         ),
                       ],

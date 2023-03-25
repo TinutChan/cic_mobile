@@ -53,6 +53,8 @@ dependencies:
   adaptive_action_sheet: ^2.0.2
   cached_network_image: ^3.2.3
   qr_code_scanner: ^1.0.1
+  step_progress_indicator: ^1.0.2
+  flutter_spinkit: ^5.1.0
 
 
 dev_dependencies:

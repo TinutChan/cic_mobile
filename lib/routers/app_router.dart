@@ -10,6 +10,7 @@ import 'package:cic_mobile/modules/directory/screens/directory_screen.dart';
 import 'package:cic_mobile/modules/event/screens/event_screen.dart';
 import 'package:cic_mobile/modules/get_funding/screens/get_funding_screen.dart';
 import 'package:cic_mobile/modules/investment/screens/investment_screen.dart';
+import 'package:cic_mobile/modules/profile/screens/create_company_screen.dart';
 import 'package:cic_mobile/modules/profile/screens/edit_profile_information_screen.dart';
 import 'package:cic_mobile/modules/report/screens/report_screen.dart';
 import 'package:cic_mobile/modules/splash_screen/splash_screen.dart';
@@ -137,6 +138,14 @@ final GoRouter approuter = GoRouter(
                 return const AccountScreen();
               },
             ),
+            GoRoute(
+              parentNavigatorKey: _rootNavigatorKey,
+              path: 'create/company',
+              name: 'CreateComapany',
+              builder: (context, state) {
+                return const CreateCompanyScreen();
+              },
+            )
           ],
         ),
       ],
