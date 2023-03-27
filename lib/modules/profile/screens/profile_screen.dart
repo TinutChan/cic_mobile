@@ -1,4 +1,3 @@
-import 'package:cic_mobile/modules/profile/components/custom_popup_menu_button.dart';
 import 'package:cic_mobile/modules/profile/controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -194,9 +193,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                                                 .companyProfileModel
                                                 .value
                                                 .companySlogan,
-                                            onTapped: () {
-                                              const CustomPopUpmenuBotton();
-                                            },
+                                            onTapped: () {},
                                             desc: companyProfileController
                                                 .companyProfileModel
                                                 .value

@@ -17,58 +17,26 @@ class InvestmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColor.mainColor,
-        titleSpacing: 0,
-        title: Text('MY Investment', style: AppFont.text20white),
-        leadingWidth: 110,
-        leading: Row(
-          children: [
-            IconButton(
-              onPressed: () {
-                context.go('/home');
-              },
-              icon: const Icon(Icons.arrow_back_ios_new),
-            ),
-            SvgPicture.asset('assets/images/cicz-logo.svg'),
-          ],
-        ),
-      ),
-      body: Stack(
-        children: [
-          Container(
-            height: 132,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: colors,
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: AppColor.mainColor,
+          titleSpacing: 0,
+          title: Text('MY Investment', style: AppFont.text20white),
+          leadingWidth: 110,
+          leading: Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  context.go('/home');
+                },
+                icon: const Icon(Icons.arrow_back_ios_new),
               ),
-            ),
+              SvgPicture.asset('assets/images/cicz-logo.svg'),
+            ],
           ),
-          Positioned(
-            top: 70,
-            left: 0,
-            right: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(45.0),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 0,
-                      color: Colors.white.withOpacity(0.5),
-                      spreadRadius: 10,
-                      offset: const Offset(0.3, 0.5),
-                    ),
-                  ]),
-              height: 132,
-              width: double.infinity,
-            ),
-          ),
-        ],
-      ),
-    );
+        ),
+        body: Column(
+          children: const [],
+        ));
   }
 }

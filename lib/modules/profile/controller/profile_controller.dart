@@ -49,6 +49,7 @@ class ProfileController extends GetxController {
           "personal_interest": " compareVal.value.personalinterest"
         }).then((response) {
       var res = response['success'];
+
       debugPrint(' = = = $res');
     }).onError((ErrorModel error, stackTrace) => null);
   }

@@ -34,7 +34,7 @@ class UpdateProfileController extends GetxController implements ProfileRepo {
     isLoading(true);
     try {
       await _apiBaseHelper.onNetworkRequesting(
-          url: 'member-profile/update',
+          url: 'c',
           methode: METHODE.post,
           isAuthorize: true,
           body: {
@@ -53,14 +53,6 @@ class UpdateProfileController extends GetxController implements ProfileRepo {
         if (success == true) {
           approuter.pop();
           onRefreshData();
-          // approuter.go('/profile');
-          // SnackBar(
-          //   shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(10.0)),
-          //   duration: const Duration(seconds: 5),
-          //   backgroundColor: Colors.green,
-          //   content: message,
-          // );
           debugPrint('$message');
         }
         isLoading(false);

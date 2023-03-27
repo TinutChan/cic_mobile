@@ -1,6 +1,7 @@
 import 'package:cic_mobile/routers/app_router.dart';
 import 'package:cic_mobile/utils/helper/local_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,7 +1,11 @@
+import 'package:cic_mobile/constants/app_icon/app_icon.dart';
 import 'package:cic_mobile/constants/color_app/color_app.dart';
+import 'package:cic_mobile/modules/profile/components/custom_popup_menu_button.dart';
 import 'package:cic_mobile/modules/profile/controller/company_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../constants/font_app/theme_data.dart';
 import '../../../widgets/custom_slider.dart';
@@ -65,9 +69,42 @@ class CompanyProfileScreen extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              GestureDetector(
-                onTap: onTapped,
-                child: const Icon(Icons.more_horiz),
+              CustomPopUpMenuButton(
+                itemsOption: [
+                  PopupMenuItems(
+                    value: 0,
+                    title: companyProfileController
+                        .companyProfileModel.value.address,
+                    icon: SvgPicture.asset(AppIcon.phonecall),
+                  ),
+                  PopupMenuItems(
+                    value: 1,
+                    title: companyProfileController
+                        .companyProfileModel.value.email,
+                    icon: SvgPicture.asset(AppIcon.message),
+                  ),
+                  PopupMenuItems(
+                    value: 2,
+                    title: companyProfileController
+                        .companyProfileModel.value.address,
+                    icon: SvgPicture.asset(AppIcon.location),
+                  ),
+                  companyProfileController.companyProfileModel.value.address ==
+                          null
+                      ? PopupMenuItems(
+                          value: 3,
+                          title: companyProfileController
+                              .companyProfileModel.value.website,
+                          icon: SvgPicture.asset(AppIcon.website),
+                        )
+                      : PopupMenuItems(),
+                  PopupMenuItems(
+                    value: 4,
+                    title: 'Edit company info',
+                    icon: SvgPicture.asset(AppIcon.edit),
+                  ),
+                ],
+                onSelected: (value) => onSelected(context, value),
               ),
             ],
           ),
@@ -113,5 +150,28 @@ class CompanyProfileScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  onSelected(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        context.push('');
+    }
+    switch (index) {
+      case 1:
+        context.push('');
+    }
+    switch (index) {
+      case 2:
+        context.push('');
+    }
+    switch (index) {
+      case 3:
+        context.push('');
+    }
+    switch (index) {
+      case 4:
+        context.push('/account/update/company');
+    }
   }
 }
