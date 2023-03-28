@@ -6,6 +6,7 @@ part of 'request_otp_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_RequestOTPModel _$$_RequestOTPModelFromJson(Map<String, dynamic> json) =>
     _$_RequestOTPModel(
       message: json['message'] == null
@@ -15,6 +16,7 @@ _$_RequestOTPModel _$$_RequestOTPModelFromJson(Map<String, dynamic> json) =>
       success: json['success'] as bool?,
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_RequestOTPModelToJson(_$_RequestOTPModel instance) =>
     <String, dynamic>{
       'message': instance.message,

@@ -6,6 +6,7 @@ part of 'messager_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+// ignore: non_constant_identifier_names
 _$_Message _$$_MessageFromJson(Map<String, dynamic> json) => _$_Message(
       id: json['id'] as int?,
       phone: json['phone'] as String?,
@@ -19,6 +20,7 @@ _$_Message _$$_MessageFromJson(Map<String, dynamic> json) => _$_Message(
       deletedBy: json['deletedBy'] as String?,
     );
 
+// ignore: non_constant_identifier_names
 Map<String, dynamic> _$$_MessageToJson(_$_Message instance) =>
     <String, dynamic>{
       'id': instance.id,

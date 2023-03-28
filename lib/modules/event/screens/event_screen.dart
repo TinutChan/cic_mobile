@@ -1,3 +1,6 @@
+import 'package:cic_mobile/modules/event/components/custom_monthly.dart';
+import 'package:cic_mobile/modules/event/components/custom_tabbar.dart';
+import 'package:cic_mobile/widgets/custom_appbar_blue_bg.dart';
 import 'package:flutter/material.dart';
 
 class EventScreen extends StatelessWidget {
@@ -6,8 +9,16 @@ class EventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Event Screen'),
+      appBar: customAppWithBlueBg(
+        context: context,
+        title: 'Event',
+        centerTitle: false,
+      ),
+      body: Column(
+        children: const [
+          CustomMontlyAppBar(),
+          Expanded(child: TabScreen()),
+        ],
       ),
     );
   }

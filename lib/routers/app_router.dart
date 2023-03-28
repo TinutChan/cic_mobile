@@ -64,7 +64,7 @@ final GoRouter approuter = GoRouter(
               path: 'investment',
               name: 'Investment',
               builder: (context, state) {
-                return InvestmentScreen();
+                return const InvestmentScreen();
               },
             ),
             GoRoute(

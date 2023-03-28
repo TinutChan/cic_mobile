@@ -89,15 +89,23 @@ class CompanyProfileScreen extends StatelessWidget {
                         .companyProfileModel.value.address,
                     icon: SvgPicture.asset(AppIcon.location),
                   ),
-                  companyProfileController.companyProfileModel.value.address ==
-                          null
-                      ? PopupMenuItems(
-                          value: 3,
-                          title: companyProfileController
-                              .companyProfileModel.value.website,
-                          icon: SvgPicture.asset(AppIcon.website),
-                        )
-                      : PopupMenuItems(),
+                  // companyProfileController.companyProfileModel.value.address ==
+                  //         null
+                  //     ?
+                  if (companyProfileController
+                              .companyProfileModel.value.website !=
+                          null &&
+                      companyProfileController
+                          .companyProfileModel.value.website!.isEmpty &&
+                      companyProfileController
+                              .companyProfileModel.value.website !=
+                          '')
+                    PopupMenuItems(
+                      value: 3,
+                      title: companyProfileController
+                          .companyProfileModel.value.website,
+                      icon: SvgPicture.asset(AppIcon.website),
+                    ),
                   PopupMenuItems(
                     value: 4,
                     title: 'Edit company info',

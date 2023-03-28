@@ -79,6 +79,7 @@ class _CustomProfileDetailState extends State<CustomProfileDetail> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Icon(Icons.verified_user_outlined, size: 18),
+                            const SizedBox(width: 8.0),
                             Text(
                               '${profileController.profileDetailModel.value.position}',
                               style: theme()
