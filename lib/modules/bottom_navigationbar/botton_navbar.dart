@@ -1,4 +1,5 @@
 import 'package:cic_mobile/constants/color_app/color_app.dart';
+import 'package:cic_mobile/modules/bottom_navigationbar/overlay_entry.dart';
 import 'package:cic_mobile/modules/home/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,38 +21,50 @@ class _BottonNavBarState extends State<BottonNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _calculateSelectedIndex(context),
-        onTap: (index) {
-          _onItemTapped(index, context);
-        },
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon:
-                SvgPicture.asset('assets/icons/home_inactive.svg', height: 23),
-            label: 'Home',
-            activeIcon:
-                SvgPicture.asset('assets/icons/home_active.svg', height: 23),
-          ),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/qr_scan_inactive.svg'),
-              label: 'QR Scan'),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/event.svg'),
-            label: 'Event',
-            activeIcon: SvgPicture.asset(
-              'assets/icons/event.svg',
-              colorFilter:
-                  ColorFilter.mode(AppColor.mainColor, BlendMode.srcIn),
+      bottomNavigationBar: Theme(
+        data: ThemeData(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _calculateSelectedIndex(context),
+          onTap: (index) {
+            _onItemTapped(index, context);
+          },
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/home_inactive.svg',
+                  height: 23),
+              label: 'Home',
+              activeIcon:
+                  SvgPicture.asset('assets/icons/home_active.svg', height: 23),
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/account_inactive.svg'),
-            label: 'Account',
-            activeIcon: SvgPicture.asset('assets/icons/account_active.svg'),
-          ),
-        ],
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/qr_scan_inactive.svg'),
+                label: 'QR Scan'),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/event.svg'),
+              label: 'Event',
+              activeIcon: SvgPicture.asset(
+                'assets/icons/event.svg',
+                colorFilter:
+                    ColorFilter.mode(AppColor.mainColor, BlendMode.srcIn),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/more.svg'),
+              label: 'More',
+              activeIcon: SvgPicture.asset(
+                'assets/icons/more.svg',
+                colorFilter: ColorFilter.mode(
+                  AppColor.mainColor,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -68,8 +81,10 @@ class _BottonNavBarState extends State<BottonNavBar> {
         (context).go('/event');
         break;
       case 3:
-        (context).go('/account');
-        break;
+        showOverLay(context);
+        debugPrint('on Clicked!');
+      // (context).go('/account');
+      // break;
     }
   }
 

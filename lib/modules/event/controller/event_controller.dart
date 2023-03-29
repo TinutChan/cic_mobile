@@ -1,4 +1,4 @@
-import 'package:cic_mobile/modules/event/models/year_event_model/year_event_model.dart';
+import 'package:cic_mobile/modules/event/models/event_data.dart';
 import 'package:cic_mobile/utils/helper/api_base_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class EventController extends GetxController {
   final isLoading = false.obs;
   final _apiBaseHelper = ApiBaseHelper();
-  var eventYearList = <EventYearModel>[].obs;
+  var eventYearList = <EventData>[].obs;
 
   Future getCalendar() async {
     isLoading(true);
@@ -17,9 +17,9 @@ class EventController extends GetxController {
           .then((response) {
         var responseJson = response['data'];
         responseJson.map((e) {
-          eventYearList.add(EventYearModel.fromJson(e));
-          debugPrint('= = = = $eventYearList');
+          eventYearList.add(EventData.fromJson(e));
         }).toList();
+        debugPrint('= = = = $eventYearList');
         // eventYearList.add(EventYearModel.fromJson(responseJson[0]));
         // debugPrint('eventYearList: $eventYearList');
 
