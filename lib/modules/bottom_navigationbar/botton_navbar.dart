@@ -15,6 +15,7 @@ class BottonNavBar extends StatefulWidget {
 }
 
 final homeController = Get.put(HomeController());
+bool isActive = false;
 
 class _BottonNavBarState extends State<BottonNavBar> {
   @override
@@ -91,15 +92,19 @@ class _BottonNavBarState extends State<BottonNavBar> {
   static int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).location;
     if (location.startsWith('/home')) {
+      isActive = false;
       return 0;
     }
     if (location.startsWith('/qr_scan')) {
+      isActive = false;
       return 1;
     }
     if (location.startsWith('/event')) {
+      isActive = false;
       return 2;
     }
     if (location.startsWith('/account')) {
+      isActive = false;
       return 3;
     }
 

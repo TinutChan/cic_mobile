@@ -1,7 +1,9 @@
 import 'package:cic_mobile/auth/register_cic/components/backdrop_filter_image.dart';
 import 'package:cic_mobile/constants/color_app/color_app.dart';
+import 'package:cic_mobile/modules/bottom_navigationbar/custom_menu_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 showOverLay(BuildContext context) {
   OverlayState? overlayState = Overlay.of(context);
@@ -39,124 +41,40 @@ showOverLay(BuildContext context) {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          GestureDetector(
+                          MenuItem(
                             onTap: () {
-                              overlay?.remove();
-                              // approuter.push('/my-mvp');
+                              context.go('/my_mvp');
+                              overlay!.remove();
                             },
-                            child: Container(
-                              color: Colors.transparent,
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'My MVP',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displaySmall!
-                                        .copyWith(
-                                          color: AppColor.blackColor,
-                                        ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  SvgPicture.asset(
-                                    'assets/icons/mvp_outline.svg',
-                                    height: 16,
-                                    colorFilter: ColorFilter.mode(
-                                      AppColor.mainColor,
-                                      BlendMode.srcIn,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            title: 'My MVP',
+                            leadingIcon: 'assets/icons/event.svg',
+                            actionIcon: 'assets/icons/event.svg',
                           ),
                           Divider(
                             color: AppColor.greyColor,
                             height: 0,
                           ),
-                          GestureDetector(
+                          MenuItem(
                             onTap: () {
-                              overlay?.remove();
-                              // GoRouter.of(context).go('/profile');
+                              context.go('/profile');
+                              overlay!.remove();
                             },
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              color: Colors.transparent,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Profile',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displaySmall!
-                                        .copyWith(
-                                          color: AppColor.blackColor,
-                                        ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  SvgPicture.asset(
-                                    'assets/icons/profile_outline.svg',
-                                    height: 16,
-                                    colorFilter: ColorFilter.mode(
-                                      AppColor.mainColor,
-                                      BlendMode.srcIn,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            title: 'Profile',
+                            leadingIcon: 'assets/icons/event.svg',
+                            actionIcon: 'assets/icons/event.svg',
                           ),
                           Divider(
                             color: AppColor.greyColor,
                             height: 0,
                           ),
-                          GestureDetector(
+                          MenuItem(
                             onTap: () {
-                              overlay?.remove();
-                              // approuter.push('/report-screen');
+                              context.go('/report');
+                              overlay!.remove();
                             },
-                            child: Container(
-                              color: Colors.transparent,
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Report',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displaySmall!
-                                        .copyWith(
-                                          color: AppColor.blackColor,
-                                        ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  SvgPicture.asset(
-                                    'assets/icons/report_outline.svg',
-                                    height: 16,
-                                    colorFilter: ColorFilter.mode(
-                                      AppColor.mainColor,
-                                      BlendMode.srcIn,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            title: 'My MVP',
+                            leadingIcon: 'assets/icons/event.svg',
+                            actionIcon: 'assets/icons/event.svg',
                           ),
                         ],
                       ),

@@ -11,7 +11,7 @@ class EventScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final eventController = Get.put(EventController());
     return Scaffold(
-      appBar: customAppWithBlueBg(
+      appBar: customAppBar(
         context: context,
         title: 'Event',
         centerTitle: false,

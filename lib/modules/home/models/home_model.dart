@@ -30,17 +30,17 @@ final List listImage = [
     },
   },
   {
+    'imgaes': 'assets/icons/privilege.svg',
+    'label': 'privilege',
+    'onTapped': () {
+      approuter.push('/home/privilege');
+    },
+  },
+  {
     'imgaes': 'assets/icons/home_category/directory.png',
     'label': 'Directory',
     'onTapped': () {
       approuter.push('/home/directory');
     },
   },
-  {
-    'imgaes': 'assets/icons/home_category/report.png',
-    'label': 'Report',
-    'onTapped': () {
-      approuter.push('/home/report');
-    },
-  }
 ];

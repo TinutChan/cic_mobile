@@ -42,6 +42,11 @@ ThemeData theme() {
         fontSize: 12,
         fontFamily: 'DMSans',
       ),
+      labelSmall: const TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 10,
+        fontFamily: 'DMSans',
+      ),
     ),
   );
 }

@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MenuItem extends StatelessWidget {
-  const MenuItem({super.key});
+  const MenuItem(
+      {super.key, this.onTap, this.title, this.actionIcon, this.leadingIcon});
+
+  final String? title;
+  final VoidCallback? onTap;
+  final String? leadingIcon;
+  final String? actionIcon;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // overlay?.remove();
-        // approuter.push('/my-mvp');
-      },
+      onTap: onTap, //! overlay.remove
       child: Container(
         color: Colors.transparent,
         padding: const EdgeInsets.symmetric(vertical: 5),
@@ -19,8 +22,16 @@ class MenuItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SvgPicture.asset(
+              '$leadingIcon',
+              height: 16,
+              colorFilter: ColorFilter.mode(
+                AppColor.mainColor,
+                BlendMode.srcIn,
+              ),
+            ),
             Text(
-              'My MVP',
+              '$title',
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
                     color: AppColor.blackColor,
                   ),
@@ -29,7 +40,7 @@ class MenuItem extends StatelessWidget {
               width: 20,
             ),
             SvgPicture.asset(
-              'assets/icons/mvp_outline.svg',
+              '$actionIcon',
               height: 16,
               colorFilter: ColorFilter.mode(
                 AppColor.mainColor,

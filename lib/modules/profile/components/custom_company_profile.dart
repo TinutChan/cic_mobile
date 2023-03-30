@@ -179,7 +179,7 @@ class CompanyProfileScreen extends StatelessWidget {
     }
     switch (index) {
       case 4:
-        context.push('/account/update/company');
+        context.push('/profile/update/company');
     }
   }
 }

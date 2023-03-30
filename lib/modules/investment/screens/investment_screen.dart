@@ -25,7 +25,7 @@ class _InvestmentScreenState extends State<InvestmentScreen>
     return DefaultTabController(
       length: _tabs.length,
       child: Scaffold(
-        appBar: customAppWithBlueBg(
+        appBar: customAppBar(
           centerTitle: false,
           context: context,
           title: 'My Investment',

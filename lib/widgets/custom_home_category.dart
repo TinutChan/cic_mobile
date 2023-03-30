@@ -9,6 +9,7 @@ class CustomCategoies extends StatelessWidget {
   final String? imgaes;
   final String? label;
   final VoidCallback? onTapped;
+  final bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {

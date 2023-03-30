@@ -4,11 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-customAppWithBlueBg(
-    {required BuildContext context, String? title, bool? centerTitle}) {
+customAppBar({
+  required BuildContext context,
+  String? title,
+  bool? centerTitle,
+  List<Widget>? actions,
+  Color? backgroundColor,
+}) {
   return AppBar(
     elevation: 0,
-    backgroundColor: AppColor.mainColor,
+    backgroundColor: backgroundColor ?? AppColor.mainColor,
     titleSpacing: 0,
     title: Text(title ?? '', style: AppFont.text20white),
     leadingWidth: 110,
@@ -25,5 +30,6 @@ customAppWithBlueBg(
             colorFilter: const ColorFilter.mode(Colors.red, BlendMode.dstIn)),
       ],
     ),
+    actions: actions,
   );
 }

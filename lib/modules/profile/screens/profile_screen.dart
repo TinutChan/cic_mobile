@@ -61,12 +61,12 @@ class _ProfileScreenState extends State<ProfileScreen>
                   actions: [
                     IconButton(
                         onPressed: () {
-                          context.push('/account/editprofileinfomation');
+                          context.push('/profile/editprofileinfomation');
                         },
                         icon: const Icon(Icons.edit_square)),
                     IconButton(
                       onPressed: () {
-                        context.push('/account/setting');
+                        context.push('/profile/setting');
                       },
                       icon: const Icon(Icons.settings),
                     ),

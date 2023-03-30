@@ -10,6 +10,8 @@ import 'package:cic_mobile/modules/directory/screens/directory_screen.dart';
 import 'package:cic_mobile/modules/event/screens/event_screen.dart';
 import 'package:cic_mobile/modules/get_funding/screens/get_funding_screen.dart';
 import 'package:cic_mobile/modules/investment/screens/investment_screen.dart';
+import 'package:cic_mobile/modules/my_mvp/screen/my_mvp_screen.dart';
+import 'package:cic_mobile/modules/privilege/screen/privilege.dart';
 import 'package:cic_mobile/modules/profile/screens/create_company_screen.dart';
 import 'package:cic_mobile/modules/profile/screens/edit_profile_information_screen.dart';
 import 'package:cic_mobile/modules/profile/screens/update_company_screen.dart';
@@ -55,12 +57,13 @@ final GoRouter approuter = GoRouter(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/home',
           name: 'Home',
-          builder: (context, state) {
-            return const HomeScreen();
-          },
+          // builder: (context, state) {
+          //   return const HomeScreen();
+          // },
+          pageBuilder: (context, state) => NoTransitionPage(
+              name: state.name, key: state.pageKey, child: const HomeScreen()),
           routes: [
             GoRoute(
-              parentNavigatorKey: _rootNavigatorKey,
               path: 'investment',
               name: 'Investment',
               builder: (context, state) {
@@ -68,7 +71,6 @@ final GoRouter approuter = GoRouter(
               },
             ),
             GoRoute(
-              parentNavigatorKey: _rootNavigatorKey,
               path: 'bunos',
               name: 'Bunos',
               builder: (context, state) {
@@ -76,7 +78,6 @@ final GoRouter approuter = GoRouter(
               },
             ),
             GoRoute(
-              parentNavigatorKey: _rootNavigatorKey,
               path: 'get_funding',
               name: 'Get_Funding',
               builder: (context, state) {
@@ -84,7 +85,6 @@ final GoRouter approuter = GoRouter(
               },
             ),
             GoRoute(
-              parentNavigatorKey: _rootNavigatorKey,
               path: 'ut_trading',
               name: 'UT_Trading',
               builder: (context, state) {
@@ -92,7 +92,6 @@ final GoRouter approuter = GoRouter(
               },
             ),
             GoRoute(
-              parentNavigatorKey: _rootNavigatorKey,
               path: 'directory',
               name: 'Directory',
               builder: (context, state) {
@@ -100,11 +99,10 @@ final GoRouter approuter = GoRouter(
               },
             ),
             GoRoute(
-              parentNavigatorKey: _rootNavigatorKey,
-              path: 'report',
-              name: 'Report',
+              path: 'privilege',
+              name: 'privilege',
               builder: (context, state) {
-                return const ReportScreen();
+                return const Privilege();
               },
             ),
           ],
@@ -113,14 +111,22 @@ final GoRouter approuter = GoRouter(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/event',
           name: 'event',
+          // builder: (context, state) {
+          //   return const EventScreen();
+          // },
+          pageBuilder: (context, state) => NoTransitionPage(
+              name: state.name, key: state.pageKey, child: const EventScreen()),
+        ),
+        GoRoute(
+          path: '/my_mvp',
           builder: (context, state) {
-            return const EventScreen();
+            return const MyMvpScreen();
           },
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
-          path: '/account',
-          name: 'Account',
+          path: '/profile',
+          name: 'Profile',
           builder: (context, state) {
             return const ProfileScreen();
           },
@@ -160,9 +166,11 @@ final GoRouter approuter = GoRouter(
     GoRoute(
       path: '/qr_scan',
       name: 'QR_Scan',
-      builder: (context, state) {
-        return const QRScanScreen();
-      },
+      // builder: (context, state) {
+      //   return const QRScanScreen();
+      // },
+      pageBuilder: (context, state) => NoTransitionPage(
+          name: state.name, key: state.pageKey, child: const QRScanScreen()),
     ),
     GoRoute(
       path: '/login',
