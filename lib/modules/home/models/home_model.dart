@@ -30,7 +30,7 @@ final List listImage = [
     },
   },
   {
-    'imgaes': 'assets/icons/privilege.svg',
+    'imgaes': 'assets/icons/privilege.png',
     'label': 'privilege',
     'onTapped': () {
       approuter.push('/home/privilege');

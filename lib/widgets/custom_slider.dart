@@ -69,7 +69,7 @@ class _CustomSliderState extends State<CustomSlider> {
             autoPlayAnimationDuration: const Duration(milliseconds: 800),
           ),
         ),
-        const SizedBox(height: 10.0),
+        const SizedBox(height: 5.0),
         AnimatedSmoothIndicator(
           onDotClicked: (index) {
             debugPrint('0------$index');
@@ -83,7 +83,7 @@ class _CustomSliderState extends State<CustomSlider> {
           effect: ExpandingDotsEffect(
             activeDotColor: AppColor.mainColor,
             dotColor: AppColor.grey4Color,
-            dotHeight: 8.0,
+            dotHeight: 5.0,
             dotWidth: 8.0,
             expansionFactor: 3,
             radius: 5,
