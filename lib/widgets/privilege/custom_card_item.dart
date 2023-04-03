@@ -1,95 +1,166 @@
+import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomCardItem extends StatelessWidget {
-  const CustomCardItem({super.key});
+  const CustomCardItem({
+    super.key,
+    this.height,
+    this.isHeight,
+    this.status,
+    this.title,
+    this.subtitle,
+    this.address,
+    this.offier,
+    this.image,
+    this.isFavorite,
+    this.onTap,
+  });
+
+  final double? height;
+
+  final bool? isHeight;
+  final VoidCallback? onTap;
+  final String? status;
+  final String? title;
+  final String? subtitle;
+  final String? address;
+  final String? offier;
+  final String? image;
+  final bool? isFavorite;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10.0),
-          width: double.infinity,
-          height: 104,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  offset: const Offset(0.3, 0.5),
-                  blurStyle: BlurStyle.solid,
-                  // spreadRadius: 5,
-                  blurRadius: 5)
-            ],
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+    return Container(
+      margin: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10.0),
+      width: double.infinity,
+      height: isHeight == false ? height : 104,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            offset: const Offset(0.3, 0.5),
+            blurStyle: BlurStyle.solid,
+            // spreadRadius: 5,
+            blurRadius: 5,
+          )
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Stack(
             children: [
               Container(
                 width: 90,
                 height: 90,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.blue,
+                  image: DecorationImage(
+                      image: NetworkImage('$image'), fit: BoxFit.cover),
                 ),
               ),
-              const SizedBox(width: 15.0),
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('OPEN NOW',
-                            style: theme()
-                                .textTheme
-                                .labelSmall!
-                                .copyWith(color: Colors.green)),
-                        Text('Champei Spa',
-                            style: theme().textTheme.displayMedium),
-                        const Text('Lorem ipsum'),
-                        const Spacer(),
-                        Row(
-                          children: const [
-                            Icon(Icons.location_on),
-                            Text('Toul Kork'),
-                          ],
-                        )
-                      ],
+              Positioned(
+                top: 5.0,
+                left: 0,
+                child: GestureDetector(
+                  onTap: onTap,
+                  child: SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: SvgPicture.asset(
+                      'assets/icons/privillege/fav_inactive.svg',
                     ),
-                    const Spacer(),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      height: 20,
-                      color: const Color(0xffE28112),
-                      child: const Text(
-                        '40%',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+              )
             ],
           ),
-        ),
-        Positioned(
-          top: 20.0,
-          left: 20,
-          child: GestureDetector(
-            onTap: () {},
-            child: const SizedBox(
-              width: 20,
-              height: 20,
-              child: Icon(Icons.favorite_outline),
+          const SizedBox(width: 15.0),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        status ?? '',
+                        style: theme()
+                            .textTheme
+                            .labelSmall!
+                            .copyWith(color: Colors.green),
+                      ),
+                      Text(
+                        title ?? '',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme()
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(fontSize: 14),
+                      ),
+                      SizedBox(
+                        width: double.maxFinite,
+                        child: Text(
+                          subtitle ?? '',
+                          maxLines: 1,
+                          // softWrap: true,
+
+                          style: theme().textTheme.titleSmall!.copyWith(
+                                color: AppColor.grey4Color,
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 14,
+                              ),
+                        ),
+                      ),
+                      const Spacer(),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                              'assets/icons/privillege/location.svg'),
+                          const SizedBox(width: 5.5),
+                          Text(
+                            address ?? '',
+                            style: theme().textTheme.titleSmall,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  height: 25,
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xffFFC837),
+                        Color(0xffFF8008),
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                  ),
+                  child: Text(
+                    offier ?? '',
+                    style: theme()
+                        .textTheme
+                        .displaySmall!
+                        .copyWith(color: AppColor.whiteColor),
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

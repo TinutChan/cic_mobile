@@ -13,6 +13,8 @@ class _InvestmentScreenState extends State<InvestmentScreen>
     with SingleTickerProviderStateMixin {
   final List<String> _tabs = <String>['Personal Profile', 'Company Profile '];
   late TabController _controller;
+  final TextEditingController emailController = TextEditingController();
+  final bool onError = false;
 
   @override
   void initState() {
@@ -30,57 +32,49 @@ class _InvestmentScreenState extends State<InvestmentScreen>
           context: context,
           title: 'My Investment',
         ),
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 135,
-                  width: double.infinity,
-                  color: AppColor.mainColor,
-                ),
-                // Container(
-                //   width: 10,
-                //   height: 10,
-                //   color: Colors.amber,
-                // )
-
-                Positioned(
-                  top: 7.0,
-                  left: 10.0,
-                  right: 10.0,
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Column(
-                      children: <Widget>[
-                        TabBar(
-                            isScrollable: true,
-                            labelColor: Colors.black,
-                            indicatorColor: Colors.blue,
-                            controller: _controller,
-                            tabs: _tabs
-                                .map((String name) => Tab(text: name))
-                                .toList()),
-                        Expanded(
-                          child: TabBarView(
-                            controller: _controller,
-                            children: const <Widget>[
-                              Center(
-                                child: Text('Tab View 1'),
-                              ),
-                              Center(
-                                child: Text('Tab View 2'),
-                              ),
-                            ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  padding: const EdgeInsets.only(left: 30, right: 35, top: 10),
+                  child: TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
+                      prefixIcon: InkWell(
+                          child: const Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: SizedBox(
+                              height: 20,
+                            ),
                           ),
-                        )
-                      ],
+                          onTap: () {}),
+                      alignLabelWithHint: true,
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      contentPadding: const EdgeInsets.fromLTRB(8, 5, 10, 5),
+                      labelText: "Your Email",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(2.0),
+                      ),
+                      labelStyle:
+                          TextStyle(color: AppColor.mainColor, fontSize: 16),
                     ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+                    // inputFormatters: [new LengthLimitingTextInputFormatter(10)],
+                    validator: (value) => (value),
+                  )),
+              onError
+                  ? const Positioned(
+                      bottom: 0,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 30),
+                        child: Text('', style: TextStyle(color: Colors.red)),
+                      ))
+                  : Container(),
+              ElevatedButton(onPressed: () {}, child: const Text('Sumit'))
+            ],
+          ),
         ),
       ),
     );

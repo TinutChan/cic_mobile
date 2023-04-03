@@ -28,6 +28,7 @@ class _CustomSliderState extends State<CustomSlider> {
     'assets/images/slide_show/slideshow2.png',
   ];
   CarouselController con = CarouselController();
+  final bool? isEnable = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -70,26 +71,28 @@ class _CustomSliderState extends State<CustomSlider> {
           ),
         ),
         const SizedBox(height: 5.0),
-        AnimatedSmoothIndicator(
-          onDotClicked: (index) {
-            debugPrint('0------$index');
-            setState(() {
-              con.animateToPage(index);
-              homeController.activeIndex = index;
-            });
-          },
-          activeIndex: homeController.activeIndex,
-          count: img.length,
-          effect: ExpandingDotsEffect(
-            activeDotColor: AppColor.mainColor,
-            dotColor: AppColor.grey4Color,
-            dotHeight: 5.0,
-            dotWidth: 8.0,
-            expansionFactor: 3,
-            radius: 5,
-            spacing: 6.0,
-          ),
-        ),
+        isEnable == false
+            ? AnimatedSmoothIndicator(
+                onDotClicked: (index) {
+                  debugPrint('0------$index');
+                  setState(() {
+                    con.animateToPage(index);
+                    homeController.activeIndex = index;
+                  });
+                },
+                activeIndex: homeController.activeIndex,
+                count: img.length,
+                effect: ExpandingDotsEffect(
+                  activeDotColor: AppColor.mainColor,
+                  dotColor: AppColor.grey4Color,
+                  dotHeight: 5.0,
+                  dotWidth: 8.0,
+                  expansionFactor: 3,
+                  radius: 5,
+                  spacing: 6.0,
+                ),
+              )
+            : const SizedBox(),
       ],
     );
   }

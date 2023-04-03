@@ -15,7 +15,6 @@ import 'package:cic_mobile/modules/privilege/screen/privilege.dart';
 import 'package:cic_mobile/modules/profile/screens/create_company_screen.dart';
 import 'package:cic_mobile/modules/profile/screens/edit_profile_information_screen.dart';
 import 'package:cic_mobile/modules/profile/screens/update_company_screen.dart';
-import 'package:cic_mobile/modules/report/screens/report_screen.dart';
 import 'package:cic_mobile/modules/splash_screen/splash_screen.dart';
 import 'package:cic_mobile/modules/ut_trading/screens/ut_trading_screen.dart';
 import 'package:flutter/material.dart';
@@ -94,14 +93,14 @@ final GoRouter approuter = GoRouter(
             GoRoute(
               path: 'directory',
               name: 'Directory',
-              builder: (context, state) {
+              builder: (_, state) {
                 return const DirectoryScreen();
               },
             ),
             GoRoute(
               path: 'privilege',
               name: 'privilege',
-              builder: (context, state) {
+              builder: (_, state) {
                 return const Privilege();
               },
             ),
