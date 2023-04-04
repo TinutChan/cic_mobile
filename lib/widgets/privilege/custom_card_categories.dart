@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CustomCardCategories extends StatelessWidget {
   const CustomCardCategories({
@@ -58,31 +57,47 @@ class CustomCardCategories extends StatelessWidget {
               ],
             ),
             Positioned(
-              bottom: -10,
-              right: -15,
-              child: CachedNetworkImage(
-                imageUrl: "$netWorkImage",
-                imageBuilder: (context, imageProvider) => Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: imageProvider,
-                      fit: BoxFit.cover,
-                    ),
+              bottom: 0,
+              right: 0,
+              child: Container(
+                padding: EdgeInsets.zero,
+                width: 90,
+                height: 40,
+                child: CachedNetworkImage(
+                  imageUrl: "$netWorkImage",
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      Center(
+                    child: CircularProgressIndicator(
+                        value: downloadProgress.progress),
                   ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-                placeholder: (context, url) => Center(
-                  child: Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade400,
-                    child: Container(
-                      width: 150,
-                      height: 30,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
+              // child: Image.network(
+              //     'https://cic.fra1.cdn.digitaloceanspaces.com/cicstaging/uploads/files/original/b8bfb2a7762649b625d58424b868a758.png'),
+              // child: CachedNetworkImage(
+              //   imageUrl: "$netWorkImage",
+              //   imageBuilder: (context, imageProvider) => Container(
+              //     decoration: BoxDecoration(
+              //       image: DecorationImage(
+              //         image: imageProvider,
+              //         fit: BoxFit.cover,
+              //       ),
+              //     ),
+              //   ),
+              //   placeholder: (context, url) => Center(
+              //     child: Shimmer.fromColors(
+              //       baseColor: Colors.grey.shade300,
+              //       highlightColor: Colors.grey.shade400,
+              //       child: Container(
+              //         width: 150,
+              //         height: 30,
+              //         color: Colors.white,
+              //       ),
+              //     ),
+              //   ),
+              //   errorWidget: (context, url, error) => const Icon(Icons.error),
+              // ),
             )
           ],
         ),

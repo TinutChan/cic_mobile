@@ -22,18 +22,30 @@ PrivilegeData _$PrivilegeDataFromJson(Map<String, dynamic> json) {
 mixin _$PrivilegeData {
   int? get id => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_favorite')
   bool? get isFavorite => throw _privateConstructorUsedError;
+  @JsonKey(name: 'point_accepted')
   bool? get pointAccepted => throw _privateConstructorUsedError;
+  @JsonKey(name: 'current_point')
   int? get currentPoint => throw _privateConstructorUsedError;
   String? get slogan => throw _privateConstructorUsedError;
+  @JsonKey(name: 'discount_rate')
   String? get discountRate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'discount_bg_color')
   String? get discountBgColor => throw _privateConstructorUsedError;
+  @JsonKey(name: 'discount_bg_color_end')
   String? get discountBgColorEnd => throw _privateConstructorUsedError;
+  @JsonKey(name: 'shop_name_in_khmer')
   String? get shopNameInKhmer => throw _privateConstructorUsedError;
+  @JsonKey(name: 'shop_name_in_english')
   String? get shopNameInEnglish => throw _privateConstructorUsedError;
+  @JsonKey(name: 'brief_address')
   String? get briefAddress => throw _privateConstructorUsedError;
+  @JsonKey(name: 'full_address')
   String? get fullAddress => throw _privateConstructorUsedError;
+  @JsonKey(name: 'shop_logo')
   String? get shopLogo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'number_shop')
   int? get numberShop => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,19 +63,19 @@ abstract class $PrivilegeDataCopyWith<$Res> {
   $Res call(
       {int? id,
       String? status,
-      bool? isFavorite,
-      bool? pointAccepted,
-      int? currentPoint,
+      @JsonKey(name: 'is_favorite') bool? isFavorite,
+      @JsonKey(name: 'point_accepted') bool? pointAccepted,
+      @JsonKey(name: 'current_point') int? currentPoint,
       String? slogan,
-      String? discountRate,
-      String? discountBgColor,
-      String? discountBgColorEnd,
-      String? shopNameInKhmer,
-      String? shopNameInEnglish,
-      String? briefAddress,
-      String? fullAddress,
-      String? shopLogo,
-      int? numberShop});
+      @JsonKey(name: 'discount_rate') String? discountRate,
+      @JsonKey(name: 'discount_bg_color') String? discountBgColor,
+      @JsonKey(name: 'discount_bg_color_end') String? discountBgColorEnd,
+      @JsonKey(name: 'shop_name_in_khmer') String? shopNameInKhmer,
+      @JsonKey(name: 'shop_name_in_english') String? shopNameInEnglish,
+      @JsonKey(name: 'brief_address') String? briefAddress,
+      @JsonKey(name: 'full_address') String? fullAddress,
+      @JsonKey(name: 'shop_logo') String? shopLogo,
+      @JsonKey(name: 'number_shop') int? numberShop});
 }
 
 /// @nodoc
@@ -171,19 +183,19 @@ abstract class _$$_PrivilegeDataCopyWith<$Res>
   $Res call(
       {int? id,
       String? status,
-      bool? isFavorite,
-      bool? pointAccepted,
-      int? currentPoint,
+      @JsonKey(name: 'is_favorite') bool? isFavorite,
+      @JsonKey(name: 'point_accepted') bool? pointAccepted,
+      @JsonKey(name: 'current_point') int? currentPoint,
       String? slogan,
-      String? discountRate,
-      String? discountBgColor,
-      String? discountBgColorEnd,
-      String? shopNameInKhmer,
-      String? shopNameInEnglish,
-      String? briefAddress,
-      String? fullAddress,
-      String? shopLogo,
-      int? numberShop});
+      @JsonKey(name: 'discount_rate') String? discountRate,
+      @JsonKey(name: 'discount_bg_color') String? discountBgColor,
+      @JsonKey(name: 'discount_bg_color_end') String? discountBgColorEnd,
+      @JsonKey(name: 'shop_name_in_khmer') String? shopNameInKhmer,
+      @JsonKey(name: 'shop_name_in_english') String? shopNameInEnglish,
+      @JsonKey(name: 'brief_address') String? briefAddress,
+      @JsonKey(name: 'full_address') String? fullAddress,
+      @JsonKey(name: 'shop_logo') String? shopLogo,
+      @JsonKey(name: 'number_shop') int? numberShop});
 }
 
 /// @nodoc
@@ -284,19 +296,19 @@ class _$_PrivilegeData implements _PrivilegeData {
   _$_PrivilegeData(
       {this.id,
       this.status,
-      this.isFavorite,
-      this.pointAccepted,
-      this.currentPoint,
+      @JsonKey(name: 'is_favorite') this.isFavorite,
+      @JsonKey(name: 'point_accepted') this.pointAccepted,
+      @JsonKey(name: 'current_point') this.currentPoint,
       this.slogan,
-      this.discountRate,
-      this.discountBgColor,
-      this.discountBgColorEnd,
-      this.shopNameInKhmer,
-      this.shopNameInEnglish,
-      this.briefAddress,
-      this.fullAddress,
-      this.shopLogo,
-      this.numberShop});
+      @JsonKey(name: 'discount_rate') this.discountRate,
+      @JsonKey(name: 'discount_bg_color') this.discountBgColor,
+      @JsonKey(name: 'discount_bg_color_end') this.discountBgColorEnd,
+      @JsonKey(name: 'shop_name_in_khmer') this.shopNameInKhmer,
+      @JsonKey(name: 'shop_name_in_english') this.shopNameInEnglish,
+      @JsonKey(name: 'brief_address') this.briefAddress,
+      @JsonKey(name: 'full_address') this.fullAddress,
+      @JsonKey(name: 'shop_logo') this.shopLogo,
+      @JsonKey(name: 'number_shop') this.numberShop});
 
   factory _$_PrivilegeData.fromJson(Map<String, dynamic> json) =>
       _$$_PrivilegeDataFromJson(json);
@@ -306,30 +318,42 @@ class _$_PrivilegeData implements _PrivilegeData {
   @override
   final String? status;
   @override
+  @JsonKey(name: 'is_favorite')
   final bool? isFavorite;
   @override
+  @JsonKey(name: 'point_accepted')
   final bool? pointAccepted;
   @override
+  @JsonKey(name: 'current_point')
   final int? currentPoint;
   @override
   final String? slogan;
   @override
+  @JsonKey(name: 'discount_rate')
   final String? discountRate;
   @override
+  @JsonKey(name: 'discount_bg_color')
   final String? discountBgColor;
   @override
+  @JsonKey(name: 'discount_bg_color_end')
   final String? discountBgColorEnd;
   @override
+  @JsonKey(name: 'shop_name_in_khmer')
   final String? shopNameInKhmer;
   @override
+  @JsonKey(name: 'shop_name_in_english')
   final String? shopNameInEnglish;
   @override
+  @JsonKey(name: 'brief_address')
   final String? briefAddress;
   @override
+  @JsonKey(name: 'full_address')
   final String? fullAddress;
   @override
+  @JsonKey(name: 'shop_logo')
   final String? shopLogo;
   @override
+  @JsonKey(name: 'number_shop')
   final int? numberShop;
 
   @override
@@ -409,19 +433,19 @@ abstract class _PrivilegeData implements PrivilegeData {
   factory _PrivilegeData(
       {final int? id,
       final String? status,
-      final bool? isFavorite,
-      final bool? pointAccepted,
-      final int? currentPoint,
+      @JsonKey(name: 'is_favorite') final bool? isFavorite,
+      @JsonKey(name: 'point_accepted') final bool? pointAccepted,
+      @JsonKey(name: 'current_point') final int? currentPoint,
       final String? slogan,
-      final String? discountRate,
-      final String? discountBgColor,
-      final String? discountBgColorEnd,
-      final String? shopNameInKhmer,
-      final String? shopNameInEnglish,
-      final String? briefAddress,
-      final String? fullAddress,
-      final String? shopLogo,
-      final int? numberShop}) = _$_PrivilegeData;
+      @JsonKey(name: 'discount_rate') final String? discountRate,
+      @JsonKey(name: 'discount_bg_color') final String? discountBgColor,
+      @JsonKey(name: 'discount_bg_color_end') final String? discountBgColorEnd,
+      @JsonKey(name: 'shop_name_in_khmer') final String? shopNameInKhmer,
+      @JsonKey(name: 'shop_name_in_english') final String? shopNameInEnglish,
+      @JsonKey(name: 'brief_address') final String? briefAddress,
+      @JsonKey(name: 'full_address') final String? fullAddress,
+      @JsonKey(name: 'shop_logo') final String? shopLogo,
+      @JsonKey(name: 'number_shop') final int? numberShop}) = _$_PrivilegeData;
 
   factory _PrivilegeData.fromJson(Map<String, dynamic> json) =
       _$_PrivilegeData.fromJson;
@@ -431,30 +455,42 @@ abstract class _PrivilegeData implements PrivilegeData {
   @override
   String? get status;
   @override
+  @JsonKey(name: 'is_favorite')
   bool? get isFavorite;
   @override
+  @JsonKey(name: 'point_accepted')
   bool? get pointAccepted;
   @override
+  @JsonKey(name: 'current_point')
   int? get currentPoint;
   @override
   String? get slogan;
   @override
+  @JsonKey(name: 'discount_rate')
   String? get discountRate;
   @override
+  @JsonKey(name: 'discount_bg_color')
   String? get discountBgColor;
   @override
+  @JsonKey(name: 'discount_bg_color_end')
   String? get discountBgColorEnd;
   @override
+  @JsonKey(name: 'shop_name_in_khmer')
   String? get shopNameInKhmer;
   @override
+  @JsonKey(name: 'shop_name_in_english')
   String? get shopNameInEnglish;
   @override
+  @JsonKey(name: 'brief_address')
   String? get briefAddress;
   @override
+  @JsonKey(name: 'full_address')
   String? get fullAddress;
   @override
+  @JsonKey(name: 'shop_logo')
   String? get shopLogo;
   @override
+  @JsonKey(name: 'number_shop')
   int? get numberShop;
   @override
   @JsonKey(ignore: true)

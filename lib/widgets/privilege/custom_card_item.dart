@@ -1,7 +1,9 @@
 import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
+import 'package:cic_mobile/modules/privilege/controller/privilege_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class CustomCardItem extends StatelessWidget {
   const CustomCardItem({
@@ -32,6 +34,7 @@ class CustomCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(PrivilegeController());
     return Container(
       margin: const EdgeInsets.all(10.0),
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10.0),
@@ -110,8 +113,6 @@ class CustomCardItem extends StatelessWidget {
                         child: Text(
                           subtitle ?? '',
                           maxLines: 1,
-                          // softWrap: true,
-
                           style: theme().textTheme.titleSmall!.copyWith(
                                 color: AppColor.grey4Color,
                                 overflow: TextOverflow.ellipsis,
@@ -125,9 +126,12 @@ class CustomCardItem extends StatelessWidget {
                           SvgPicture.asset(
                               'assets/icons/privillege/location.svg'),
                           const SizedBox(width: 5.5),
-                          Text(
-                            address ?? '',
-                            style: theme().textTheme.titleSmall,
+                          Expanded(
+                            child: Text(
+                              address ?? '',
+                              overflow: TextOverflow.ellipsis,
+                              style: theme().textTheme.titleSmall,
+                            ),
                           ),
                         ],
                       )
@@ -138,18 +142,20 @@ class CustomCardItem extends StatelessWidget {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   height: 25,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xffFFC837),
-                        Color(0xffFF8008),
-                      ],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ),
+                  decoration: BoxDecoration(
+                    gradient: offier != null && offier!.isNotEmpty
+                        ? const LinearGradient(
+                            colors: [
+                              Color(0xffFFC837),
+                              Color(0xffFF8008),
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          )
+                        : null,
                   ),
                   child: Text(
-                    offier ?? '',
+                    offier != null ? '${offier!}%' : '',
                     style: theme()
                         .textTheme
                         .displaySmall!

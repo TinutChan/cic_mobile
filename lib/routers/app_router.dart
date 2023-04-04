@@ -100,6 +100,7 @@ final GoRouter approuter = GoRouter(
             GoRoute(
               path: 'privilege',
               name: 'privilege',
+              parentNavigatorKey: _rootNavigatorKey,
               builder: (_, state) {
                 return const Privilege();
               },
