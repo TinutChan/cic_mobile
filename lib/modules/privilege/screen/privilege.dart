@@ -20,8 +20,10 @@ class Privilege extends StatefulWidget {
 class _PrivilegeState extends State<Privilege> {
   @override
   void initState() {
+    _controller.initialScreen();
     _controller.getCategoryItem();
-    _controller.getListAllStor(_controller.currentPage.value);
+    _controller.getListAllStore(1);
+
     super.initState();
   }
 
@@ -45,7 +47,7 @@ class _PrivilegeState extends State<Privilege> {
                 onNotification: (notification) {
                   if (notification.metrics.pixels ==
                       notification.metrics.maxScrollExtent) {
-                    _controller.getListAllStor(_controller.currentPage.value);
+                    _controller.fetchAllStorePagination();
                   }
                   return false;
                 },
@@ -145,7 +147,7 @@ class _PrivilegeState extends State<Privilege> {
                                   child: GestureDetector(
                                     onTap: () {
                                       debugPrint('----is click');
-                                      _controller.getListAllStor(
+                                      _controller.getListAllStore(
                                           _controller.currentPage.value);
                                     },
                                     child: const Text('24 Stores'),
@@ -161,8 +163,7 @@ class _PrivilegeState extends State<Privilege> {
                             ),
                           ),
                           Column(
-                            children:
-                                _controller.privilageStoreList.data!.map((e) {
+                            children: _controller.privilageList.map((e) {
                               return CustomCardItem(
                                 title: e.shopNameInEnglish,
                                 subtitle: e.slogan,
@@ -174,7 +175,7 @@ class _PrivilegeState extends State<Privilege> {
                             }).toList(),
                           ),
                           if (_controller.isLoadinggetListAll.value == true &&
-                              _controller.currentPage.value > 1)
+                              _controller.currentPage.value > 1 == true)
                             const Center(
                               child: CircularProgressIndicator(),
                             ),

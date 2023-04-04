@@ -1,5 +1,5 @@
 import 'package:cic_mobile/modules/privilege/model/category_item/category_item.dart';
-import 'package:cic_mobile/modules/privilege/model/privilate_pagination/privilage_pagination_model.dart';
+import 'package:cic_mobile/modules/privilege/model/privilage_meta/privilage_meta_model.dart';
 import 'package:cic_mobile/utils/helper/api_base_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,31 +14,33 @@ class PrivilegeController extends GetxController {
 
   //!Pagination
 
-  var currentPage = 1.obs;
-  var lastPage = 2.obs;
-  PrivilagePagination privilageStoreList = PrivilagePagination();
   var privilageList = <PrivilegeData>[];
 
-  Future getListAllStor(int? currentPgae) async {
+  PrivilageMetaModel? paginationModel;
+
+  Future<List<PrivilegeData>> getListAllStore(int page) async {
     isLoadinggetListAll(true);
+
     try {
       await _apiBaseHelper
           .onNetworkRequesting(
-        url: 'privilege/shop?page=$currentPgae',
+        url: 'privilege/shop?page=$page',
         methode: METHODE.get,
         isAuthorize: true,
       )
           .then((response) {
-        privilageStoreList = PrivilagePagination.fromJson(response);
-        privilageStoreList.data!.map((e) {
-          privilageList.add(e);
-          debugPrint('= = = = = = = PrivilageList: $privilageList');
+        if (page == 1) {
+          privilageList.clear();
+        }
+
+        response['data']?.map((e) {
+          privilageList.add(PrivilegeData.fromJson(e));
         }).toList();
-        debugPrint('= = = = = = = Privilage: $privilageStoreList');
-        currentPage.value++;
-        debugPrint('= = = = = = = CurrentPage: ${currentPage.value}');
-        lastPage.value = privilageStoreList.meta!.lastPage!;
-        debugPrint('= = = = = = = Last Page: ${lastPage.value}');
+
+        if (response['meta'] != null) {
+          paginationModel = PrivilageMetaModel.fromJson(response['meta']);
+        }
+
         isLoadinggetListAll(false);
       }).onError((ErrorModel error, _) {
         isLoadinggetListAll(false);
@@ -47,7 +49,34 @@ class PrivilegeController extends GetxController {
       debugPrint('Error::: $e');
     }
     isLoadinggetListAll(false);
-    return privilageStoreList;
+    return privilageList;
+  }
+
+  final currentPage = 1.obs;
+
+  void initialScreen() {
+    currentPage.value = 1;
+    paginationModel = null;
+  }
+
+  Future<void> fetchAllStorePagination() async {
+    // if ( currentPage.value) {
+    //   currentPage.value++;
+    // }'
+
+    if (paginationModel != null &&
+        currentPage.value < paginationModel!.lastPage!) {
+      currentPage.value++;
+      await getListAllStore(currentPage.value);
+    }
+    debugPrint('Current Page = ${currentPage.value}');
+
+    // if (currentPage.value < lastPage.value) {
+    //   currentPage.value++;
+    // } else {
+    //   null;
+    //   debugPrint('= = = = Stopped');
+    // }
   }
 
   Future getCategoryItem() async {
@@ -75,6 +104,7 @@ class PrivilegeController extends GetxController {
   }
 
   Future onRefresh() async {
-    getListAllStor(currentPage.value);
+    initialScreen();
+    getListAllStore(1);
   }
 }
