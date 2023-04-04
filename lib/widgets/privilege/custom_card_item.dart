@@ -94,10 +94,10 @@ class CustomCardItem extends StatelessWidget {
                     children: [
                       Text(
                         status ?? '',
-                        style: theme()
-                            .textTheme
-                            .labelSmall!
-                            .copyWith(color: Colors.green),
+                        style: theme().textTheme.labelSmall!.copyWith(
+                            color: status == 'Closed'
+                                ? Colors.red
+                                : AppColor.greenColor),
                       ),
                       Text(
                         title ?? '',

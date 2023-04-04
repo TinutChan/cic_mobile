@@ -24,7 +24,7 @@ showOverLay(BuildContext context) {
             child: Stack(
               children: [
                 Positioned(
-                  bottom: 60,
+                  bottom: 90,
                   right: 30,
                   child: Container(
                     height: 140,
@@ -82,8 +82,8 @@ showOverLay(BuildContext context) {
                   ),
                 ),
                 Positioned(
-                  bottom: 8,
-                  right: 32,
+                  bottom: 42,
+                  right: 31.5,
                   child: Column(
                     children: [
                       SvgPicture.asset(
