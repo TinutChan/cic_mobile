@@ -11,16 +11,16 @@ class PrivilegeController extends GetxController {
   var listCategoryItem = <CategoryItem>[].obs;
   final isLoading = false.obs;
   var isLoadinggetListAll = false.obs;
+  final isLoadingAllFavList = false.obs;
 
   //!Pagination
 
-  var privilageList = <PrivilegeData>[];
+  final privilageList = <PrivilegeData>[];
 
   PrivilageMetaModel? paginationModel;
 
-  Future<List<PrivilegeData>> getListAllStore(int page) async {
+  Future<List<PrivilegeData>> getListAllStore({int? page}) async {
     isLoadinggetListAll(true);
-
     try {
       await _apiBaseHelper
           .onNetworkRequesting(
@@ -32,7 +32,7 @@ class PrivilegeController extends GetxController {
         if (page == 1) {
           privilageList.clear();
         }
-
+        debugPrint("-------test-----${response['data']}");
         response['data']?.map((e) {
           privilageList.add(PrivilegeData.fromJson(e));
         }).toList();
@@ -52,6 +52,27 @@ class PrivilegeController extends GetxController {
     return privilageList;
   }
 
+  Future<void> fetchIsFavouriteStore({required bool isFav}) async {
+    isLoadingAllFavList(true);
+    try {
+      await _apiBaseHelper
+          .onNetworkRequesting(
+              url: 'privilege/shop?favorite=${!isFav}',
+              methode: METHODE.get,
+              isAuthorize: true)
+          .then((response) {
+        debugPrint('response: $response');
+        isLoadingAllFavList(false);
+      }).onError((ErrorModel error, _) {
+        debugPrint('= = = = = Not True: ${error.bodyString}');
+        isLoadingAllFavList(false);
+      });
+    } catch (e) {
+      debugPrint('= = = = = On Error: $e');
+      isLoadingAllFavList(true);
+    }
+  }
+
   final currentPage = 1.obs;
 
   void initialScreen() {
@@ -67,7 +88,7 @@ class PrivilegeController extends GetxController {
     if (paginationModel != null &&
         currentPage.value < paginationModel!.lastPage!) {
       currentPage.value++;
-      await getListAllStore(currentPage.value);
+      await getListAllStore(page: currentPage.value);
     }
     debugPrint('Current Page = ${currentPage.value}');
 
@@ -105,6 +126,6 @@ class PrivilegeController extends GetxController {
 
   Future onRefresh() async {
     initialScreen();
-    getListAllStore(1);
+    getListAllStore(page: 1);
   }
 }

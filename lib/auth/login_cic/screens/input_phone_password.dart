@@ -59,7 +59,6 @@ class InputPhoneNumberPasswordScreen extends StatelessWidget {
                         child: CustomTextField(
                           onChanged: (value) {
                             loginController.phone.value = value;
-                            debugPrint('Phone: ${loginController.phone.value}');
                           },
                           textEditingController:
                               loginController.phoneNumberController.value,
@@ -75,7 +74,6 @@ class InputPhoneNumberPasswordScreen extends StatelessWidget {
                         child: CustomTextField(
                           onChanged: (value) {
                             loginController.pass.value = value;
-                            debugPrint('Pass: ${loginController.pass.value}');
                           },
                           textEditingController:
                               loginController.passwordController.value,

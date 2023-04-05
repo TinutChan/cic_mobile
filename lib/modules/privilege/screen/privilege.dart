@@ -22,7 +22,7 @@ class _PrivilegeState extends State<Privilege> {
   void initState() {
     _controller.initialScreen();
     _controller.getCategoryItem();
-    _controller.getListAllStore(1);
+    _controller.getListAllStore(page: 1);
 
     super.initState();
   }
@@ -51,138 +51,177 @@ class _PrivilegeState extends State<Privilege> {
                   }
                   return false;
                 },
-                child: RefreshIndicator(
-                  onRefresh: _controller.onRefresh,
-                  child: SingleChildScrollView(
-                    child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const CustomSlider(
-                            margin: EdgeInsets.only(
-                                left: 3.0, right: 3.0, bottom: 10.0),
-                            viewportFraction: 1,
-                            padEnds: false,
-                          ),
-                          const SizedBox(height: 10.0),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Categories',
-                                  style: theme().textTheme.displayMedium,
-                                ),
-                                const Spacer(),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Text(
-                                    'See All',
-                                    style: theme()
-                                        .textTheme
-                                        .displaySmall!
-                                        .copyWith(
-                                          color: AppColor.mainColor,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: _controller.listCategoryItem.map((e) {
-                                return CustomCardCategories(
-                                  title: e.name,
-                                  netWorkImage: e.image,
-                                );
-                              }).toList(),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.all(10.0),
-                            width: double.infinity,
-                            child: CupertinoSlidingSegmentedControl(
-                              groupValue: groupValue,
-                              children: {
-                                0: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'All Stores',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ),
-                                1: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Favorites',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ),
-                              },
-                              onValueChanged: (value) {
-                                setState(() {
-                                  groupValue = value;
-                                });
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      debugPrint('----is click');
-                                      _controller.getListAllStore(
-                                          _controller.currentPage.value);
-                                    },
-                                    child: const Text('24 Stores'),
-                                  ),
-                                ),
-                                Row(
-                                  children: const [
-                                    Text('Filter'),
-                                    Icon(Icons.search)
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    RefreshIndicator(
+                      onRefresh: _controller.onRefresh,
+                      child: SingleChildScrollView(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const CustomSlider(
+                                margin: EdgeInsets.only(
+                                    left: 3.0, right: 3.0, bottom: 10.0),
+                                viewportFraction: 1,
+                                padEnds: false,
+                              ),
+                              const SizedBox(height: 10.0),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Categories',
+                                      style: theme().textTheme.displayMedium,
+                                    ),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Text(
+                                        'See All',
+                                        style: theme()
+                                            .textTheme
+                                            .displaySmall!
+                                            .copyWith(
+                                              color: AppColor.mainColor,
+                                            ),
+                                      ),
+                                    ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children:
+                                      _controller.listCategoryItem.map((e) {
+                                    return CustomCardCategories(
+                                      title: e.name,
+                                      netWorkImage: e.image,
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.all(10.0),
+                                width: double.infinity,
+                                child: CupertinoSlidingSegmentedControl(
+                                  groupValue: groupValue,
+                                  children: {
+                                    0: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'All Stores',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ),
+                                    1: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Favorites',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ),
+                                  },
+                                  onValueChanged: (value) async {
+                                    setState(() {
+                                      groupValue = value;
+                                    });
+                                    // if (value == 1) {
+                                    //   await _controller.fetchIsFavouriteStore(
+                                    //     isFav: true,
+                                    //   );
+                                    // } else {
+                                    //   await _controller.getListAllStore(
+                                    //     page: _controller.currentPage.value,
+                                    //   );
+                                    // }
+                                    Container(
+                                      color: Colors.amber,
+                                    );
+                                    Container(
+                                      color: Colors.red,
+                                    );
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          debugPrint('----is click');
+                                        },
+                                        child: const Text('24 Stores'),
+                                      ),
+                                    ),
+                                    Row(
+                                      children: const [
+                                        Text('Filter'),
+                                        Icon(Icons.search)
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Column(
+                                children: _controller.privilageList.map((e) {
+                                  return CustomCardItem(
+                                    title: e.shopNameInEnglish,
+                                    subtitle: e.slogan,
+                                    address: e.fullAddress,
+                                    image: e.shopLogo,
+                                    status: e.status,
+                                    offier: e.discountRate,
+                                  );
+                                }).toList(),
+                              ),
+                            ],
                           ),
-                          Column(
-                            children: _controller.privilageList.map((e) {
-                              return CustomCardItem(
-                                title: e.shopNameInEnglish,
-                                subtitle: e.slogan,
-                                address: e.fullAddress,
-                                image: e.shopLogo,
-                                status: e.status,
-                                offier: e.discountRate,
-                              );
-                            }).toList(),
-                          ),
-                          if (_controller.isLoadinggetListAll.value == true &&
-                              _controller.currentPage.value > 1 == true)
-                            const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                    if (_controller.isLoadinggetListAll.value == true &&
+                        _controller.currentPage.value > 1 == true)
+                      Obx(
+                        () => _controller.isLoadinggetListAll.value == true
+                            ? Positioned(
+                                bottom: 0.0,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Loading more',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    const CupertinoActivityIndicator(),
+                                  ],
+                                ),
+                              )
+                            : const SizedBox(),
+                      ),
+                  ],
                 ),
               ),
       ),

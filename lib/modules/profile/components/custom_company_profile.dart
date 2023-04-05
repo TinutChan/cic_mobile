@@ -50,23 +50,27 @@ class CompanyProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '$title',
-                    style: theme().textTheme.displayMedium!.copyWith(
-                          color: AppColor.blackColor,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                  ),
-                  Text(
-                    '$subtitle',
-                    style: theme().textTheme.titleSmall!.copyWith(
-                          color: AppColor.mainColor,
-                        ),
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '$title',
+                      style: theme().textTheme.displayMedium!.copyWith(
+                            color: AppColor.blackColor,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                    ),
+                    Text(
+                      '$subtitle',
+                      maxLines: 3,
+                      style: theme().textTheme.titleSmall!.copyWith(
+                            color: AppColor.mainColor,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                    ),
+                  ],
+                ),
               ),
               const Spacer(),
               CustomPopUpMenuButton(

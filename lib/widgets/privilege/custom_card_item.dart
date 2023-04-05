@@ -64,7 +64,9 @@ class CustomCardItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   image: DecorationImage(
-                      image: NetworkImage('$image'), fit: BoxFit.cover),
+                    image: NetworkImage('$image'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Positioned(
@@ -75,9 +77,12 @@ class CustomCardItem extends StatelessWidget {
                   child: SizedBox(
                     width: 30,
                     height: 30,
-                    child: SvgPicture.asset(
-                      'assets/icons/privillege/fav_inactive.svg',
-                    ),
+                    child: controller.privilageList[0].isFavorite == false
+                        ? SvgPicture.asset(
+                            'assets/icons/privillege/fav_inactive.svg',
+                          )
+                        : SvgPicture.asset(
+                            'assets/icons/privillege/fav_active.svg'),
                   ),
                 ),
               )
