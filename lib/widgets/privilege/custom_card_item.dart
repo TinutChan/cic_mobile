@@ -1,6 +1,7 @@
 import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:cic_mobile/modules/privilege/controller/privilege_controller.dart';
+import 'package:cic_mobile/utils/convert_hex_color/conver_hex_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,8 @@ class CustomCardItem extends StatelessWidget {
     this.image,
     this.isFavorite,
     this.onTap,
+    this.colorStart,
+    this.colorEnd,
   });
 
   final double? height;
@@ -31,6 +34,8 @@ class CustomCardItem extends StatelessWidget {
   final String? offier;
   final String? image;
   final bool? isFavorite;
+  final String? colorStart;
+  final String? colorEnd;
 
   @override
   Widget build(BuildContext context) {
@@ -149,10 +154,10 @@ class CustomCardItem extends StatelessWidget {
                   height: 25,
                   decoration: BoxDecoration(
                     gradient: offier != null && offier!.isNotEmpty
-                        ? const LinearGradient(
+                        ? LinearGradient(
                             colors: [
-                              Color(0xffFFC837),
-                              Color(0xffFF8008),
+                              toColor(colorStart!),
+                              toColor(colorEnd!),
                             ],
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
@@ -160,7 +165,7 @@ class CustomCardItem extends StatelessWidget {
                         : null,
                   ),
                   child: Text(
-                    offier != null ? '${offier!}%' : '',
+                    offier != null ? '$offier' : '',
                     style: theme()
                         .textTheme
                         .displaySmall!

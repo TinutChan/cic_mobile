@@ -15,7 +15,7 @@ class PrivilegeController extends GetxController {
 
   //!Pagination
 
-  final privilageList = <PrivilegeData>[];
+  final privilageList = <PrivilegeData>[].obs;
 
   PrivilageMetaModel? paginationModel;
 
@@ -32,7 +32,7 @@ class PrivilegeController extends GetxController {
         if (page == 1) {
           privilageList.clear();
         }
-        debugPrint("-------test-----${response['data']}");
+        // debugPrint("-------test-----${response['data']}");
         response['data']?.map((e) {
           privilageList.add(PrivilegeData.fromJson(e));
         }).toList();
@@ -55,16 +55,21 @@ class PrivilegeController extends GetxController {
   Future<void> fetchIsFavouriteStore({required bool isFav}) async {
     isLoadingAllFavList(true);
     try {
+      privilageList.clear();
       await _apiBaseHelper
           .onNetworkRequesting(
               url: 'privilege/shop?favorite=${!isFav}',
               methode: METHODE.get,
               isAuthorize: true)
           .then((response) {
-        debugPrint('response: $response');
+        (response['data'] as List).map((e) {
+          privilageList.add(PrivilegeData.fromJson(e));
+        }).toList();
+
         isLoadingAllFavList(false);
       }).onError((ErrorModel error, _) {
         debugPrint('= = = = = Not True: ${error.bodyString}');
+
         isLoadingAllFavList(false);
       });
     } catch (e) {
@@ -81,23 +86,11 @@ class PrivilegeController extends GetxController {
   }
 
   Future<void> fetchAllStorePagination() async {
-    // if ( currentPage.value) {
-    //   currentPage.value++;
-    // }'
-
     if (paginationModel != null &&
         currentPage.value < paginationModel!.lastPage!) {
       currentPage.value++;
       await getListAllStore(page: currentPage.value);
     }
-    debugPrint('Current Page = ${currentPage.value}');
-
-    // if (currentPage.value < lastPage.value) {
-    //   currentPage.value++;
-    // } else {
-    //   null;
-    //   debugPrint('= = = = Stopped');
-    // }
   }
 
   Future getCategoryItem() async {

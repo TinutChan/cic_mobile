@@ -12,6 +12,7 @@ import 'package:cic_mobile/modules/get_funding/screens/get_funding_screen.dart';
 import 'package:cic_mobile/modules/investment/screens/investment_screen.dart';
 import 'package:cic_mobile/modules/my_mvp/screen/my_mvp_screen.dart';
 import 'package:cic_mobile/modules/privilege/screen/privilege.dart';
+import 'package:cic_mobile/modules/privilege/screen/see_all_privilage_categoies.dart';
 import 'package:cic_mobile/modules/profile/screens/create_company_screen.dart';
 import 'package:cic_mobile/modules/profile/screens/edit_profile_information_screen.dart';
 import 'package:cic_mobile/modules/profile/screens/update_company_screen.dart';
@@ -98,13 +99,20 @@ final GoRouter approuter = GoRouter(
               },
             ),
             GoRoute(
-              path: 'privilege',
-              name: 'privilege',
-              parentNavigatorKey: _rootNavigatorKey,
-              builder: (_, state) {
-                return const Privilege();
-              },
-            ),
+                path: 'privilege',
+                name: 'privilege',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (_, state) {
+                  return const Privilege();
+                },
+                routes: [
+                  GoRoute(
+                    path: 'see-all-categories',
+                    builder: (context, state) {
+                      return const SeeAllCategoriesPrivilage();
+                    },
+                  )
+                ]),
           ],
         ),
         GoRoute(

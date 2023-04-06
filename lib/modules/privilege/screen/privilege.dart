@@ -2,6 +2,8 @@ import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:cic_mobile/modules/privilege/controller/privilege_controller.dart';
 import 'package:cic_mobile/modules/privilege/model/widget/custom_privilage_shimmer.dart';
+import 'package:cic_mobile/modules/privilege/model/widget/loading_more_privilage_shop.dart';
+import 'package:cic_mobile/modules/privilege/model/widget/privilage_filter_search.dart';
 import 'package:cic_mobile/widgets/custom_appbar_blue_bg.dart';
 import 'package:cic_mobile/widgets/custom_slider.dart';
 import 'package:cic_mobile/widgets/privilege/custom_card_categories.dart';
@@ -9,6 +11,7 @@ import 'package:cic_mobile/widgets/privilege/custom_card_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class Privilege extends StatefulWidget {
   const Privilege({super.key});
@@ -27,9 +30,11 @@ class _PrivilegeState extends State<Privilege> {
     super.initState();
   }
 
+  final PageController _pageController = PageController();
   final _controller = Get.put(PrivilegeController());
-  int? groupValue = 0;
+  int groupValue = 0;
   int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +84,11 @@ class _PrivilegeState extends State<Privilege> {
                                     ),
                                     const Spacer(),
                                     GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        context.push(
+                                          '/home/privilege/see-all-categories',
+                                        );
+                                      },
                                       child: Text(
                                         'See All',
                                         style: theme()
@@ -110,7 +119,7 @@ class _PrivilegeState extends State<Privilege> {
                                 width: double.infinity,
                                 child: CupertinoSlidingSegmentedControl(
                                   groupValue: groupValue,
-                                  children: {
+                                  children: <int, Widget>{
                                     0: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
@@ -136,25 +145,25 @@ class _PrivilegeState extends State<Privilege> {
                                       ),
                                     ),
                                   },
-                                  onValueChanged: (value) async {
-                                    setState(() {
-                                      groupValue = value;
-                                    });
-                                    // if (value == 1) {
-                                    //   await _controller.fetchIsFavouriteStore(
-                                    //     isFav: true,
-                                    //   );
-                                    // } else {
-                                    //   await _controller.getListAllStore(
-                                    //     page: _controller.currentPage.value,
-                                    //   );
-                                    // }
-                                    Container(
-                                      color: Colors.amber,
-                                    );
-                                    Container(
-                                      color: Colors.red,
-                                    );
+                                  onValueChanged: (int? value) async {
+                                    groupValue = value!;
+
+                                    // _pageController.animateToPage(
+                                    //   groupValue,
+                                    //   duration:
+                                    //       const Duration(milliseconds: 200),
+                                    //   curve: Curves.fastOutSlowIn,
+                                    // );
+
+                                    if (value == 1) {
+                                      _controller.fetchIsFavouriteStore(
+                                          isFav: true);
+                                    } else {
+                                      _controller.privilageList.clear();
+                                      _controller.getListAllStore(page: 1);
+                                    }
+
+                                    setState(() {});
                                   },
                                 ),
                               ),
@@ -170,26 +179,34 @@ class _PrivilegeState extends State<Privilege> {
                                         child: const Text('24 Stores'),
                                       ),
                                     ),
-                                    Row(
-                                      children: const [
-                                        Text('Filter'),
-                                        Icon(Icons.search)
-                                      ],
-                                    ),
+                                    const FilterSearchPrivilage(),
                                   ],
                                 ),
                               ),
-                              Column(
-                                children: _controller.privilageList.map((e) {
-                                  return CustomCardItem(
-                                    title: e.shopNameInEnglish,
-                                    subtitle: e.slogan,
-                                    address: e.fullAddress,
-                                    image: e.shopLogo,
-                                    status: e.status,
-                                    offier: e.discountRate,
-                                  );
-                                }).toList(),
+                              Obx(
+                                () => _controller.isLoadinggetListAll.value ==
+                                            true ||
+                                        _controller.isLoadingAllFavList.value ==
+                                            true
+                                    ? const Center(
+                                        child: CircularProgressIndicator())
+                                    : Column(
+                                        children:
+                                            _controller.privilageList.map((e) {
+                                          return CustomCardItem(
+                                            title: e.shopNameInEnglish,
+                                            subtitle: e.slogan,
+                                            address: e.fullAddress,
+                                            image: e.shopLogo,
+                                            status: e.status,
+                                            offier: e.discountRate,
+                                            onTap: () {},
+                                            isFavorite: e.isFavorite,
+                                            colorEnd: e.discountBgColor,
+                                            colorStart: e.discountBgColorEnd,
+                                          );
+                                        }).toList(),
+                                      ),
                               ),
                             ],
                           ),
@@ -197,28 +214,12 @@ class _PrivilegeState extends State<Privilege> {
                       ),
                     ),
                     if (_controller.isLoadinggetListAll.value == true &&
+                        _controller.isLoadingAllFavList.value == true &&
                         _controller.currentPage.value > 1 == true)
                       Obx(
-                        () => _controller.isLoadinggetListAll.value == true
-                            ? Positioned(
-                                bottom: 0.0,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Loading more',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    const CupertinoActivityIndicator(),
-                                  ],
-                                ),
-                              )
+                        () => _controller.isLoadinggetListAll.value == true &&
+                                _controller.isLoadingAllFavList.value == true
+                            ? const LoadingMorePrivilageShop()
                             : const SizedBox(),
                       ),
                   ],
