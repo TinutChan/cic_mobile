@@ -9,18 +9,19 @@ import '../model/privilege_data/privilege_data.dart';
 class PrivilegeController extends GetxController {
   final _apiBaseHelper = ApiBaseHelper();
   var listCategoryItem = <CategoryItem>[].obs;
-  var allStoreLength = 0.obs;
 
-  final isLoading = false.obs;
+  // final isLoading = false.obs;
   var isLoadinggetListAll = false.obs;
   final isLoadingAllFavList = false.obs;
   final isLoadingAllCategory = false.obs;
+  // final isLoadingAllShopPagination = false.obs;
 
   //!Pagination
 
   final privilageList = <PrivilegeData>[].obs;
 
   PrivilageMetaModel? paginationModel;
+  var lastPage = 0.obs;
 
   Future<List<PrivilegeData>> getListAllStore({int? page}) async {
     isLoadinggetListAll(true);
@@ -43,17 +44,11 @@ class PrivilegeController extends GetxController {
         if (response['meta'] != null) {
           paginationModel = PrivilageMetaModel.fromJson(response['meta']);
         }
-
-        // length all store
-        allStoreLength.value = response['meta']['total'];
-        debugPrint('= = = = = == = = Totoal: ${allStoreLength.value}');
-
-        if (response) isLoadinggetListAll(false);
       }).onError((ErrorModel error, _) {
         isLoadinggetListAll(false);
       });
     } catch (e) {
-      debugPrint('Error::: $e');
+      debugPrint(':::: Error on Privilage data :::: ${e.toString()}');
     }
     isLoadinggetListAll(false);
     return privilageList;

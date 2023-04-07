@@ -12,6 +12,7 @@ import 'package:cic_mobile/modules/get_funding/screens/get_funding_screen.dart';
 import 'package:cic_mobile/modules/investment/screens/investment_screen.dart';
 import 'package:cic_mobile/modules/my_mvp/screen/my_mvp_screen.dart';
 import 'package:cic_mobile/modules/privilege/screen/all_shop_privilage.dart';
+import 'package:cic_mobile/modules/privilege/screen/filter_store_privilage.dart';
 import 'package:cic_mobile/modules/privilege/screen/privilege.dart';
 import 'package:cic_mobile/modules/privilege/screen/see_all_privilage_categoies.dart';
 import 'package:cic_mobile/modules/profile/screens/create_company_screen.dart';
@@ -121,6 +122,13 @@ final GoRouter approuter = GoRouter(
                       builder: (_, state) {
                         final id = state.params['id'];
                         return AllShopCategory(id: id);
+                      },
+                    ),
+                    GoRoute(
+                      path: 'filter-shop',
+                      name: 'Filter Shop',
+                      builder: (context, state) {
+                        return const FilterStorePrivilage();
                       },
                     )
                   ],
