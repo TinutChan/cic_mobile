@@ -3,12 +3,12 @@ import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:flutter/material.dart';
 
 customAppBarWhiteBgColor({
-  BuildContext? context,
+  required BuildContext context,
   String? title,
-  bool? isLeading,
+  bool? isLeading = true,
   Widget? leading,
   List<Widget>? actions,
-  double? elevetion,
+  double? elevetion = 0,
   bool? centerTitle,
 }) {
   return AppBar(
@@ -16,9 +16,13 @@ customAppBarWhiteBgColor({
     leading: isLeading == true
         ? IconButton(
             onPressed: () {
-              Navigator.pop(context!);
+              Navigator.pop(context);
             },
-            icon: const Icon(Icons.arrow_back_ios_new))
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              color: AppColor.blackColor,
+            ),
+          )
         : leading,
     centerTitle: centerTitle,
     backgroundColor: AppColor.whiteColor,

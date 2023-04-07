@@ -117,6 +117,7 @@ final GoRouter approuter = GoRouter(
                   },
                   routes: [
                     GoRoute(
+                      parentNavigatorKey: _rootNavigatorKey,
                       path: 'all-shop/:id',
                       name: 'AllShop',
                       builder: (_, state) {
@@ -125,12 +126,13 @@ final GoRouter approuter = GoRouter(
                       },
                     ),
                     GoRoute(
+                      parentNavigatorKey: _rootNavigatorKey,
                       path: 'filter-shop',
                       name: 'Filter Shop',
-                      builder: (context, state) {
+                      builder: (_, state) {
                         return const FilterStorePrivilage();
                       },
-                    )
+                    ),
                   ],
                 ),
               ],

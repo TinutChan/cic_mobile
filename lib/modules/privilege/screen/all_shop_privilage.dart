@@ -8,7 +8,7 @@ class AllShopCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBarWhiteBgColor(),
+      appBar: customAppBarWhiteBgColor(title: 's', context: context),
     );
   }
 }

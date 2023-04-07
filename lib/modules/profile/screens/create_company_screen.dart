@@ -17,6 +17,7 @@ class _CreateCompanyScreenState extends State<CreateCompanyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBarWhiteBgColor(
+        context: context,
         elevetion: 0.7,
         title: 'Add Company',
         centerTitle: true,

@@ -3,7 +3,7 @@ import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:cic_mobile/modules/privilege/controller/privilege_controller.dart';
 import 'package:cic_mobile/modules/privilege/model/widget/custom_privilage_shimmer.dart';
 import 'package:cic_mobile/modules/privilege/model/widget/loading_more_privilage_shop.dart';
-import 'package:cic_mobile/modules/privilege/model/widget/privilage_filter_search.dart';
+import 'package:cic_mobile/modules/privilege/model/widget/custom_privilage_filter_search_button.dart';
 import 'package:cic_mobile/widgets/custom_appbar_blue_bg.dart';
 import 'package:cic_mobile/widgets/custom_slider.dart';
 import 'package:cic_mobile/widgets/privilege/custom_card_categories.dart';

@@ -1,4 +1,6 @@
 import 'package:cic_mobile/modules/privilege/model/category_item/category_item.dart';
+import 'package:cic_mobile/modules/privilege/model/location_address_privilage/location_address_data/location_address_data_model.dart';
+import 'package:cic_mobile/modules/privilege/model/location_address_privilage/location_address_model.dart';
 import 'package:cic_mobile/modules/privilege/model/privilage_meta/privilage_meta_model.dart';
 import 'package:cic_mobile/utils/helper/api_base_helper.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,6 @@ class PrivilegeController extends GetxController {
   var isLoadinggetListAll = false.obs;
   final isLoadingAllFavList = false.obs;
   final isLoadingAllCategory = false.obs;
-  // final isLoadingAllShopPagination = false.obs;
 
   //!Pagination
 
@@ -123,5 +124,31 @@ class PrivilegeController extends GetxController {
   Future onRefresh() async {
     initialScreen();
     getListAllStore(page: 1);
+  }
+
+  final listLocationAddress = <LocationAdressData>[].obs;
+  final locationSelected = 0.obs;
+  final listLocationModel = LocationAddressModel;
+
+  Future filterLocationPrivilage({required int id}) async {
+    try {
+      listLocationAddress.clear();
+      await _apiBaseHelper
+          .onNetworkRequesting(
+              url: 'privilege/address?page=$id',
+              methode: METHODE.get,
+              isAuthorize: true)
+          .then((response) {
+        response['data'].map((e) {
+          listLocationAddress.add(LocationAdressData.fromJson(e));
+        }).toList();
+      }).onError((ErrorModel error, _) {
+        debugPrint(
+            '= = = Error Filter Location Privilage = = =${error.bodyString}');
+      });
+    } catch (e) {
+      debugPrint('= = = = = Catch Error = = = = = $e');
+    }
+    return listLocationAddress;
   }
 }

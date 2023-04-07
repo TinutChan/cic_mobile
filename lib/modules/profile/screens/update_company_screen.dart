@@ -15,6 +15,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBarWhiteBgColor(
+        context: context,
         title: 'Edit Company',
         centerTitle: true,
         elevetion: 0.7,
