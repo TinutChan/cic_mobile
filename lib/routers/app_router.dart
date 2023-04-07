@@ -11,6 +11,7 @@ import 'package:cic_mobile/modules/event/screens/event_screen.dart';
 import 'package:cic_mobile/modules/get_funding/screens/get_funding_screen.dart';
 import 'package:cic_mobile/modules/investment/screens/investment_screen.dart';
 import 'package:cic_mobile/modules/my_mvp/screen/my_mvp_screen.dart';
+import 'package:cic_mobile/modules/privilege/screen/all_shop_privilage.dart';
 import 'package:cic_mobile/modules/privilege/screen/privilege.dart';
 import 'package:cic_mobile/modules/privilege/screen/see_all_privilage_categoies.dart';
 import 'package:cic_mobile/modules/profile/screens/create_company_screen.dart';
@@ -99,20 +100,33 @@ final GoRouter approuter = GoRouter(
               },
             ),
             GoRoute(
-                path: 'privilege',
-                name: 'privilege',
-                parentNavigatorKey: _rootNavigatorKey,
-                builder: (_, state) {
-                  return const Privilege();
-                },
-                routes: [
-                  GoRoute(
-                    path: 'see-all-categories',
-                    builder: (context, state) {
-                      return const SeeAllCategoriesPrivilage();
-                    },
-                  )
-                ]),
+              path: 'privilege',
+              name: 'privilege',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder: (_, state) {
+                return const Privilege();
+              },
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'see-all-categories',
+                  name: 'sellcategories',
+                  builder: (_, state) {
+                    return const SeeAllCategoriesPrivilage();
+                  },
+                  routes: [
+                    GoRoute(
+                      path: 'all-shop/:id',
+                      name: 'AllShop',
+                      builder: (_, state) {
+                        final id = state.params['id'];
+                        return AllShopCategory(id: id);
+                      },
+                    )
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
         GoRoute(

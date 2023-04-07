@@ -86,8 +86,7 @@ class _PrivilegeState extends State<Privilege> {
                                     GestureDetector(
                                       onTap: () {
                                         context.push(
-                                          '/home/privilege/see-all-categories',
-                                        );
+                                            '/home/privilege/see-all-categories');
                                       },
                                       child: Text(
                                         'See All',
@@ -176,7 +175,8 @@ class _PrivilegeState extends State<Privilege> {
                                         onTap: () {
                                           debugPrint('----is click');
                                         },
-                                        child: const Text('24 Stores'),
+                                        child: Text(
+                                            '${_controller.allStoreLength.value} Stores'),
                                       ),
                                     ),
                                     const FilterSearchPrivilage(),

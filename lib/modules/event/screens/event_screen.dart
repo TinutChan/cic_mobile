@@ -12,6 +12,7 @@ class EventScreen extends StatelessWidget {
     final eventController = Get.put(EventController());
     return Scaffold(
       appBar: customAppBar(
+        isLeading: false,
         context: context,
         title: 'Event',
         centerTitle: false,

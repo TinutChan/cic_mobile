@@ -33,7 +33,10 @@ class FilterSearchPrivilage extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               color: AppColor.mainColor.withOpacity(0.2)),
-          child: const Icon(Icons.search),
+          child: Icon(
+            Icons.search,
+            color: AppColor.mainColor,
+          ),
         )
       ],
     );

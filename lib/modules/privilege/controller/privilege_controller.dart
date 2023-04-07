@@ -9,9 +9,12 @@ import '../model/privilege_data/privilege_data.dart';
 class PrivilegeController extends GetxController {
   final _apiBaseHelper = ApiBaseHelper();
   var listCategoryItem = <CategoryItem>[].obs;
+  var allStoreLength = 0.obs;
+
   final isLoading = false.obs;
   var isLoadinggetListAll = false.obs;
   final isLoadingAllFavList = false.obs;
+  final isLoadingAllCategory = false.obs;
 
   //!Pagination
 
@@ -41,7 +44,11 @@ class PrivilegeController extends GetxController {
           paginationModel = PrivilageMetaModel.fromJson(response['meta']);
         }
 
-        isLoadinggetListAll(false);
+        // length all store
+        allStoreLength.value = response['meta']['total'];
+        debugPrint('= = = = = == = = Totoal: ${allStoreLength.value}');
+
+        if (response) isLoadinggetListAll(false);
       }).onError((ErrorModel error, _) {
         isLoadinggetListAll(false);
       });
@@ -94,8 +101,9 @@ class PrivilegeController extends GetxController {
   }
 
   Future getCategoryItem() async {
-    isLoading(true);
+    isLoadingAllCategory(true);
     try {
+      listCategoryItem.clear();
       await _apiBaseHelper
           .onNetworkRequesting(
               url: 'privilege/category',
@@ -106,10 +114,10 @@ class PrivilegeController extends GetxController {
         responseJson.map((e) {
           listCategoryItem.add(CategoryItem.fromJson(e));
         }).toList();
-        isLoading(false);
+        isLoadingAllCategory(false);
       }).onError((ErrorModel error, _) {
         debugPrint('Error Body Category item: ${error.bodyString}');
-        isLoading(false);
+        isLoadingAllCategory(false);
       });
     } catch (e) {
       debugPrint('= = = = = = Erorr Get Item Data $e');

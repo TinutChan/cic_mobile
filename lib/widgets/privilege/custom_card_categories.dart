@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class CustomCardCategories extends StatelessWidget {
     this.height,
     this.width,
     this.netWorkImage,
+    this.countShop,
   });
 
   final String? title;
@@ -23,13 +25,15 @@ class CustomCardCategories extends StatelessWidget {
   final double? height;
   final double? width;
   final String? netWorkImage;
+  final int? countShop;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.all(10.0),
+        margin: const EdgeInsets.only(
+            left: 10.0, right: 10.0, top: 7.0, bottom: 7.0),
         padding: const EdgeInsets.only(top: 10, bottom: 10, left: 15.0),
         width: isWidth == false ? 160.0 : width,
         height: isHeight == false ? 80.0 : height,
@@ -41,7 +45,7 @@ class CustomCardCategories extends StatelessWidget {
               color: Colors.grey.withOpacity(0.3),
               offset: const Offset(0.3, 0.5),
               blurStyle: BlurStyle.solid,
-              blurRadius: 5,
+              blurRadius: 1,
             ),
           ],
         ),
@@ -53,6 +57,12 @@ class CustomCardCategories extends StatelessWidget {
                 Text(
                   title ?? '',
                   style: theme().textTheme.displayMedium,
+                ),
+                Text(
+                  countShop != null ? '$countShop Store' : ' ',
+                  style: theme().textTheme.titleSmall!.copyWith(
+                        color: AppColor.darkGrey.withOpacity(0.5),
+                      ),
                 ),
               ],
             ),

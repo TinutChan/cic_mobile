@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
             : SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.zero,
-                  height: height * 0.9,
+                  // height: height * 0.9,
                   child: Column(
                     children: [
                       const CustomSlider(
