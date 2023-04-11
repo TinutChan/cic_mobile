@@ -12,15 +12,8 @@ class InvestmentScreen extends StatefulWidget {
 class _InvestmentScreenState extends State<InvestmentScreen>
     with SingleTickerProviderStateMixin {
   final List<String> _tabs = <String>['Personal Profile', 'Company Profile '];
-  late TabController _controller;
   final TextEditingController emailController = TextEditingController();
   final bool onError = false;
-
-  @override
-  void initState() {
-    _controller = TabController(length: 2, vsync: this);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

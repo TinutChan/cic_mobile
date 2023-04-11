@@ -1,7 +1,9 @@
+import 'package:cic_mobile/constants/color_app/color_app.dart';
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
 import 'package:cic_mobile/modules/privilege/controller/privilege_controller.dart';
 import 'package:cic_mobile/modules/privilege/model/widget/custom_checked_box_filter_location.dart';
 import 'package:cic_mobile/widgets/custom_appbar.dart';
+import 'package:cic_mobile/widgets/custom_button/custom_elevated_button.dart';
 import 'package:cic_mobile/widgets/privilege/custom_card_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +16,12 @@ class FilterStorePrivilage extends StatefulWidget {
 }
 
 class _FilterStorePrivilageState extends State<FilterStorePrivilage> {
+  final List<Map<String, dynamic>> checkboxValues = [
+    {'Value 1': 'a'},
+    {'Value 2': 'b'},
+    {'Value 3': 'c'}
+  ];
+
   final _privilageController = Get.put(PrivilegeController());
 
   @override
@@ -63,15 +71,69 @@ class _FilterStorePrivilageState extends State<FilterStorePrivilage> {
                   style: theme().textTheme.displayMedium,
                 ),
               ),
-              Column(
-                children: _privilageController.listLocationAddress.map((e) {
-                  return CheckedBoxFilterLocation(
-                    // value: ,
-                    // onSelected: e.code,
-                    locationLabel: e.nameEn,
-                  );
-                }).toList(),
-              )
+              Obx(
+                () => Column(
+                  children: _privilageController.listLocationAddress.map((e) {
+                    return CheckedBoxFilterLocation(
+                      isChecked: _privilageController.isSelectLocation.value,
+                      onTap: () {
+                        _privilageController.priLocationCheckedBox(2);
+                      },
+                      locationLabel: e.nameKh,
+                    );
+                  }).toList(),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: GestureDetector(
+                  onTap: () {
+                    _privilageController.filterLocationPrivilage(id: 1);
+                  },
+                  child: Text(
+                    'See More',
+                    style: theme().textTheme.displaySmall!.copyWith(
+                          color: AppColor.mainColor,
+                          decoration: TextDecoration.underline,
+                          decorationStyle: TextDecorationStyle.dashed,
+                        ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.only(
+            left: 20.0, right: 20.0, bottom: 30.0, top: 10.0),
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              width: 2,
+              color: AppColor.darkGrey.withOpacity(0.1),
+            ),
+          ),
+        ),
+        child: Obx(
+          () => Row(
+            children: [
+              Expanded(
+                child: CustomButtonElevatedButton(
+                  isDisbale: _privilageController.isSelectLocation.value != true
+                      ? true
+                      : false,
+                  label: 'Clear All',
+                  onPressed: () {},
+                ),
+              ),
+              const SizedBox(width: 10.0),
+              Expanded(
+                child: CustomButtonElevatedButton(
+                  label: 'Show Result(1)',
+                  onPressed: () {},
+                ),
+              ),
             ],
           ),
         ),

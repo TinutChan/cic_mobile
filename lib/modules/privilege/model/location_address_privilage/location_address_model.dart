@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:cic_mobile/modules/privilege/model/location_address_privilage/location_address_data/location_address_data_model.dart';
 import 'package:cic_mobile/modules/privilege/model/location_address_privilage/location_address_meta/location_address_meta_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

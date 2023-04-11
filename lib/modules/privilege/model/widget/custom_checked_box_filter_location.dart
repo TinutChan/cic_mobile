@@ -1,31 +1,26 @@
 import 'package:cic_mobile/constants/font_app/theme_data.dart';
-import 'package:cic_mobile/modules/privilege/controller/privilege_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 class CheckedBoxFilterLocation extends StatelessWidget {
   const CheckedBoxFilterLocation({
     super.key,
     this.locationLabel,
-    this.onSelected,
+    this.onTap,
+    this.isChecked = false,
   });
 
   final String? locationLabel;
-  final int? onSelected;
-  final int? index = 0;
+  final VoidCallback? onTap;
+  final bool? isChecked;
 
   @override
   Widget build(BuildContext context) {
-    final privilageController = Get.put(PrivilegeController());
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
-        onTap: () {
-          privilageController.locationSelected.value = onSelected!;
-          debugPrint('e: ${privilageController.locationSelected.value}');
-        },
-        child: privilageController.locationSelected.value == 0
+        onTap: onTap,
+        child: isChecked == false
             ? Row(
                 children: [
                   SvgPicture.asset('assets/icons/privillege/check_box.svg'),

@@ -56,7 +56,10 @@ class CustomCardCategories extends StatelessWidget {
               children: [
                 Text(
                   title ?? '',
-                  style: theme().textTheme.displayMedium,
+                  maxLines: 2,
+                  style: theme().textTheme.displayMedium!.copyWith(
+                        overflow: TextOverflow.ellipsis,
+                      ),
                 ),
                 Text(
                   countShop != null ? '$countShop Store' : ' ',

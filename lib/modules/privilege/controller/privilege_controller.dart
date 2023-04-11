@@ -128,7 +128,9 @@ class PrivilegeController extends GetxController {
 
   final listLocationAddress = <LocationAdressData>[].obs;
   final locationSelected = 0.obs;
-  final listLocationModel = LocationAddressModel;
+  final isSelectLocation = false.obs;
+  // final listLocationModel = LocationAddressModel;
+  LocationAddressModel? seePriMoreLocation;
 
   Future filterLocationPrivilage({required int id}) async {
     try {
@@ -139,9 +141,19 @@ class PrivilegeController extends GetxController {
               methode: METHODE.get,
               isAuthorize: true)
           .then((response) {
-        response['data'].map((e) {
+        if (id == 1) {
+          listLocationAddress.clear();
+        }
+
+        response['data']?.map((e) {
           listLocationAddress.add(LocationAdressData.fromJson(e));
+          debugPrint('Data: $seePriMoreLocation');
         }).toList();
+
+        if (response['meta'] != null) {
+          seePriMoreLocation = LocationAddressModel.fromJson(response['meta']);
+          debugPrint('Meta: $seePriMoreLocation');
+        }
       }).onError((ErrorModel error, _) {
         debugPrint(
             '= = = Error Filter Location Privilage = = =${error.bodyString}');
@@ -150,5 +162,35 @@ class PrivilegeController extends GetxController {
       debugPrint('= = = = = Catch Error = = = = = $e');
     }
     return listLocationAddress;
+  }
+
+  void priLocationCheckedBox(int index) {
+    if (listLocationAddress[index] == listLocationAddress[index]) {
+      isSelectLocation.value = !isSelectLocation.value;
+      debugPrint('index: ${listLocationAddress[0]}');
+      debugPrint('value: ${isSelectLocation.value}');
+    }
+    // debugPrint('Value: ${isSelectLocation.value}');
+  }
+  // var selectedValues = <String>[].obs;
+
+  // void priLocationCheckedBox({String? value, required bool isSelected}) {
+  //   if (isSelected) {
+  //     selectedValues.add(value!);
+  //   } else {
+  //     selectedValues.remove(value);
+  //   }
+  // }
+
+  final priLocationCurrentPage = 0.obs;
+  void priLocationInit() {
+    priLocationCurrentPage.value = 1;
+    seePriMoreLocation = null;
+  }
+
+  Future<void> fetchAllLocationSeeMore() async {
+    if (seePriMoreLocation != null &&
+        priLocationCurrentPage.value <
+            seePriMoreLocation!.meta![1].lastPage!) {}
   }
 }
