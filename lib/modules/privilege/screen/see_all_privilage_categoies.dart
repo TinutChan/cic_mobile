@@ -24,15 +24,17 @@ class _SeeAllCategoriesPrivilageState extends State<SeeAllCategoriesPrivilage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          customAppBar(isLogo: false, context: context, title: 'Categories'),
+      appBar: customAppBar(
+        isLogo: false,
+        context: context,
+        title: 'Categories',
+      ),
       body: Obx(
         () => _privilageController.isLoadingAllCategory.value == true
             ? const Center(child: CircularProgressIndicator())
             : SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.zero,
-                  // height: MediaQuery.of(context).size.height,
                   child: Column(
                     children: [
                       Container(

@@ -132,7 +132,7 @@ class PrivilegeController extends GetxController {
   // final listLocationModel = LocationAddressModel;
   LocationAddressModel? seePriMoreLocation;
 
-  Future filterLocationPrivilage({required int id}) async {
+  Future filterLocationPrivilage({int? id}) async {
     try {
       listLocationAddress.clear();
       await _apiBaseHelper

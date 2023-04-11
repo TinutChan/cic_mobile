@@ -16,17 +16,11 @@ class FilterStorePrivilage extends StatefulWidget {
 }
 
 class _FilterStorePrivilageState extends State<FilterStorePrivilage> {
-  final List<Map<String, dynamic>> checkboxValues = [
-    {'Value 1': 'a'},
-    {'Value 2': 'b'},
-    {'Value 3': 'c'}
-  ];
-
   final _privilageController = Get.put(PrivilegeController());
 
   @override
   void initState() {
-    _privilageController.filterLocationPrivilage(id: 1);
+    _privilageController.filterLocationPrivilage();
     super.initState();
   }
 

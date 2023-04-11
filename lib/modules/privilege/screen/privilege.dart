@@ -155,7 +155,6 @@ class _PrivilegeState extends State<Privilege> {
                                   _controller.privilageList.clear();
                                   _controller.getListAllStore(page: 1);
                                 }
-
                                 setState(() {});
                               },
                             ),
@@ -189,6 +188,11 @@ class _PrivilegeState extends State<Privilege> {
                                     children:
                                         _controller.privilageList.map((e) {
                                       return CustomCardItem(
+                                        onTapGotoDetail: () {
+                                          context.push(
+                                            '/privilege/see-all-categories/privilage-detail/${e.id}',
+                                          );
+                                        },
                                         title: e.shopNameInEnglish,
                                         subtitle: e.slogan,
                                         address: e.fullAddress,

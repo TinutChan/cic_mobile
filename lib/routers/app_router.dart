@@ -13,6 +13,7 @@ import 'package:cic_mobile/modules/investment/screens/investment_screen.dart';
 import 'package:cic_mobile/modules/my_mvp/screen/my_mvp_screen.dart';
 import 'package:cic_mobile/modules/privilege/screen/all_shop_privilage.dart';
 import 'package:cic_mobile/modules/privilege/screen/filter_store_privilage.dart';
+import 'package:cic_mobile/modules/privilege/screen/privilage_store_detail.dart';
 import 'package:cic_mobile/modules/privilege/screen/privilege.dart';
 import 'package:cic_mobile/modules/privilege/screen/see_all_privilage_categoies.dart';
 import 'package:cic_mobile/modules/profile/screens/create_company_screen.dart';
@@ -133,6 +134,15 @@ final GoRouter approuter = GoRouter(
                         return const FilterStorePrivilage();
                       },
                     ),
+                    GoRoute(
+                      path: 'privilage-detail/:id',
+                      name: 'PrivilageDetail',
+                      parentNavigatorKey: _rootNavigatorKey,
+                      builder: (_, state) {
+                        final id = state.params['id'];
+                        return PrivilageDetail(id: id);
+                      },
+                    )
                   ],
                 ),
               ],
