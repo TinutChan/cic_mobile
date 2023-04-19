@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:cic_mobile/utils/helper/local_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_connect.dart';
 
@@ -27,6 +28,7 @@ class ApiBaseHelper extends GetConnect {
       String token = "",
       required bool isAuthorize}) async {
     if (token.isEmpty) {
+      debugPrint('Url: $url');
       token = await LocalDataStorage.getCurrentUser();
     }
     final fullUrl = baseurl! + url;

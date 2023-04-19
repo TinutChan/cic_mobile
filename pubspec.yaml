@@ -95,6 +95,8 @@ flutter:
     - assets/icons/profile_icons/company_profile_icons/
     - assets/icons/event_icon/
     - assets/icons/privillege/
+    - assets/images/bunos/
+    - assets/icons/bunos/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

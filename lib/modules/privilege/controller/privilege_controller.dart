@@ -93,10 +93,10 @@ class PrivilegeController extends GetxController {
   }
 
   //! Show All Category
-  Future getCategoryItem() async {
+  Future<List<CategoryItem>> fetchCategoryItem() async {
     isLoadingAllCategory(true);
     try {
-      listCategoryItem.clear();
+      // listCategoryItem.clear();
       await _apiBaseHelper
           .onNetworkRequesting(
               url: 'privilege/category',
@@ -119,26 +119,36 @@ class PrivilegeController extends GetxController {
   }
 
   void refreshNewCategoryPriItem() {
-    getCategoryItem();
+    fetchCategoryItem();
   }
 
   //! search on category screen
-
-  Future<void> searchAllCategory(String value) async {
+  var resutlsCategorySearch = <CategoryItem>[].obs;
+  Future<List<CategoryItem>> searchAllCategory({required String value}) async {
+    debugPrint('= = = Value Input: $value');
     try {
+      // listCategoryItem.clear();
       await _apiBaseHelper
           .onNetworkRequesting(
-              url: '/privilege/category?term=$value',
+              url: value.isNotEmpty
+                  ? 'privilege/category?term=$value'
+                  : 'privilege/category',
               methode: METHODE.get,
               isAuthorize: true)
-          .then((value) {
-        debugPrint('value: $value');
+          .then((response) {
+        listCategoryItem.clear();
+        var responseJson = response['data'];
+        responseJson.map((e) {
+          resutlsCategorySearch.add(CategoryItem.fromJson(e));
+        }).toList();
+        debugPrint('value: $resutlsCategorySearch');
       }).onError((ErrorModel error, _) {
         debugPrint('====Error====${error.bodyString}');
       });
     } catch (e) {
       debugPrint('==Catch element==$e=====');
     }
+    return resutlsCategorySearch;
   }
 
   //! Pagination
