@@ -142,7 +142,7 @@ final GoRouter approuter = GoRouter(
                         final id = state.params['id'];
                         return PrivilageDetail(id: id);
                       },
-                    )
+                    ),
                   ],
                 ),
               ],

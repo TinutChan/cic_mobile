@@ -28,4 +28,8 @@ class HomeController extends GetxController {
     });
     return userModel.value;
   }
+
+  void refreshDashboard() {
+    gethomeController();
+  }
 }

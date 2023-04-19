@@ -11,6 +11,7 @@ customAppBar({
   Color? backgroundColor,
   bool? isLogo = true,
   bool? isLeading = true,
+  VoidCallback? onPressed,
 }) {
   return AppBar(
     elevation: 0,
@@ -23,10 +24,11 @@ customAppBar({
         ? Row(
             children: [
               IconButton(
-                onPressed: () {
-                  // context.go('/home');
-                  Navigator.pop(context);
-                },
+                onPressed: onPressed ??
+                    () {
+                      // context.go('/home');
+                      Navigator.pop(context);
+                    },
                 icon: const Icon(Icons.arrow_back_ios_new),
               ),
               isLogo == true

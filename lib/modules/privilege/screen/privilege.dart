@@ -51,16 +51,8 @@ class _PrivilegeState extends State<Privilege> {
                   if (value.metrics.pixels == value.metrics.maxScrollExtent) {
                     _controller.fetchAllStorePagination();
                   }
-                  // if(_controller.isLoadinggetListAll){}
                   return false;
                 },
-                // (notification) {
-                //   if (notification.metrics.pixels ==
-                //       notification.metrics.maxScrollExtent) {
-                //     _controller.fetchAllStorePagination();
-                //   }
-                //   return false;
-                // },
                 child: RefreshIndicator(
                   onRefresh: _controller.onRefresh,
                   child: SingleChildScrollView(
@@ -190,7 +182,7 @@ class _PrivilegeState extends State<Privilege> {
                                       return CustomCardItem(
                                         onTapGotoDetail: () {
                                           context.push(
-                                            '/privilege/see-all-categories/privilage-detail/${e.id}',
+                                            '/home/privilege/see-all-categories/privilage-detail/${e.id}',
                                           );
                                         },
                                         title: e.shopNameInEnglish,

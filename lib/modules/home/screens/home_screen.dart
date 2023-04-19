@@ -45,67 +45,70 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(width: 20.0),
         ],
       ),
-      body: Obx(
-        () => homeController.isLoading.value == true
-            ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.zero,
-                  // height: height * 0.9,
-                  child: Column(
-                    children: [
-                      const CustomSlider(
-                        margin: EdgeInsets.only(
-                            left: 20, right: 20, top: 10, bottom: 10),
-                        padEnds: true,
-                        viewportFraction: 1.0,
-                      ),
-                      Container(
-                        clipBehavior: Clip.antiAlias,
-                        margin: const EdgeInsets.only(
-                            top: 20.0, left: 20.0, right: 20.0),
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 1,
-                              blurStyle: BlurStyle.normal,
-                              offset: const Offset(0.3, 0.5),
-                              color: AppColor.greyColor,
+      body: RefreshIndicator(
+        onRefresh: () async => homeController.refreshDashboard(),
+        child: Obx(
+          () => homeController.isLoading.value == true
+              ? const Center(child: CircularProgressIndicator())
+              : SingleChildScrollView(
+                  child: Container(
+                    padding: EdgeInsets.zero,
+                    // height: height * 0.9,
+                    child: Column(
+                      children: [
+                        const CustomSlider(
+                          margin: EdgeInsets.only(
+                              left: 20, right: 20, top: 10, bottom: 10),
+                          padEnds: true,
+                          viewportFraction: 1.0,
+                        ),
+                        Container(
+                          clipBehavior: Clip.antiAlias,
+                          margin: const EdgeInsets.only(
+                              top: 20.0, left: 20.0, right: 20.0),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 1,
+                                blurStyle: BlurStyle.normal,
+                                offset: const Offset(0.3, 0.5),
+                                color: AppColor.greyColor,
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(10.0),
+                            gradient: RadialGradient(
+                              colors: [AppColor.mainColor, AppColor.whiteColor],
+                              radius: 0.5,
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(10.0),
-                          gradient: RadialGradient(
-                            colors: [AppColor.mainColor, AppColor.whiteColor],
-                            radius: 0.5,
+                          ),
+                          child: GridView.builder(
+                            shrinkWrap: true,
+                            primary: false,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: listImage.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 1,
+                              crossAxisSpacing: 1,
+                              childAspectRatio: width / (height / 2.6),
+                            ),
+                            itemBuilder: (context, index) {
+                              return CustomCategoies(
+                                imgaes: listImage[index]['imgaes'],
+                                label: listImage[index]['label'],
+                                onTapped: listImage[index]['onTapped'],
+                              );
+                            },
                           ),
                         ),
-                        child: GridView.builder(
-                          shrinkWrap: true,
-                          primary: false,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: listImage.length,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 1,
-                            crossAxisSpacing: 1,
-                            childAspectRatio: width / (height / 2.6),
-                          ),
-                          itemBuilder: (context, index) {
-                            return CustomCategoies(
-                              imgaes: listImage[index]['imgaes'],
-                              label: listImage[index]['label'],
-                              onTapped: listImage[index]['onTapped'],
-                            );
-                          },
-                        ),
-                      ),
-                      // Expanded(child: Container())
-                    ],
+                        // Expanded(child: Container())
+                      ],
+                    ),
                   ),
                 ),
-              ),
+        ),
       ),
     );
   }

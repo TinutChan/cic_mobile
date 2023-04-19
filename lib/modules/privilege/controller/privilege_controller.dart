@@ -17,13 +17,10 @@ class PrivilegeController extends GetxController {
   final isLoadingAllFavList = false.obs;
   final isLoadingAllCategory = false.obs;
 
-  //!Pagination
-
   final privilageList = <PrivilegeData>[].obs;
 
   PrivilageMetaModel? paginationModel;
   var lastPage = 0.obs;
-
   Future<List<PrivilegeData>> getListAllStore({int? page}) async {
     isLoadinggetListAll(true);
     try {
@@ -55,6 +52,7 @@ class PrivilegeController extends GetxController {
     return privilageList;
   }
 
+  //! fetchFavStore
   Future<void> fetchIsFavouriteStore({required bool isFav}) async {
     isLoadingAllFavList(true);
     try {
@@ -72,7 +70,6 @@ class PrivilegeController extends GetxController {
         isLoadingAllFavList(false);
       }).onError((ErrorModel error, _) {
         debugPrint('= = = = = Not True: ${error.bodyString}');
-
         isLoadingAllFavList(false);
       });
     } catch (e) {
@@ -82,7 +79,6 @@ class PrivilegeController extends GetxController {
   }
 
   final currentPage = 1.obs;
-
   void initialScreen() {
     currentPage.value = 1;
     paginationModel = null;
@@ -96,6 +92,7 @@ class PrivilegeController extends GetxController {
     }
   }
 
+  //! Show All Category
   Future getCategoryItem() async {
     isLoadingAllCategory(true);
     try {
@@ -120,6 +117,31 @@ class PrivilegeController extends GetxController {
     }
     return listCategoryItem;
   }
+
+  void refreshNewCategoryPriItem() {
+    getCategoryItem();
+  }
+
+  //! search on category screen
+
+  Future<void> searchAllCategory(String value) async {
+    try {
+      await _apiBaseHelper
+          .onNetworkRequesting(
+              url: '/privilege/category?term=$value',
+              methode: METHODE.get,
+              isAuthorize: true)
+          .then((value) {
+        debugPrint('value: $value');
+      }).onError((ErrorModel error, _) {
+        debugPrint('====Error====${error.bodyString}');
+      });
+    } catch (e) {
+      debugPrint('==Catch element==$e=====');
+    }
+  }
+
+  //! Pagination
 
   Future onRefresh() async {
     initialScreen();
