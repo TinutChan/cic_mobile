@@ -93,39 +93,40 @@ class PrivilegeController extends GetxController {
   }
 
   //! Show All Category
-  Future<List<CategoryItem>> fetchCategoryItem() async {
-    isLoadingAllCategory(true);
-    try {
-      // listCategoryItem.clear();
-      await _apiBaseHelper
-          .onNetworkRequesting(
-              url: 'privilege/category',
-              methode: METHODE.get,
-              isAuthorize: true)
-          .then((response) {
-        var responseJson = response['data'];
-        responseJson.map((e) {
-          listCategoryItem.add(CategoryItem.fromJson(e));
-        }).toList();
-        isLoadingAllCategory(false);
-      }).onError((ErrorModel error, _) {
-        debugPrint('Error Body Category item: ${error.bodyString}');
-        isLoadingAllCategory(false);
-      });
-    } catch (e) {
-      debugPrint('= = = = = = Erorr Get Item Data $e');
-    }
-    return listCategoryItem;
-  }
+  // Future<List<CategoryItem>> fetchCategoryItem() async {
+  //   isLoadingAllCategory(true);
+  //   try {
+  //     // listCategoryItem.clear();
+  //     await _apiBaseHelper
+  //         .onNetworkRequesting(
+  //             url: 'privilege/category',
+  //             methode: METHODE.get,
+  //             isAuthorize: true)
+  //         .then((response) {
+  //       var responseJson = response['data'];
+  //       responseJson.map((e) {
+  //         listCategoryItem.add(CategoryItem.fromJson(e));
+  //       }).toList();
+  //       isLoadingAllCategory(false);
+  //     }).onError((ErrorModel error, _) {
+  //       debugPrint('Error Body Category item: ${error.bodyString}');
+  //       isLoadingAllCategory(false);
+  //     });
+  //   } catch (e) {
+  //     debugPrint('= = = = = = Erorr Get Item Data $e');
+  //   }
+  //   return listCategoryItem;
+  // }
 
-  void refreshNewCategoryPriItem() {
-    fetchCategoryItem();
-  }
+  // void refreshNewCategoryPriItem() {
+  //   fetchCategoryItem();
+  // }
 
   //! search on category screen
   var resutlsCategorySearch = <CategoryItem>[].obs;
   Future<List<CategoryItem>> searchAllCategory({required String value}) async {
     debugPrint('= = = Value Input: $value');
+    value.isEmpty ? isLoadingAllCategory(true) : isLoadingAllCategory(false);
     try {
       // listCategoryItem.clear();
       await _apiBaseHelper
@@ -142,13 +143,20 @@ class PrivilegeController extends GetxController {
           resutlsCategorySearch.add(CategoryItem.fromJson(e));
         }).toList();
         debugPrint('value: $resutlsCategorySearch');
+        isLoadingAllCategory(false);
       }).onError((ErrorModel error, _) {
         debugPrint('====Error====${error.bodyString}');
+        isLoadingAllCategory(false);
       });
     } catch (e) {
       debugPrint('==Catch element==$e=====');
+      isLoadingAllCategory(false);
     }
     return resutlsCategorySearch;
+  }
+
+  void refreshNewCategoryPriItem() {
+    searchAllCategory(value: '');
   }
 
   //! Pagination

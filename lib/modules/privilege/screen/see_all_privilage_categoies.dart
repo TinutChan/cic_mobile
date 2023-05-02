@@ -18,6 +18,7 @@ class SeeAllCategoriesPrivilage extends StatefulWidget {
 class _SeeAllCategoriesPrivilageState extends State<SeeAllCategoriesPrivilage> {
   @override
   void initState() {
+    _privilageController.searchAllCategory(value: '');
     super.initState();
   }
 
@@ -60,7 +61,8 @@ class _SeeAllCategoriesPrivilageState extends State<SeeAllCategoriesPrivilage> {
                                   }),
                             ),
                             Column(
-                              children: _privilageController.listCategoryItem
+                              children: _privilageController
+                                  .resutlsCategorySearch
                                   .map((e) {
                                 return CustomCardCategories(
                                   height: 96.0,
@@ -76,24 +78,24 @@ class _SeeAllCategoriesPrivilageState extends State<SeeAllCategoriesPrivilage> {
                                 );
                               }).toList(),
                             ),
-                            Column(
-                              children: _privilageController
-                                  .resutlsCategorySearch
-                                  .map((element) {
-                                return CustomCardCategories(
-                                  height: 96.0,
-                                  width: double.infinity,
-                                  isWidth: true,
-                                  title: element.name,
-                                  countShop: element.countShop,
-                                  netWorkImage: element.image,
-                                  onTap: () {
-                                    context.go(
-                                        '/home/privilege/see-all-categories/all-shop/${element.id}');
-                                  },
-                                );
-                              }).toList(),
-                            )
+                            // Column(
+                            //   children: _privilageController
+                            //       .resutlsCategorySearch
+                            //       .map((element) {
+                            //     return CustomCardCategories(
+                            //       height: 96.0,
+                            //       width: double.infinity,
+                            //       isWidth: true,
+                            //       title: element.name,
+                            //       countShop: element.countShop,
+                            //       netWorkImage: element.image,
+                            //       onTap: () {
+                            //         context.go(
+                            //             '/home/privilege/see-all-categories/all-shop/${element.id}');
+                            //       },
+                            //     );
+                            //   }).toList(),
+                            // )
                           ],
                         ),
                       ),

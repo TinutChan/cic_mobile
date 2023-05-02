@@ -34,7 +34,7 @@ class BunosScreen extends StatelessWidget {
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
                   expandedTitleScale: 1.0,
-                  collapseMode: CollapseMode.none,
+                  collapseMode: CollapseMode.parallax,
                   background: Stack(
                     alignment: Alignment.center,
                     children: [

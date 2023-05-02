@@ -22,49 +22,52 @@ class _BottonNavBarState extends State<BottonNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.child,
-      bottomNavigationBar: Theme(
-        data: ThemeData(
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-        ),
-        child: BottomNavigationBar(
-          currentIndex: _calculateSelectedIndex(context),
-          onTap: (index) {
-            _onItemTapped(index, context);
-          },
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/home_inactive.svg',
-                  height: 23),
-              label: 'Home',
-              activeIcon:
-                  SvgPicture.asset('assets/icons/home_active.svg', height: 23),
-            ),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset('assets/icons/qr_scan_inactive.svg'),
-                label: 'QR Scan'),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/event.svg'),
-              label: 'Event',
-              activeIcon: SvgPicture.asset(
-                'assets/icons/event.svg',
-                colorFilter:
-                    ColorFilter.mode(AppColor.mainColor, BlendMode.srcIn),
+      bottomNavigationBar: SafeArea(
+        bottom: false,
+        child: Theme(
+          data: ThemeData(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+          ),
+          child: BottomNavigationBar(
+            currentIndex: _calculateSelectedIndex(context),
+            onTap: (index) {
+              _onItemTapped(index, context);
+            },
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/home_inactive.svg',
+                    height: 23),
+                label: 'Home',
+                activeIcon: SvgPicture.asset('assets/icons/home_active.svg',
+                    height: 23),
               ),
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/more.svg'),
-              label: 'More',
-              activeIcon: SvgPicture.asset(
-                'assets/icons/more.svg',
-                colorFilter: ColorFilter.mode(
-                  AppColor.mainColor,
-                  BlendMode.srcIn,
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset('assets/icons/qr_scan_inactive.svg'),
+                  label: 'QR Scan'),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/event.svg'),
+                label: 'Event',
+                activeIcon: SvgPicture.asset(
+                  'assets/icons/event.svg',
+                  colorFilter:
+                      ColorFilter.mode(AppColor.mainColor, BlendMode.srcIn),
                 ),
               ),
-            ),
-          ],
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/more.svg'),
+                label: 'More',
+                activeIcon: SvgPicture.asset(
+                  'assets/icons/more.svg',
+                  colorFilter: ColorFilter.mode(
+                    AppColor.mainColor,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

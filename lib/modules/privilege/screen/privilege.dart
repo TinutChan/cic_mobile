@@ -24,7 +24,7 @@ class _PrivilegeState extends State<Privilege> {
   @override
   void initState() {
     _controller.initialScreen();
-    _controller.fetchCategoryItem();
+    // _controller.fetchCategoryItem();
     _controller.getListAllStore(page: 1);
 
     super.initState();
